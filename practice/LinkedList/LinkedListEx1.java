@@ -26,6 +26,8 @@ public class LinkedListEx1 {
         System.out.println(student2LinkedList);
         student2LinkedList.add(0,st7);
         System.out.println(student2LinkedList);
+        student2LinkedList.remove(3);
+        System.out.println(student2LinkedList);
 
     }
 }
