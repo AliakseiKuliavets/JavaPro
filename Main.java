@@ -1,24 +1,21 @@
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {2,4,1,3};
-        reversArray(array);
-        System.out.println(Arrays.toString(array));
+        int[] array = {3,2,3,4,5};
+        int number = 9;
+        System.out.println(searchIndex(array, number));
     }
-    private static void reversArray(int[] array) {
+
+    private static int searchIndex(int[] array, int number) {
         if (array.length == 0) {
-            System.out.println("Array is empty");
+            return -1;
         }
 
-        int left = 0;
-        int right = array.length - 1;
-        while (left < right) {
-            int tmp = array[left];
-            array[left] = array[right];
-            array[right] = tmp;
-            left++;
-            right--;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == number) {
+                return i;
+            }
         }
+        return -1;
     }
 }
