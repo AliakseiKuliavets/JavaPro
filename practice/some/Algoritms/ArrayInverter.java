@@ -4,16 +4,22 @@ import java.util.Arrays;
 
 public class ArrayInverter {
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4};
-        System.out.print(Arrays.toString(array) + " => ");
-        invert(array);
+        int[] array = {3,6,1,9,2,3};
+        Arrays.sort(array);
+        reversArray(array);
         System.out.println(Arrays.toString(array));
     }
-    private static void invert(int[] array) {
-        for (int i = 0; i < array.length / 2; i++) {
-            int tmp = array[i];
-            array[i] = array[array.length - i - 1];
-            array[array.length - i - 1] =  tmp;
+    private static void reversArray(int[] array){
+        int left = 0;
+        int right = array.length - 1;
+
+        while (left < right) {
+            int temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+
+            left++;
+            right--;
         }
     }
 }
