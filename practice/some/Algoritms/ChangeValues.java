@@ -12,7 +12,7 @@ public class ChangeValues {
         a = b;
         b = c;
         System.out.println("a = " + a);
-        System.out.println("b = " + b);;
+        System.out.println("b = " + b);
     }
 
     private static void change2(int a, int b) {
@@ -20,6 +20,6 @@ public class ChangeValues {
         b = a - b;
         a = a - b;
         System.out.println("a = " + a);
-        System.out.println("b = " + b);;
+        System.out.println("b = " + b);
     }
 }
