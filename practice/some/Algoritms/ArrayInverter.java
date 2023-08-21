@@ -6,7 +6,7 @@ public class ArrayInverter {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4};
         System.out.print(Arrays.toString(array) + " => ");
-        ArrayInverter.invert(array);
+        invert(array);
         System.out.println(Arrays.toString(array));
     }
     private static void invert(int[] array) {
@@ -14,6 +14,6 @@ public class ArrayInverter {
             int tmp = array[i];
             array[i] = array[array.length - i - 1];
             array[array.length - i - 1] =  tmp;
-        };
+        }
     }
 }
