@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class ArrayInverter {
     public static void main(String[] args) {
         int[] array = {3,6,1,9,2,3};
-        Arrays.sort(array);
         reversArray(array);
         System.out.println(Arrays.toString(array));
     }
