@@ -10,6 +10,7 @@ public class RemoveDublicate {
     }
 
     // time -> O(n log n), memory O(1)
+    // time -> O(n log n), memory O(1)
     public static int[] removeDuplicates(int[] nums) {
         if (nums.length <= 1) {
             return nums;
