@@ -1,10 +1,7 @@
-package practice.BinarySearch;
+package practice.javaPro.BinarySearch;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class BinarySearch {
     public static void main(String[] args) {

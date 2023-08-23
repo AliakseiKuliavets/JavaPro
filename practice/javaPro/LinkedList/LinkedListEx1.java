@@ -1,4 +1,4 @@
-package practice.LinkedList;
+package practice.javaPro.LinkedList;
 
 import java.util.LinkedList;
 

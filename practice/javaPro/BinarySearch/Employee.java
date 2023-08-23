@@ -1,4 +1,4 @@
-package practice.BinarySearch;
+package practice.javaPro.BinarySearch;
 
 public class Employee implements Comparable<Employee>{
     private int id;

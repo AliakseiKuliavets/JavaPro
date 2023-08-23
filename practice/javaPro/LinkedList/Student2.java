@@ -1,4 +1,4 @@
-package practice.LinkedList;
+package practice.javaPro.LinkedList;
 
 public class Student2 {
     private String name;

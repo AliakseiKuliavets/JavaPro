@@ -1,4 +1,4 @@
-package practice.Iterator;
+package practice.javaPro.Iterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;

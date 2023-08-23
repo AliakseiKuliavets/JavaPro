@@ -1,4 +1,4 @@
-package practice.StackExample;
+package practice.javaPro.StackExample;
 
 public class StackExample {
     public static void main(String[] args) {

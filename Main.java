@@ -1,21 +1,16 @@
 
 public class Main {
-    public static void main(String[] args) {
-        int[] array = {3,2,3,4,5};
-        int number = 9;
-        System.out.println(searchIndex(array, number));
+    public void main(String[] args) {
+        int[] nums = {2,7,11,15};
+        int target = 9;
+        System.out.println(twoSum(nums,target));
     }
-
-    private static int searchIndex(int[] array, int number) {
-        if (array.length == 0) {
-            return -1;
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == number) {
-                return i;
+    public int[] twoSum(int[] nums, int target) {
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] + nums[i+1] == target) {
+                return new int[]{i , i+1};
             }
         }
-        return -1;
+        return new int[]{-1};
     }
 }
