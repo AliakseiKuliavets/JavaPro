@@ -4,27 +4,19 @@ import java.util.Arrays;
 
 public class PlusOne {
     public static void main(String[] args) {
-        long[] digits = {1,2,3};
+        int[] digits = {1,2,3,9};
         System.out.println(Arrays.toString(plusOne(digits)));
     }
-    public static long[] plusOne(long[] digits) {
-        if (digits.length == 0) {
-            return new long[]{1};
+    public static int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
         }
-        long result = 1;
-        for (int i = digits.length - 1, n = 0; i >= 0 ; i--, n++) {
-            int pos = (int)Math.pow(10,i);
-            result += digits[n] * pos;
-        }
-
-        String numberString = Long.toString(result);
-        char[] charArray = numberString.toCharArray();
-
-        long[] intArray = new long[charArray.length];
-        for (int i = 0; i < charArray.length; i++) {
-            intArray[i] = Character.getNumericValue(charArray[i]);
-        }
-
-        return intArray;
+        int[] newDigits = new int[digits.length + 1];
+        newDigits[0] = 1;
+        return newDigits;
     }
 }
