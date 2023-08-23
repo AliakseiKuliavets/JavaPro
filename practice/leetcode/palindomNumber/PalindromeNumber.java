@@ -7,14 +7,9 @@ public class PalindromeNumber {
     }
 
     public static boolean isPalindrome(int x) {
-        String number = String.valueOf(x);
-        String first = number;
+        String first = String.valueOf(x);
         StringBuilder revers = new StringBuilder(first);
         revers.reverse();
-        if (first.equals(revers.toString())) {
-            return true;
-        } else {
-            return false;
-        }
+        return first.contentEquals(revers);
     }
 }
