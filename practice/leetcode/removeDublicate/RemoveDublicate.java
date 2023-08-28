@@ -8,16 +8,12 @@ public class RemoveDublicate {
         int[] uniqueArray = removeDuplicates(nums);
         System.out.println(Arrays.toString(uniqueArray));
     }
-
-    // time -> O(n log n), memory O(1)
     // time -> O(n log n), memory O(1)
     public static int[] removeDuplicates(int[] nums) {
         if (nums.length <= 1) {
             return nums;
         }
-
         Arrays.sort(nums);
-
         int countNum = 1;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[i - 1]) {
@@ -25,7 +21,6 @@ public class RemoveDublicate {
                 countNum++;
             }
         }
-
         return Arrays.copyOf(nums, countNum);
     }
 }
