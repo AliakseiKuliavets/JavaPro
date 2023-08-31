@@ -1,4 +1,4 @@
-package homeWork.hw30_08_24.enums;
+package homeWork._202308_30.enums;
 
 public enum ProductCategory {
     SHIRT,

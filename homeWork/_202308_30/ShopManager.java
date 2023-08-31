@@ -1,8 +1,8 @@
-package homeWork.hw30_08_24;
+package homeWork._202308_30;
 
-import homeWork.hw30_08_24.enums.Currency;
-import homeWork.hw30_08_24.enums.ProductCategory;
-import homeWork.hw30_08_24.enums.Size;
+import homeWork._202308_30.enums.Currency;
+import homeWork._202308_30.enums.ProductCategory;
+import homeWork._202308_30.enums.Size;
 
 import java.util.ArrayList;
 
