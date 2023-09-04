@@ -6,6 +6,9 @@ public class Main {
         CreditAccount creditAccount = new CreditAccount("789012", -500, 1000);
 
         fixedAccount.transfer(creditAccount, 300);
+        creditAccount.transfer(fixedAccount,300);
+
+
         System.out.println("Fixed account balance: " + fixedAccount.getBalance());
         System.out.println("Credit account balance: " + creditAccount.getBalance());
     }
