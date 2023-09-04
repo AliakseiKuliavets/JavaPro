@@ -9,7 +9,7 @@ public class FixedBalanceAccount extends Account implements Transferable {
 
     @Override
     public void transfer(Account destination, double amount) {
-        if (super.getBalance() < 0) {
+        if (super.getBalance() - amount <= 0) {
             super.getBalance();
         } else {
             super.setBalance(super.getBalance() - amount);

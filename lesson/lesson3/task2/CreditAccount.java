@@ -15,7 +15,7 @@ public class CreditAccount extends Account implements Transferable {
 
     @Override
     public void transfer(Account destination, double amount) {
-        if (super.getBalance() < creditLimit) {
+        if ((super.getBalance()  <= creditLimit)) {
             super.getBalance();
         } else {
             super.setBalance(super.getBalance() - amount);

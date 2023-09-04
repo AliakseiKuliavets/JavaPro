@@ -5,8 +5,15 @@ public class Main {
         FixedBalanceAccount fixedAccount = new FixedBalanceAccount("123456", 1000);
         CreditAccount creditAccount = new CreditAccount("789012", -500, 1000);
 
-        fixedAccount.transfer(creditAccount, 300);
+//        fixedAccount.transfer(creditAccount, 300);
+
         creditAccount.transfer(fixedAccount,300);
+        creditAccount.transfer(fixedAccount,300);
+        creditAccount.transfer(fixedAccount,300);
+        creditAccount.transfer(fixedAccount,300);
+        creditAccount.transfer(fixedAccount,300);
+        creditAccount.transfer(fixedAccount,50);
+
 
 
         System.out.println("Fixed account balance: " + fixedAccount.getBalance());
