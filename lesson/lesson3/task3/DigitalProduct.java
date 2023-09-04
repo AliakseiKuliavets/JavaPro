@@ -9,9 +9,8 @@ public class DigitalProduct extends Product implements Discountable {
     }
 
     @Override
-    public double applyDiscount(double percentage) {
+    public void applyDiscount(double percentage) {
         double discountedPrice = getPrice() - (getPrice() * (percentage / 100.0));
         setPrice(discountedPrice);
-        return getPrice();
     }
 }
