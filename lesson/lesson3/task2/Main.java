@@ -12,7 +12,11 @@ public class Main {
         creditAccount.transfer(fixedAccount,300);
         creditAccount.transfer(fixedAccount,300);
         creditAccount.transfer(fixedAccount,300);
-        creditAccount.transfer(fixedAccount,50);
+        creditAccount.transfer(fixedAccount,100);
+        creditAccount.transfer(fixedAccount,100);
+
+
+
 
 
 
