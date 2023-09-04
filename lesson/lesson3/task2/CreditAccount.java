@@ -3,27 +3,19 @@ package lesson.lesson3.task2;
 import lesson.lesson3.task2.interfac.Transferable;
 
 public class CreditAccount extends Account implements Transferable {
-    private String numberAccount;
-    private double balanceAccount;
-    private double limitBalanceAccount;
 
-    public CreditAccount(String numberAccount, double limitBalanceAccount, double balanceAccount) {
-        this.numberAccount = numberAccount;
-        this.balanceAccount = balanceAccount;
-        this.limitBalanceAccount = limitBalanceAccount;
+    private double creditLimit;
+
+    public CreditAccount(String name, double creditLimit, double balance) {
+        super(name, balance);
+        if (balance < 0) {
+            this.creditLimit = creditLimit;
+        }
     }
 
     @Override
-    void account() {
-
-    }
-
-    @Override
-    public double transfer(Account destination, double amount) {
-        return balanceAccount + amount;
-    }
-
-    public double getBalanceAccount() {
-        return balanceAccount;
+    public void transfer(Account destination, double amount) {
+        super.setBalance(super.getBalance() - amount);
+        destination.setBalance(destination.getBalance() + amount);
     }
 }
