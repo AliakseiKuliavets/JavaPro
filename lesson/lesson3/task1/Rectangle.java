@@ -12,12 +12,17 @@ public class Rectangle extends Shape implements Resizable {
     }
 
     @Override
-    public double resize(double factor) {
-        return Area() * factor;
+    public void resize(double factor) {
+        double result = Area() * factor;
+        setArea(result);
     }
 
     @Override
     double Area() {
-        return sizeA * sizeB;
+        if (getArea() == 0) {
+            return sizeA * sizeB;
+        } else {
+            return  getArea();
+        }
     }
 }

@@ -11,12 +11,17 @@ public class Circle extends Shape implements Resizable {
     }
 
     @Override
-    public double resize(double factor) {
-        return Area() * factor;
+    public void resize(double factor) {
+        double result = Area() * factor;
+        setArea(result);
     }
 
     @Override
     double Area() {
-        return PI * (radius * radius);
+        if (getArea() == 0) {
+            return PI * (radius * radius);
+        } else {
+            return getArea();
+        }
     }
 }
