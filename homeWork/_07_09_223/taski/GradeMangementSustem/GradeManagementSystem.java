@@ -15,7 +15,9 @@ public class GradeManagementSystem {
         this.teachers = teachers;
     }
     public void gradeStudents(Student[] students, Teacher teacher) {
-        teacher.gradeStudent();
+        for (Student student : students) {
+            student.setGrade(teacher.gradeStudent());
+        }
     }
 
     public void processStudents(Student[] students) {
