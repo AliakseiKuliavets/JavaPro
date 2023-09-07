@@ -7,7 +7,7 @@ public abstract class Person {
     private final String namePerson;
     private final int agePeron;
 
-    protected abstract void getDescription();
+    protected abstract String getDescription();
 
     public Person(String namePerson, int agePeron) {
         this.namePerson = namePerson;
@@ -16,9 +16,6 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "namePerson='" + namePerson + '\'' +
-                ", agePeron=" + agePeron +
-                '}';
+        return getDescription();
     }
 }

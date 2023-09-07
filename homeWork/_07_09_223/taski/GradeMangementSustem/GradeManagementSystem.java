@@ -1,8 +1,7 @@
 package homeWork._07_09_223.taski.GradeMangementSustem;
 
-import homeWork._07_09_223.taski.Main;
-import homeWork._07_09_223.taski.Persons.InfoStudent.Student;
-import homeWork._07_09_223.taski.Persons.Person;
+
+import homeWork._07_09_223.taski.Persons.Student;
 import homeWork._07_09_223.taski.Persons.Teacher;
 import lombok.Getter;
 
@@ -15,17 +14,16 @@ public class GradeManagementSystem {
         this.students = students;
         this.teachers = teachers;
     }
-
     public void gradeStudents(Student[] students, Teacher teacher) {
-        teacher.getGradeStudent();
+        teacher.gradeStudent();
     }
 
     public void processStudents(Student[] students) {
         if (students.length == 0) {
             System.out.println("Classroom empty");
         }
-        for (int i = 0; i < students.length; i++) {
-            System.out.println("Student " + i + ":" + students[i]);
+        for (Student student : students) {
+            System.out.println(student.getDescription());
         }
     }
 
@@ -33,8 +31,8 @@ public class GradeManagementSystem {
         if (teachers.length == 0) {
             System.out.println("Classroom empty");
         }
-        for (int i = 0; i < teachers.length; i++) {
-            System.out.println("Student " + i + ":" + teachers[i]);
+        for (Teacher teacher : teachers) {
+            System.out.println(teacher.getDescription());
         }
     }
 }
