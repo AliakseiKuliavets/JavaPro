@@ -13,9 +13,4 @@ public abstract class Person {
         this.namePerson = namePerson;
         this.agePeron = agePeron;
     }
-
-    @Override
-    public String toString() {
-        return getDescription();
-    }
 }
