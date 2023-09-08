@@ -1,8 +1,9 @@
-package homeWork._07_09_223.taski;
+package homeWork._07_09_23;
 
-import homeWork._07_09_223.taski.GradeMangementSustem.GradeManagementSystem;
-import homeWork._07_09_223.taski.Persons.Student;
-import homeWork._07_09_223.taski.Persons.Teacher;
+import homeWork._07_09_23.GradeMangementSustem.GradeManagementSystem;
+import homeWork._07_09_23.Persons.Student;
+import homeWork._07_09_23.Persons.Teacher;
+
 import java.util.Arrays;
 
 public class Main {

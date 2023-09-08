@@ -1,6 +1,6 @@
-package homeWork._07_09_223.taski.Persons;
+package homeWork._07_09_23.Persons;
 
-import homeWork._07_09_223.taski.enums.Grade;
+import homeWork._07_09_23.enums.Grade;
 import lombok.Getter;
 import lombok.Setter;
 

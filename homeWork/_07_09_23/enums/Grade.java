@@ -1,4 +1,4 @@
-package homeWork._07_09_223.taski.enums;
+package homeWork._07_09_23.enums;
 
 public enum Grade {
     A,

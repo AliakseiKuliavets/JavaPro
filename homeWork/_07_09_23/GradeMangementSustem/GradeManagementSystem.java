@@ -1,7 +1,7 @@
-package homeWork._07_09_223.taski.GradeMangementSustem;
+package homeWork._07_09_23.GradeMangementSustem;
 
-import homeWork._07_09_223.taski.Persons.Student;
-import homeWork._07_09_223.taski.Persons.Teacher;
+import homeWork._07_09_23.Persons.Student;
+import homeWork._07_09_23.Persons.Teacher;
 import lombok.Getter;
 
 @Getter

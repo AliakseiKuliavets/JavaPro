@@ -1,6 +1,7 @@
-package homeWork._07_09_223.taski.Comparator;
+package homeWork._07_09_23.Comparator;
 
-import homeWork._07_09_223.taski.Persons.Student;
+import homeWork._07_09_23.Persons.Student;
+
 import java.util.Comparator;
 
 public class GradeComparator implements Comparator<Student> {

@@ -1,4 +1,4 @@
-package homeWork._07_09_223.taski.Persons;
+package homeWork._07_09_23.Persons;
 
 import lombok.Getter;
 
