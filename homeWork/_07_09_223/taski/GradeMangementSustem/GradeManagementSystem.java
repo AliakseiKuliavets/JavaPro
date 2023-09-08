@@ -14,29 +14,47 @@ public class GradeManagementSystem  {
         this.teachers = teachers;
     }
 
-    public void gradeStudents() {
-        for (Teacher teacher : teachers) {
-            for (Student student : students) {
-                teacher.gradeStudent(student);
-            }
+    public void gradeStudents(Teacher teacher, Student[] students) {
+        // прохожусь циклом по массиву students и для каждого студента выставляю рандомную оценку
+        for (Student student : students) {
+            teacher.gradeStudent(student); // вызываю метод gradeStudent(student) для оценки в классе Teacher
         }
     }
 
-    public void processStudents() {
+    // данный метод выводит какие оценки выставил конкретный учитель каждому ученику
+    public void processStudents(Teacher teacher, Student[] students) {
+        // проверяю есть ли вообще студенты в классе
+        if (students.length == 0) {
+            System.out.println("Classroom empty");
+        }
+        /*
+          прохожусь циклом по массиву students и вывожу в консоль
+          student.getDescription() - информация о студенте
+          teacher.getDescription() - информация о учителе
+          student.getGrade() - оценка студента
+        */
+        for (Student student : students) {
+            System.out.println(student.getDescription() + teacher.getDescription() + student.getGrade());
+        }
+    }
+
+    // вывод на экран информцию о каждом студенте
+    public void processStudents(Student[] students) {
         if (students.length == 0) {
             System.out.println("Classroom empty");
         }
         for (Student student : students) {
-            System.out.println(student.getDescription() + " " + student.getGrade());
+            System.out.println(student.getDescription());
         }
     }
 
+    // вывод на экран информцию о каждом учителе
     public void processTeachers() {
         if (teachers.length == 0) {
             System.out.println("Teachers empty");
         }
         for (Teacher teacher : teachers) {
-            System.out.print(teacher.getDescription());
+            System.out.println(teacher.getDescription());
         }
     }
 }

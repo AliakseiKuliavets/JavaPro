@@ -3,8 +3,10 @@ package homeWork._202308_30;
 import homeWork._202308_30.enums.Currency;
 import homeWork._202308_30.enums.ProductCategory;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Product {
     private final int id;
     private final ProductCategory name;

@@ -14,9 +14,11 @@ public class Teacher extends Person {
         super(namePerson, agePeron);
     }
 
+    // метод для рандомного выставления оценок
     public void gradeStudent(Student student) {
         Grade[] myGrade = {Grade.A, Grade.B, Grade.C, Grade.D, Grade.F};
         int n = (int) (Math.random() * myGrade.length);
+        // присваиваю через setGrade оценку студенту
         student.setGrade(myGrade[n]);
     }
 

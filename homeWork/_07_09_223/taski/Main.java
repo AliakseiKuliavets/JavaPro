@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Teacher teacher = new Teacher("Ivan",59);
+        Teacher teacher1 = new Teacher("Ivan",59);
         Teacher teacher2 = new Teacher("Alexander",69);
 
         Student student1 = new Student("Anton",14);
@@ -15,19 +15,24 @@ public class Main {
         Student student3 = new Student("Egor",14);
 
         Student[] students = {student1,student2,student3};
-        Teacher[] teachers = {teacher,teacher2};
+        Teacher[] teachers = {teacher1,teacher2};
 
-        GradeManagementSystem gradeStudents = new GradeManagementSystem(students,teachers);
-        gradeStudents.gradeStudents();
-        gradeStudents.processStudents();
+        GradeManagementSystem gradeManagementSystem = new GradeManagementSystem(students,teachers);
 
         System.out.println();
-        gradeStudents.processTeachers();
+        gradeManagementSystem.processTeachers(); // вывод учителей
+        System.out.println("--------------------------------------------------");
 
-        System.out.println();
-        Arrays.sort(students);
-        System.out.println();
-
-        gradeStudents.processStudents();
+        gradeManagementSystem.gradeStudents(teacher1, students); // оценка преподователем учащихся
+        gradeManagementSystem.processStudents(teacher2, students); // проверка для данного учителя и данной группы
+        gradeManagementSystem.processStudents(students); // проверка всей группы данной группы
+        Arrays.sort(students); // сортировка по grade
+        gradeManagementSystem.processStudents(teacher2, students); // проверка для данного учителя и данной группы
+        System.out.println("--------------------------------------------------");
+        gradeManagementSystem.gradeStudents(teacher2, students); // оценка преподователем учащихся
+        gradeManagementSystem.processStudents(teacher1, students); // проверка для данного учителя и данной группы
+        gradeManagementSystem.processStudents(students); // проверка всей групп
+        Arrays.sort(students); // сортировка по grade
+        gradeManagementSystem.processStudents(teacher1, students); // проверка для данного учителя и данной группы
     }
 }

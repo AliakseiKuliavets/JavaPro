@@ -5,11 +5,11 @@ import homeWork._202308_30.enums.ProductCategory;
 import homeWork._202308_30.enums.Size;
 
 
-public class Clothing extends Product{
+public class Clothing extends Product {
     private final Size size;
 
     public Clothing(int id, ProductCategory productCategory, double price, Currency currency, Size size) {
-        super(id, productCategory , price, currency);
+        super(id, productCategory, price, currency);
         this.size = size;
     }
 
