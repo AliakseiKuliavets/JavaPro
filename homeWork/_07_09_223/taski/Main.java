@@ -23,13 +23,13 @@ public class Main {
         gradeManagementSystem.processTeachers(); // вывод учителей
         System.out.println("--------------------------------------------------");
 
-        gradeManagementSystem.gradeStudents(teacher1, students); // оценка преподователем учащихся
+        gradeManagementSystem.gradeStudents(teacher2, students); // оценка преподователем учащихся
         gradeManagementSystem.processStudents(teacher2, students); // проверка для данного учителя и данной группы
         gradeManagementSystem.processStudents(students); // проверка всей группы данной группы
         Arrays.sort(students); // сортировка по grade
         gradeManagementSystem.processStudents(teacher2, students); // проверка для данного учителя и данной группы
         System.out.println("--------------------------------------------------");
-        gradeManagementSystem.gradeStudents(teacher2, students); // оценка преподователем учащихся
+        gradeManagementSystem.gradeStudents(teacher1, students); // оценка преподователем учащихся
         gradeManagementSystem.processStudents(teacher1, students); // проверка для данного учителя и данной группы
         gradeManagementSystem.processStudents(students); // проверка всей групп
         Arrays.sort(students); // сортировка по grade
