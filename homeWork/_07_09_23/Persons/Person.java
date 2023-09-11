@@ -7,7 +7,7 @@ public abstract class Person {
     private final String namePerson;
     private final int agePeron;
 
-    protected abstract String getDescription();
+    abstract String getDescription();
 
     public Person(String namePerson, int agePeron) {
         this.namePerson = namePerson;
