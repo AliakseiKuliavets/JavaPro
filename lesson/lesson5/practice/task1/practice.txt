@@ -1,0 +1,15 @@
+- Company
+    -
+    -
+    - Department[]
+        -
+        -
+        - Employee[]
+            -
+            - salary
+            - name
+            - surName
+- Processor
+    - in: Department out: avg salary
+    - in: Company out: dep with max average salary
+    - in: Company out: Employee with similar surName

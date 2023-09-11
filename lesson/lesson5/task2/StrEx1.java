@@ -5,6 +5,12 @@ public class StrEx1 {
         String nik = "1";
         char nik2 = '1';
 
+        int a = 10;
+        String s = "" + a;
+        int v = Integer.parseInt(s);
+
+
+
         System.out.println();
     }
 }

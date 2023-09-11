@@ -2,15 +2,13 @@ package lesson.lesson2.example1;
 
 import lesson.lesson2.example1.enums.AccessLevel;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
-        Employee e1 = new Employee("Bob", Department.SECURITY, AccessLevel.HIGH);
-        Employee e2 = new Employee("Paul", Department.HR, AccessLevel.MEDIUM);
-        Employee e3 = new Employee("Elena", Department.FINANCE, AccessLevel.MEDIUM);
-        Employee e4 = new Employee("Carl", Department.SALES, AccessLevel.LOW);
-        Employee[] employees = {e1,e2,e3,e4};
+        Employee222 e1 = new Employee222("Bob", Department.SECURITY, AccessLevel.HIGH);
+        Employee222 e2 = new Employee222("Paul", Department.HR, AccessLevel.MEDIUM);
+        Employee222 e3 = new Employee222("Elena", Department.FINANCE, AccessLevel.MEDIUM);
+        Employee222 e4 = new Employee222("Carl", Department.SALES, AccessLevel.LOW);
+        Employee222[] employee222s = {e1,e2,e3,e4};
 
 //        for (int i = 0; i < employees.length; i++) {
 //            if (employees[i].getAccessLevel() == (AccessLevel.HIGH)) {
