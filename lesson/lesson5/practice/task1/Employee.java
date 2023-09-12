@@ -2,8 +2,10 @@ package lesson.lesson5.practice.task1;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
-public class Employee {
+public class Employee{
     private final String nameOfEmployee;
     private String surNameOfEmployee;
     private double salaryOfEmployee;
@@ -24,5 +26,18 @@ public class Employee {
                 ", salaryOfEmployee=" + salaryOfEmployee +
                 ", idOfEmployee=" + idOfEmployee +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(surNameOfEmployee, employee.surNameOfEmployee);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(surNameOfEmployee);
     }
 }
