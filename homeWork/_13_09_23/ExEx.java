@@ -13,7 +13,6 @@ public class ExEx {
         }
         return sum;
     }
-
     //Найти среднее значение элементов LinkedList<Integer>.
     public int getAvg(List<Integer> list) {
         int count = 0;
@@ -24,8 +23,60 @@ public class ExEx {
         }
         return sum / count;
     }
-
     // Перебрать ArrayList<String> и вывести все элементы на экран.
+    public void getSome(List<String> list) {
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+    //Перебрать LinkedList<String> и найти самую длинную строку.
+    public String getSomeLong(List<String> list) {
+        String word = null;
+        int max = 0;
+        for (String s : list) {
+            if (s.length() > max) {
+                word = s;
+            }
+        }
+        return word;
+    }
+    //Создать ArrayList с объектами вашего собственного класса и вывести их на экран.
+    public void getHouse5by10(List<House> list) {
+        for (House house: list) {
+            System.out.println(house);
+        }
+    }
 
+    // Уровень сложности 6 из 10:
 
+    //Перебрать ArrayList<Integer> и найти наименьший элемент.
+    public int getIntegerMin(List<Integer> list) {
+        int min = Integer.MAX_VALUE;
+        for (Integer integer : list) {
+            if (integer < min) {
+                min = integer;
+            }
+        }
+        return min;
+    }
+    //Перебрать LinkedList<Integer> и найти наибольший элемент.
+    public int getIntegerMax(List<Integer> list) {
+        int max = Integer.MIN_VALUE;
+        for (Integer integer : list) {
+            if (integer > max) {
+                max = integer;
+            }
+        }
+        return max;
+    }
+    //Перебрать ArrayList<String> и найти количество элементов, начинающихся с определенной буквы.
+    public int getWordStartWidthLeter(List<String> list, String letter) {
+        int count = 0;
+        for (String s : list) {
+            if (s.startsWith(letter)){
+                count++;
+            }
+        }
+        return count;
+    }
 }

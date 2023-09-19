@@ -1,6 +1,7 @@
 package homeWork._13_09_23;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,11 +23,40 @@ public class Main {
         listLinked.add(9);
         listLinked.add(23);
 
+        List<String> arrayString = new ArrayList<>();
+        arrayString.add("AAA");
+        arrayString.add("Abbb");
+        arrayString.add("CCC");
+        arrayString.add("eee");
+        arrayString.add("DDD");
+
+        List<String> linkedString = new LinkedList<>();
+        linkedString.add("AAAaaa");
+        linkedString.add("bbbs");
+        linkedString.add("CCCawda");
+        linkedString.add("eawdaee");
+        linkedString.add("DawdaawdDD");
+
+        List<House> houseList = new ArrayList<>();
+        Collections.addAll(houseList,
+                new House(3, 1, "New York"),
+                new House(13, 2, "Berlin"),
+                new House(4, 3, "Toronto"),
+                new House(9, 4, "Madrid")
+        );
 
         ExEx ex = new ExEx();
 
+        // Уровень сложности 5 из 10:
+//        System.out.println(ex.getSum(listArray));
+//        System.out.println(ex.getAvg(listLinked));
+//        ex.getSome(arrayString);
+//        System.out.println(ex.getSomeLong(linkedString));
+//        ex.getHouse5by10(houseList);
 
-        System.out.println(ex.getSum(listArray));
-        System.out.println(ex.getAvg(listLinked));
+        // Уровень сложности 6 из 10:
+        System.out.println(ex.getIntegerMin(listArray));
+        System.out.println(ex.getIntegerMax(listLinked));
+        System.out.println(ex.getWordStartWidthLeter(arrayString,"A"));
     }
 }
