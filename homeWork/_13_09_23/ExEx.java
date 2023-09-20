@@ -245,5 +245,18 @@ public class ExEx {
             }
         }
     }
-
+    //Перебрать LinkedList<String> и найти самую длинную строку, не содержащую пробелов.
+    public String longestStringNotContainingSpaces(List<String> list) {
+        int maxLength = Integer.MIN_VALUE;
+        String stringMaxLenght = null;
+        for (String s : list) {
+                if (!s.contains(" ")) {
+                    if (s.length() > maxLength) {
+                        maxLength = s.length();
+                        stringMaxLenght = s;
+                    }
+                }
+            }
+        return stringMaxLenght;
+    }
 }

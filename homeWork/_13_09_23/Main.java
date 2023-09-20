@@ -86,6 +86,8 @@ public class Main {
         // Уровень сложности 9 из 10:
 //        System.out.println(ex.getNextTheBigersNumber(listArray));
 //        ex.getReverseOrder(listLinked);
-        ex.containOnlyLetters(arrayString);
+//        ex.containOnlyLetters(arrayString);
+//        System.out.println(ex.longestStringNotContainingSpaces(arrayString));
+
     }
 }
