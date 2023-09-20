@@ -25,7 +25,7 @@ public class Main {
 
         List<String> arrayString = new ArrayList<>();
         arrayString.add("AAA");
-        arrayString.add("Abbb");
+        arrayString.add("A1bbb");
         arrayString.add("CCC");
         arrayString.add("eee");
         arrayString.add("DDD");
@@ -69,7 +69,23 @@ public class Main {
 //        ex.getFirstInputText(linkedString,"bbbs");
 //        ex.returnClearObject(houseListLinked,"Berlin");
 
+        //Уровень сложности 7 из 10:
+//        ex.getOddInteger(listArray);
+//        ex.getConvertTreeToZero(listLinked);
+//        ex.convertInOneString(arrayString);
+//        ex.deleteStringIfHaveThatString(linkedString,"bbbs");
+//        ex.listConditions(houseListLinked,"Berlin");
 
+        //Уровень сложности 8 из 10:
+//        ex.getSquareInteger(listArray);
+//        System.out.println(ex.getMultiplyingAllNumbers(listLinked));
+//        System.out.println(ex.getShortString(arrayString));
+//        ex.replaceVowels(arrayString);
+//        ex.sortInDescendingOrder(houseListLinked);
 
+        // Уровень сложности 9 из 10:
+//        System.out.println(ex.getNextTheBigersNumber(listArray));
+//        ex.getReverseOrder(listLinked);
+        ex.containOnlyLetters(arrayString);
     }
 }
