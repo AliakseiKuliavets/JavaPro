@@ -45,6 +45,14 @@ public class Main {
                 new House(9, 4, "Madrid")
         );
 
+        List<House> houseListLinked = new LinkedList<>();
+        Collections.addAll(houseListLinked,
+                new House(3, 1, "New York"),
+                new House(13, 2, "Berlin"),
+                new House(4, 3, "Toronto"),
+                new House(9, 4, "Madrid")
+        );
+
         ExEx ex = new ExEx();
 
         // Уровень сложности 5 из 10:
@@ -55,8 +63,13 @@ public class Main {
 //        ex.getHouse5by10(houseList);
 
         // Уровень сложности 6 из 10:
-        System.out.println(ex.getIntegerMin(listArray));
-        System.out.println(ex.getIntegerMax(listLinked));
-        System.out.println(ex.getWordStartWidthLeter(arrayString,"A"));
+//        System.out.println(ex.getIntegerMin(listArray));
+//        System.out.println(ex.getIntegerMax(listLinked));
+//        System.out.println(ex.getWordStartWidthLeter(arrayString,"A"));
+//        ex.getFirstInputText(linkedString,"bbbs");
+//        ex.returnClearObject(houseListLinked,"Berlin");
+
+
+
     }
 }

@@ -79,4 +79,23 @@ public class ExEx {
         }
         return count;
     }
+    //Перебрать LinkedList<String> и найти первое вхождение определенной строки.
+    public void getFirstInputText(List<String> list, String myString) {
+        for (String s : list) {
+            if (s.equals(myString)){
+                System.out.println(s);
+                break;
+            }
+        }
+    }
+    //Создать LinkedList с объектами вашего собственного класса и удалить все элементы, удовлетворяющие определенному условию.
+    public void returnClearObject(List<House> list, String myString) {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            House house = list.get(i);
+            if (myString.equals(house.getCity())) {
+                list.remove(i);
+            }
+        }
+        System.out.println(list);
+    }
 }
