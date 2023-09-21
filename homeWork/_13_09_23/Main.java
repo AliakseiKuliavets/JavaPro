@@ -1,9 +1,6 @@
 package homeWork._13_09_23;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,6 +40,7 @@ public class Main {
                 new House(13, 2, "Berlin"),
                 new House(4, 3, "Toronto"),
                 new House(9, 4, "Madrid")
+
         );
 
         List<House> houseListLinked = new LinkedList<>();
@@ -50,6 +48,7 @@ public class Main {
                 new House(3, 1, "New York"),
                 new House(13, 2, "Berlin"),
                 new House(4, 3, "Toronto"),
+                new House(9, 4, "Madrid"),
                 new House(9, 4, "Madrid")
         );
 
@@ -88,6 +87,11 @@ public class Main {
 //        ex.getReverseOrder(listLinked);
 //        ex.containOnlyLetters(arrayString);
 //        System.out.println(ex.longestStringNotContainingSpaces(arrayString));
+//        ex.filterOnlyUniqueElements(houseListLinked);
+
+        //Уровень сложности 10 из 10:
+//        ex.largestIncreasingSequenceOfElements(listArray);
+        System.out.println(Arrays.toString(ex.removeAllDuplicateElements(listLinked)));
 
     }
 }

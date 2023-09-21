@@ -1,7 +1,6 @@
 package homeWork._13_09_23;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ExEx {
     //Уровень сложности 5 из 10:
@@ -245,18 +244,75 @@ public class ExEx {
             }
         }
     }
+
     //Перебрать LinkedList<String> и найти самую длинную строку, не содержащую пробелов.
     public String longestStringNotContainingSpaces(List<String> list) {
         int maxLength = Integer.MIN_VALUE;
         String stringMaxLenght = null;
         for (String s : list) {
-                if (!s.contains(" ")) {
-                    if (s.length() > maxLength) {
-                        maxLength = s.length();
-                        stringMaxLenght = s;
-                    }
+            if (!s.contains(" ")) {
+                if (s.length() > maxLength) {
+                    maxLength = s.length();
+                    stringMaxLenght = s;
                 }
             }
+        }
         return stringMaxLenght;
     }
+
+    //Создать ArrayList с объектами вашего собственного класса и отфильтровать только уникальные элементы.
+    public void filterOnlyUniqueElements(List<House> list) {
+        for (int i = 0; i < list.size(); i++) {
+            boolean isDuplicate = false;
+            for (int j = i; j < list.size(); j++) {
+                if (i != j && list.get(i).equals(list.get(j))) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (isDuplicate) {
+                list.remove(i);
+                i--;
+            }
+        }
+        for (House house : list) {
+            System.out.println(house);
+        }
+    }
+
+    //Уровень сложности 10 из 10:
+    //Перебрать ArrayList<Integer> и найти наибольшую возрастающую последовательность элементов.
+    public void largestIncreasingSequenceOfElements(List<Integer> list) {
+        List<Integer> newListLong = new ArrayList<>();
+        List<Integer> newList = new ArrayList<>();
+
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) > list.get(i-1)) {
+                newList.add(list.get(i));
+            } else {
+                newList = new ArrayList<>();
+                newList.add(list.get(i));
+            }
+            if (newList.size() > newListLong.size()) {
+                newListLong = new ArrayList<>(newList);
+            }
+        }
+        for (Integer num : newListLong) {
+            System.out.print(num + " ");
+        }
+    }
+    //Перебрать LinkedList<Integer> и удалить все дубликаты элементов.
+    public int[] removeAllDuplicateElements(List<Integer> list) {
+        HashSet<Integer> uniqueSet = new HashSet<>(list);
+
+        int[] uniqueArray = new int[uniqueSet.size()];
+        int index = 0;
+        for (Integer num : uniqueSet) {
+            uniqueArray[index++] = num;
+        }
+
+        return uniqueArray;
+    }
+
 }
