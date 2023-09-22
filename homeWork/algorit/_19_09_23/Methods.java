@@ -15,11 +15,14 @@ public class Methods {
             System.out.println("Array is Empty");
         }
         if (myArray.length == 1) {
-            System.out.println(myArray[0]);
+            System.out.println("Уникальный элемент: " + myArray[0]);
+        }
+        if (myArray[myArray.length-1] != myArray[myArray.length - 2]) {
+            System.out.println("Уникальный элемент: " + myArray[myArray.length-1]);
         }
         for (int i = 1; i < myArray.length; i += 2) {
             if (myArray[i - 1] != myArray[i]) {
-                System.out.println(myArray[i - 1]);
+                System.out.println("Уникальный элемент: " + myArray[i - 1]);
                 break;
             }
         }
