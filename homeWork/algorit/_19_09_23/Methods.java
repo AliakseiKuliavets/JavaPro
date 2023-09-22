@@ -35,17 +35,21 @@ public class Methods {
         }
         int left = 0;
         int right = myArray.length - 1;
-        while (left < right) {
-            int midl = (left + right) / 2;
-            int leftNumber = midl - 1;
-            int rightNumber = midl + 1;
-            if (myArray[midl] != myArray[leftNumber] && myArray[midl] != myArray[rightNumber]) {
-                System.out.println(myArray[midl]);
-                break;
-            } else if (myArray[midl] == leftNumber && myArray[midl] != rightNumber) {
-                right++;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (mid == 0 || mid == myArray.length - 1) {
+                System.out.println("Уникальный элемент: " + myArray[mid]);
+                return;
+            }
+
+            if (myArray[mid] != myArray[mid - 1] && myArray[mid] != myArray[mid + 1]) {
+                System.out.println("Уникальный элемент: " + myArray[mid]);
+                return;
+            } else if (myArray[mid] == myArray[mid - 1]) {
+                left = mid + 1;
             } else {
-                left--;
+                right = mid - 1;
             }
         }
     }
