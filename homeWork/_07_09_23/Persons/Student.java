@@ -5,8 +5,9 @@ import homeWork._07_09_23.interfac.Graded;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
+
 @Getter
+@Setter
 public class Student extends Person implements Graded, Comparable<Student>{
 
     private Grade grade;

@@ -1,13 +1,19 @@
 package practice.javaPro.treeMap;
 
 import homeWork._07_09_23.Persons.Student;
+import lombok.ToString;
 
 import java.util.TreeMap;
 
 public class TreeMapEx {
     public static void main(String[] args) {
         TreeMap<Double, Student> treeMap = new TreeMap<>();
-        Student student1 = new Student("Anton",14);
+        Student student1 = new Student("Anton",14){
+            @Override
+            public String toString() {
+                return "Name: " + getNamePerson() + ", age: " + getAgePeron();
+            }
+        }; // аннонимный метод
         Student student2 = new Student("Kirill",15);
         Student student3 = new Student("Egor",14);
         Student student4 = new Student("Anton",15);

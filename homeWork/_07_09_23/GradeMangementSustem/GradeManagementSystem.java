@@ -39,7 +39,7 @@ public class GradeManagementSystem  {
     }
 
     // вывод на экран информцию о каждом студенте
-    public void processStudents(Student[] students) {
+    public void processStudents() {
         if (students.length == 0) {
             System.out.println("Classroom empty");
         }
