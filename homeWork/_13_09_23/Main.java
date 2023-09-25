@@ -91,7 +91,7 @@ public class Main {
 
         //Уровень сложности 10 из 10:
 //        ex.largestIncreasingSequenceOfElements(listArray);
-        System.out.println(Arrays.toString(ex.removeAllDuplicateElements(listLinked)));
+//        System.out.println(Arrays.toString(ex.removeAllDuplicateElements(listLinked)));
 
     }
 }
