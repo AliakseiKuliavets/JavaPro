@@ -5,7 +5,7 @@ import homeWork._07_09_23.Persons.Teacher;
 import lombok.Getter;
 
 @Getter
-public class GradeManagementSystem  {
+public class GradeManagementSystem {
     private final Student[] students;
     private final Teacher[] teachers;
 
@@ -14,7 +14,7 @@ public class GradeManagementSystem  {
         this.teachers = teachers;
     }
 
-    public void gradeStudents(Teacher teacher, Student[] students) {
+    public void gradeStudents(Teacher teacher) {
         // прохожусь циклом по массиву students и для каждого студента выставляю рандомную оценку
         for (Student student : students) {
             teacher.gradeStudent(student); // вызываю метод gradeStudent(student) для оценки в классе Teacher
@@ -22,7 +22,7 @@ public class GradeManagementSystem  {
     }
 
     // данный метод выводит какие оценки выставил конкретный учитель каждому ученику
-    public void processStudents(Teacher teacher, Student[] students) {
+    public void processStudents(Teacher teacher) {
         // проверяю есть ли вообще студенты в классе
         if (students.length == 0) {
             System.out.println("Classroom empty");
