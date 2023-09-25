@@ -1,7 +1,9 @@
 package lesson.lesson9.lesson.Ex;
 
-import java.util.Objects;
+import lombok.Getter;
 
+import java.util.Objects;
+@Getter
 public class Animal implements Comparable<Animal>{
     private int age;
     private String name;

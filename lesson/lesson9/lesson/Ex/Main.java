@@ -15,7 +15,7 @@ public class Main {
         Animal animal8 = new Animal(1,"Frog",true,'F');
         Animal animal9 = new Animal(1,"Spider",false,'B');
         Animal animal10 = new Animal(7,"Bird",false,'C');
-        Animal animal11 = new Animal(7,"Bird",false,'B');
+        Animal animal11 = new Animal(8,"Bird",false,'B');
 
         Set<Animal> animalSet = new HashSet<>();
         animalSet.add(animal1);
@@ -31,5 +31,11 @@ public class Main {
         animalSet.add(animal11);
 
         System.out.println(animalSet);
+
+        Methods methods = new Methods();
+        System.out.println(methods.getSmallElem(animalSet));
+        System.out.println(methods.getBigElem(animalSet));
+        System.out.println(methods.getObjectContainingASpecificSubstring(animalSet,"Do"));
+        System.out.println(methods.returnAllObjectsWhoseIntsAreOdd(animalSet));
     }
 }
