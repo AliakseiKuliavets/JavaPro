@@ -24,7 +24,7 @@ public class SetEx2 {
 }
 class Ob implements Comparable<Ob>{
     private final String name;
-    private int age;
+    private final int age;
 
     public Ob(String name, int age) {
         this.name = name;
