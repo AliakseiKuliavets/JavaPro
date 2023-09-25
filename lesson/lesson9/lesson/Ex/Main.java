@@ -16,19 +16,32 @@ public class Main {
         Animal animal9 = new Animal(1,"Spider",false,'B');
         Animal animal10 = new Animal(7,"Bird",false,'C');
         Animal animal11 = new Animal(8,"Bird",false,'B');
+        Animal animal12 = new Animal(8,"Bird",false,'B');
 
         Set<Animal> animalSet = new HashSet<>();
+//        animalSet.add(animal1);
+//        animalSet.add(animal2);
+//        animalSet.add(animal3);
+//        animalSet.add(animal4);
+//        animalSet.add(animal5);
+        animalSet.add(animal6);
+        animalSet.add(animal7);
+        animalSet.add(animal8);
+        animalSet.add(animal9);
+//        animalSet.add(animal10);
+        animalSet.add(animal11);
+
+        Set<Animal> animalSet1 = new HashSet<>();
         animalSet.add(animal1);
         animalSet.add(animal2);
         animalSet.add(animal3);
         animalSet.add(animal4);
         animalSet.add(animal5);
-        animalSet.add(animal6);
-        animalSet.add(animal7);
-        animalSet.add(animal8);
-        animalSet.add(animal9);
-        animalSet.add(animal10);
-        animalSet.add(animal11);
+//        animalSet.add(animal6);
+//        animalSet.add(animal7);
+//        animalSet.add(animal8);
+//        animalSet.add(animal9);
+        animalSet.add(animal12);
 
         System.out.println(animalSet);
 
@@ -37,5 +50,7 @@ public class Main {
         System.out.println(methods.getBigElem(animalSet));
         System.out.println(methods.getObjectContainingASpecificSubstring(animalSet,"Do"));
         System.out.println(methods.returnAllObjectsWhoseIntsAreOdd(animalSet));
+
+        System.out.println(methods.returSetContainElementThatArePresentInBothSet(animalSet, animalSet1));
     }
 }

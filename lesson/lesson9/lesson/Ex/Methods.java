@@ -14,6 +14,7 @@ public class Methods {
         }
         return min;
     }
+
     public int getBigElem(Set<Animal> animalSet) {
         Set<Animal> animals = new TreeSet<>(animalSet);
         int max = Integer.MIN_VALUE;
@@ -24,6 +25,7 @@ public class Methods {
         }
         return max;
     }
+
     //Напишите метод, который принимает Set и находит все объекты, содержащие определенную подстроку(из поля стринг),
     // перебирая элементы и используя метод contains.
     public List<Animal> getObjectContainingASpecificSubstring(Set<Animal> animalSet, String s) {
@@ -35,6 +37,7 @@ public class Methods {
         }
         return newAnimalList;
     }
+
     //Напишите метод, которая удаляет все четные инт из HashSet и выводит оставшиеся элементы. Используйте итератор.
     public Set<Animal> returnAllObjectsWhoseIntsAreOdd(Set<Animal> animalSet) {
         Iterator<Animal> iterator = animalSet.iterator();
@@ -45,6 +48,12 @@ public class Methods {
         }
         return animalSet;
     }
+
     //Создайте метод, который принимает два HashSet<Наш Класс> и возвращает новый HashSet,
     // содержащий элементы, которые присутствуют в обоих множествах
+    public  HashSet<Animal> returSetContainElementThatArePresentInBothSet(Set<Animal> animalSet1, Set<Animal> animalSet2) {
+        HashSet<Animal> result = new HashSet<>(animalSet1); // Создаем копию первого множества
+        result.retainAll(animalSet2); // Оставляем только элементы, которые есть во втором множестве
+        return result;
+    }
 }

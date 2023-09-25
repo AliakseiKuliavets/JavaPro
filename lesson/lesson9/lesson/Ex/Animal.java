@@ -5,10 +5,10 @@ import lombok.Getter;
 import java.util.Objects;
 @Getter
 public class Animal implements Comparable<Animal>{
-    private int age;
-    private String name;
-    private boolean sheSwims;
-    private char bloodType;
+    private final int age;
+    private final String name;
+    private final boolean sheSwims;
+    private final char bloodType;
 
     public Animal(int age, String name, boolean sheSwims, char bloodType) {
         this.age = age;
@@ -37,11 +37,11 @@ public class Animal implements Comparable<Animal>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return Objects.equals(name, animal.name);
+        return age == animal.age && sheSwims == animal.sheSwims && bloodType == animal.bloodType && Objects.equals(name, animal.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(age, name, sheSwims, bloodType);
     }
 }
