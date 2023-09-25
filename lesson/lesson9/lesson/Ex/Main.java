@@ -32,25 +32,24 @@ public class Main {
         animalSet.add(animal11);
 
         Set<Animal> animalSet1 = new HashSet<>();
-        animalSet.add(animal1);
-        animalSet.add(animal2);
-        animalSet.add(animal3);
-        animalSet.add(animal4);
-        animalSet.add(animal5);
-//        animalSet.add(animal6);
-//        animalSet.add(animal7);
-//        animalSet.add(animal8);
-//        animalSet.add(animal9);
-        animalSet.add(animal12);
+        animalSet1.add(animal1);
+        animalSet1.add(animal2);
+        animalSet1.add(animal3);
+        animalSet1.add(animal4);
+        animalSet1.add(animal5);
+//        animalSet1.add(animal6);
+//        animalSet1.add(animal7);
+//        animalSet1.add(animal8);
+//        animalSet1.add(animal9);
+        animalSet1.add(animal12);
 
         System.out.println(animalSet);
 
         Methods methods = new Methods();
-        System.out.println(methods.getSmallElem(animalSet));
-        System.out.println(methods.getBigElem(animalSet));
-        System.out.println(methods.getObjectContainingASpecificSubstring(animalSet,"Do"));
-        System.out.println(methods.returnAllObjectsWhoseIntsAreOdd(animalSet));
-
+//        System.out.println(methods.getSmallElem(animalSet));
+//        System.out.println(methods.getBigElem(animalSet));
+//        System.out.println(methods.getObjectContainingASpecificSubstring(animalSet,"Do"));
+//        System.out.println(methods.returnAllObjectsWhoseIntsAreOdd(animalSet));
         System.out.println(methods.returSetContainElementThatArePresentInBothSet(animalSet, animalSet1));
     }
 }

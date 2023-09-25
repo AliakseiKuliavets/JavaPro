@@ -52,8 +52,8 @@ public class Methods {
     //Создайте метод, который принимает два HashSet<Наш Класс> и возвращает новый HashSet,
     // содержащий элементы, которые присутствуют в обоих множествах
     public  HashSet<Animal> returSetContainElementThatArePresentInBothSet(Set<Animal> animalSet1, Set<Animal> animalSet2) {
-        HashSet<Animal> result = new HashSet<>(animalSet1); // Создаем копию первого множества
-        result.retainAll(animalSet2); // Оставляем только элементы, которые есть во втором множестве
+        HashSet<Animal> result = new HashSet<>(animalSet1);
+        result.retainAll(animalSet2);
         return result;
     }
 }
