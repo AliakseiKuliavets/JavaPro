@@ -11,6 +11,14 @@ public class GameManagment {
         this.bankir = bankir;
     }
 
+    public List<Gamer> getGamerList() {
+        return gamerList;
+    }
+
+    public Bankir getBankir() {
+        return bankir;
+    }
+
     public void addCardGamer(Gamer gamer) {
         Cards cards = new Cards();
         List<String> list = new ArrayList<>(cards.createCards().keySet());
@@ -41,5 +49,26 @@ public class GameManagment {
         }
         gamer.setCardsMap(hashMap);
     }
+    public int winOrLost() {
+        StringBuilder count = new StringBuilder();
 
+        for (Gamer gamer : gamerList) {
+            Map<String, Integer> cardsMap = gamer.getCardsMap();
+            if (cardsMap != null) {
+                count.append(cardsMap.values());
+            }
+        }
+        String countString = count.toString();
+        if (countString.isEmpty()) {
+            return -1; // Вернуть -1, если не было карт
+        }
+        int n = Integer.parseInt(count.toString());
+        if (n == 21) {
+            return 0;
+        } else if (n > 21) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
 }
