@@ -6,11 +6,13 @@ public class Gamer {
     private String name;
     private double moneyAccount;
     private Map<String, Integer> cardsMap;
+    private int numberWin;
 
-    public Gamer(String name, double moneyAccount, Map<String, Integer> cardsMap) {
+    public Gamer(String name, double moneyAccount, Map<String, Integer> cardsMap,int numberWin) {
         this.name = name;
         this.moneyAccount = moneyAccount;
         this.cardsMap = cardsMap;
+        this.numberWin = numberWin;
     }
 
     @Override
@@ -44,5 +46,13 @@ public class Gamer {
 
     public void setCardsMap(Map<String, Integer> cardsMap) {
         this.cardsMap = cardsMap;
+    }
+
+    public int getNumberWin() {
+        return numberWin;
+    }
+
+    public void setNumberWin(int numberWin) {
+        this.numberWin = numberWin;
     }
 }

@@ -49,20 +49,23 @@ public class GameManagment {
         }
         gamer.setCardsMap(hashMap);
     }
-    public int winOrLost() {
-        StringBuilder count = new StringBuilder();
 
+    public int winOrLost() {
+       List<Integer> list = new ArrayList<>();
+        int n = 0;
         for (Gamer gamer : gamerList) {
             Map<String, Integer> cardsMap = gamer.getCardsMap();
             if (cardsMap != null) {
-                count.append(cardsMap.values());
+                for (Integer value : cardsMap.values()) {
+                    list.add(value);
+                    for (Integer integer : list) {
+                        n += integer;
+                        gamer.setNumberWin(n);
+                    }
+                }
             }
         }
-        String countString = count.toString();
-        if (countString.isEmpty()) {
-            return -1; // Вернуть -1, если не было карт
-        }
-        int n = Integer.parseInt(count.toString());
+
         if (n == 21) {
             return 0;
         } else if (n > 21) {

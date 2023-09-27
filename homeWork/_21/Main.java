@@ -9,7 +9,7 @@ public class Main {
         System.out.println(cards.createCards());
         Bankir bankir = new Bankir(10_000,"Bankir", null,20);
 
-        Gamer gamer1 = new Gamer("First", 1000, null);
+        Gamer gamer1 = new Gamer("First", 1000, null,0);
         List<Gamer> gamerList = new ArrayList<>();
         gamerList.add(gamer1);
 
