@@ -1,19 +1,21 @@
 package lesson.lesson11;
 
+import lesson.lesson11.cat.Cat;
+
 import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
+        Stack<Cat> stack = new Stack<>();
         System.out.println("---------------------------");
         System.out.println(stack.empty());
         System.out.println("---------------------------");
 
-        stack.push(17);
+        stack.push(new Cat(17,"Pavel"));
         System.out.println(stack.empty());
         System.out.println("---------------------------");
 
-        Integer elementFromStack = stack.pop();
+        Cat elementFromStack = stack.pop();
         System.out.println("Your number is: " + elementFromStack);
         System.out.println("---------------------------");
         System.out.println(stack.empty());
