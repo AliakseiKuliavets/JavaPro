@@ -24,7 +24,7 @@ public class Practice {
         // Суммирование списка чисел
         AtomicInteger n = new AtomicInteger();
         list.forEach(n::addAndGet);
-        System.out.println("Сумма всех элементов " + n);
+        System.out.println("Сумма всех элементов: " + n);
 
         // Определение максимального значения в списке
 
