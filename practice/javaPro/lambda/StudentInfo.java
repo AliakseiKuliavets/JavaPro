@@ -28,6 +28,10 @@ public class StudentInfo {
         });
         System.out.println("----------------------------------------------");
         studentInfo.testStudents(studentList, s -> s.getAvgGrade() < 8);
+        System.out.println("----------------------------------------------");
+        studentInfo.testStudents(studentList, s -> {
+            return s.getAvgGrade() < 8;
+        });
     }
 
     void testStudents(List<Student> arList, StudentChecks sc) {
