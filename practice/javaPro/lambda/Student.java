@@ -13,5 +13,4 @@ public class Student {
     private int age;
     private int course;
     private double avgGrade;
-
 }
