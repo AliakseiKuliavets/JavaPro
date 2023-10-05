@@ -9,7 +9,7 @@ public class Practice {
     public static void main(String[] args) {
         List<Integer> listInteger = Arrays.asList(1, 23, 456, 78, 9, 9, 9, 9, 8, 30, 45);
         List<String> listString = Arrays.asList("1", "23", "456", "78", "9", "8");
-        List<String> listStringText = Arrays.asList("adasdad", "zdzddz", "accss", "bbgbg", "qwewe", "mj", "accss");
+        List<String> listStringText = Arrays.asList("adasdad", "zdzddz", "accss", "bbgbg", "qwewe", "mj", "accss","Avfada");
         Student student1 = new Student(20, "Aliaksei");
         Student student2 = new Student(23, "Bogdan");
         Student student3 = new Student(18, "Kirill");
@@ -81,5 +81,55 @@ public class Practice {
                 .filter(el -> el.chars().distinct().count() == el.length())
                 .toList();
         System.out.println("Список слов содержащий тольок уникальные символы " + collect);
+
+        System.out.println("*****************************************************************************************************");
+
+        //Фильтрация четных чисел и умножение на 2.
+        List<Integer> list = listInteger.stream()
+                .filter(el -> el % 2 == 0)
+                .map(el -> el * 2)
+                .toList();
+        System.out.println("Фильтрация четных чисел и умножение на 2: " + list);
+        System.out.println("----------------------------------------------------------");
+
+        //Удаление дубликатов из списка строк.
+        List<String> list5 = listStringText.stream()
+                .distinct()
+                .toList();
+        System.out.println("Удаление дубликатов из списка строк: " + list5);
+        System.out.println("----------------------------------------------------------");
+
+        //Сортировка списка чисел в порядке убывания и выбор первых трех элементов.
+        List<Integer> list6 = listInteger.stream()
+                .sorted((el1, el2) -> el2 - el1)
+                .limit(3)
+                .toList();
+        System.out.println("Сортировка списка чисел в порядке убывания и выбор первых трех элементов" + list6);
+        System.out.println("----------------------------------------------------------");
+
+        //Фильтрация строк, начинающихся на "A" и преобразование в верхний регистр.
+        List<String> a1 = listStringText.stream()
+                .filter(el -> el.startsWith("A"))
+                .map(String::toUpperCase)
+                .toList();
+        System.out.println("Фильтрация строк, начинающихся на \"A\" и преобразование в верхний регистрa " + a1);
+        System.out.println("----------------------------------------------------------");
+
+        //Пропуск первых двух элементов и вывод оставшихся.
+        List<Integer> list7 = listInteger.stream()
+                .skip(2)
+                .toList();
+        System.out.println("Пропуск первых двух элементов и вывод оставшихся " + list7);
+        System.out.println("----------------------------------------------------------");
+
+        // Фильтрация чисел больше 50 и вывод их квадратов.
+        List<Integer> list8 = listInteger.stream()
+                .filter(el -> el > 50)
+                .map(el -> el * el)
+                .toList();
+        System.out.println("Фильтрация чисел больше 50 и вывод их квадратов " + list8);
+        System.out.println("----------------------------------------------------------");
+
+        //
     }
 }
