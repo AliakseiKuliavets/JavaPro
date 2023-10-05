@@ -26,6 +26,8 @@ public class StudentInfo {
         studentInfo.testStudents(studentList, (Student s) -> {
             return s.getAge() < 25 && s.getAvgGrade() > 8 && s.getSex() == 'f';
         });
+        System.out.println("----------------------------------------------");
+        studentInfo.testStudents(studentList, s -> s.getAvgGrade() < 8);
     }
 
     void testStudents(List<Student> arList, StudentChecks sc) {
