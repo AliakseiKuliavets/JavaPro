@@ -15,14 +15,17 @@ public class StudentInfo {
         StudentInfo studentInfo = new StudentInfo();
         studentInfo.testStudents(studentList, new CheckOverGrade());
         System.out.println("----------------------------------------------");
-        studentInfo.testStudents(studentList, new StudentChecks() {
-            @Override
-            public boolean check(Student s) {
-                return s.getAge() < 30;
-            }
+        studentInfo.testStudents(studentList, (Student s) -> {
+            return s.getAge() < 30;
         });
         System.out.println("----------------------------------------------");
-        studentInfo.testStudents(studentList, (Student s) -> {return s.getAge() < 30;});
+        studentInfo.testStudents(studentList, (Student s) -> {
+            return s.getAvgGrade() > 8;
+        });
+        System.out.println("----------------------------------------------");
+        studentInfo.testStudents(studentList, (Student s) -> {
+            return s.getAge() < 25 && s.getAvgGrade() > 8 && s.getSex() == 'f';
+        });
     }
 
     void testStudents(List<Student> arList, StudentChecks sc) {
@@ -33,6 +36,7 @@ public class StudentInfo {
         }
     }
 }
+
 @FunctionalInterface
 interface StudentChecks {
     boolean check(Student s);
