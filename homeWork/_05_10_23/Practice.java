@@ -10,7 +10,7 @@ public class Practice {
     public static void main(String[] args) {
         List<Integer> listInteger = Arrays.asList(1, 23, 456, 78, 9, 9, 9, 9, 8, 30, 45);
         List<String> listString = Arrays.asList("1", "23", "456", "78", "9", "8");
-        List<String> listStringText = Arrays.asList("adaosdad", "zdzddz", "accss", "bbogbg", "qwewe", "mj", "accss","Avfada");
+        List<String> listStringText = Arrays.asList("adaosdad", "zdzddz", "accss", "bbogbg", "qwewe", "mj", "accss", "Avfada");
         Student student1 = new Student(20, "Aliaksei");
         Student student2 = new Student(23, "Bogdan");
         Student student3 = new Student(18, "Kirill");
@@ -158,9 +158,48 @@ public class Practice {
         String list11 = String.join(", ", listStringText);
         System.out.println("Получить строку, объединяющую элементы списка через запятую ");
         System.out.println(list11);
+        System.out.println("----------------------------------------------------------");
 
         // Получить список квадратов чисел из другого списка.
+        List<Integer> list12 = listInteger.stream()
+                .map(el -> el * el)
+                .toList();
+        System.out.println("Получить список квадратов чисел из другого списка " + list12);
+        System.out.println("----------------------------------------------------------");
 
+        //Получить список букв из списка слов и вывести их в алфавитном порядке.
+        List<Character> list13 = listStringText.stream()
+                .flatMap(el -> el.chars().mapToObj(c -> (char) c))
+                .sorted()
+                .toList();
+        System.out.println("Получить список букв из списка слов и вывести их в алфавитном порядке ");
+        System.out.println(list13);
+        System.out.println("----------------------------------------------------------");
 
+        // Получить первые 3 строки из списка и вывести их в обратном порядке.
+        List<String> list14 = listStringText.stream()
+                .limit(3)
+                .sorted(Comparator.reverseOrder())
+                .toList();
+        System.out.println("Получить первые 3 строки из списка и вывести их в обратном порядке");
+        System.out.println(list14);
+        System.out.println("----------------------------------------------------------");
+
+        // Пропустить первые 2 элемента и оставить только уникальные.
+        List<String> list15 = listStringText.stream()
+                .skip(2)
+                .distinct()
+                .toList();
+        System.out.println("Пропустить первые 2 элемента и оставить только уникальные ");
+        System.out.println(list15);
+        System.out.println("----------------------------------------------------------");
+
+        //Фильтрация и сортировка пользователей по возрасту.
+        List<Student> list16 = studentList.stream()
+                .filter(el -> el.getAge() > 18)
+                .sorted(Comparator.comparingInt(Student::getAge))
+                .toList();
+        System.out.println("Фильтрация и сортировка пользователей по возрасту ");
+        System.out.println(list16);
     }
 }
