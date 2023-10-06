@@ -1,4 +1,4 @@
-package algorithms.lesson3;
+package summarySession.friday061023;
 
 public class BasketBallPlayer implements Playebale {
     public void play(){
