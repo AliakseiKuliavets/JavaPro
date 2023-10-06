@@ -3,13 +3,14 @@ package homeWork._05_10_23;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Practice {
     public static void main(String[] args) {
         List<Integer> listInteger = Arrays.asList(1, 23, 456, 78, 9, 9, 9, 9, 8, 30, 45);
         List<String> listString = Arrays.asList("1", "23", "456", "78", "9", "8");
-        List<String> listStringText = Arrays.asList("adasdad", "zdzddz", "accss", "bbgbg", "qwewe", "mj", "accss","Avfada");
+        List<String> listStringText = Arrays.asList("adaosdad", "zdzddz", "accss", "bbogbg", "qwewe", "mj", "accss","Avfada");
         Student student1 = new Student(20, "Aliaksei");
         Student student2 = new Student(23, "Bogdan");
         Student student3 = new Student(18, "Kirill");
@@ -130,6 +131,36 @@ public class Practice {
         System.out.println("Фильтрация чисел больше 50 и вывод их квадратов " + list8);
         System.out.println("----------------------------------------------------------");
 
-        //
+        // Оставить только слова, содержащие букву "o" и вывести их в обратном порядке.
+        List<String> list9 = listStringText.stream()
+                .filter(el -> el.contains("o"))
+                .sorted(Comparator.reverseOrder())
+                .toList();
+        System.out.println("Оставить только слова, содержащие букву \"o\" и вывести их в обратном порядке " + list9);
+        System.out.println("----------------------------------------------------------");
+
+        //Фильтрация чисел, оставить только нечетные и вывести их в порядке возрастания.
+        List<Integer> list10 = listInteger.stream()
+                .filter(el -> el % 2 != 0)
+                .sorted()
+                .toList();
+        System.out.println("Фильтрация чисел, оставить только нечетные и вывести их в порядке возрастания " + list10);
+        System.out.println("----------------------------------------------------------");
+
+        //Получить среднее значение чисел в списке.
+        OptionalDouble average = listInteger.stream()
+                .mapToDouble(Integer::doubleValue)
+                .average();
+        System.out.println("Получить среднее значение чисел в списке " + average);
+        System.out.println("----------------------------------------------------------");
+
+        //Получить строку, объединяющую элементы списка через запятую.
+        String list11 = String.join(", ", listStringText);
+        System.out.println("Получить строку, объединяющую элементы списка через запятую ");
+        System.out.println(list11);
+
+        // Получить список квадратов чисел из другого списка.
+
+
     }
 }
