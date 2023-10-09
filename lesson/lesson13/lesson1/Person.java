@@ -1,4 +1,4 @@
-package lesson.lesson13.lesson;
+package lesson.lesson13.lesson1;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
