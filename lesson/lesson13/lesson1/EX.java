@@ -1,9 +1,6 @@
 package lesson.lesson13.lesson1;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
 
 public class EX {
     public static void main(String[] args) {
@@ -72,6 +69,32 @@ public class EX {
                 .toList();
         System.out.println("Преобразование списка объектов класса в список их имен, отсортированных по возрасту");
         System.out.println(list6);
+
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1);
+        long count1 = numbers1.stream()
+                .distinct()
+                .mapToInt(Integer::intValue)
+                .count();
+        System.out.println("Подсчет количества уникальных четных и нечетных чисел: " + count1);
+
+        String m = "ASDFGHJzcxvbn";
+        char[] charArray = m.toCharArray();
+        List<Character> characterList = new ArrayList<>();
+        for (char ch : charArray) {
+            characterList.add(ch);
+        }
+
+        long countUpper = characterList.stream()
+                .filter(Character::isUpperCase)
+                .count();
+        System.out.println("Подсчитать буквы верхнем регистре в стринге: " + countUpper);
+
+        long countLower = characterList.stream()
+                .filter(Character::isLowerCase)
+                .count();
+        System.out.println("Подсчитать буквы в нижнем регистре в стринге: " + countLower);
+
+        //Определите все символьные строки максимальной длины в заданном конечном потоке символьных строк. через Optional
     }
 }
 
