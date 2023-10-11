@@ -9,13 +9,15 @@ public class Main {
         List<String> list = Arrays.asList("Java", "JavaScript", "Python", "Ruby");
         List<Integer> list2 = Arrays.asList(10, 15, 20, 25, 30);
 
-       Methods.m3();
-       Methods.m4();
-       Methods.m5();
-       Methods.m6();
-       Methods.m7();
-       Methods.m8();
-       Methods.m9();
+        Methods.m1();
+        Methods.m2();
+        Methods.m3();
+        Methods.m4();
+        Methods.m5();
+        Methods.m6();
+        Methods.m7();
+        Methods.m8();
+        Methods.m9();
 
     }
 }

@@ -1,13 +1,12 @@
 package lesson.lesson14.practice;
 
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Methods {
     //* Дан список строк. Необходимо найти количество строк, которые содержат заданную подстроку.
-    private static void m1() {
+    public static void m1() {
         List<String> list = Arrays.asList("Java", "JavaScript", "Python", "Ruby");
         List<String> va = list.stream()
                 .filter(el -> el.contains("va"))
@@ -18,7 +17,7 @@ public class Methods {
 
     //     * Дан список целых чисел. Необходимо найти максимальный
     //     * элемент списка, который делится на заданное число без остатка.
-    private static void m2() {
+    public static void m2() {
         List<Integer> list = Arrays.asList(10, 15, 20, 25, 30);
         OptionalInt max = list.stream()
                 .mapToInt(Integer::intValue)
@@ -80,7 +79,7 @@ public class Methods {
         System.out.println("Подсчитать буквы в нижнем регистре в стринге: " + countLower);
     }
 
-    //Определите все символьные строки максимальной длины в заданном конечном потоке символьных строк. через Optional
+    //Определите все символьные строки максимальной длины в заданном конечном потоке символьных строк. Через Optional
     public static void m6() {
         Stream<String> stream = Stream.of("we", "wee", "qwer", "oooo");
         Optional<Map.Entry<Integer, List<String>>> max = stream
