@@ -13,7 +13,9 @@ public class Main {
        Methods.m4();
        Methods.m5();
        Methods.m6();
-
+       Methods.m7();
+       Methods.m8();
+       Methods.m9();
 
     }
 }
