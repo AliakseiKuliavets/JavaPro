@@ -13,4 +13,12 @@ public class LibraryManager {
         this.libraryCatalog = libraryCatalog;
         this.libraryUsers = libraryUsers;
     }
+    //Метод, который возвращает список доступных книг заданного жанра.
+    public List<Book> listAvailableBooksByGenre(String genre) {
+        return libraryCatalog.stream()
+                .filter(el -> el.getBookGenre().contains(genre))
+                .filter(Book::isBookAvailable)
+                .toList();
+    }
 }
+
