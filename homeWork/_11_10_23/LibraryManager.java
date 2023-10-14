@@ -1,10 +1,16 @@
 package homeWork._11_10_23;
 
-import lombok.AllArgsConstructor;
 
+
+import java.util.Arrays;
 import java.util.List;
-@AllArgsConstructor
+
 public class LibraryManager {
-    private List<Book> bookList;
+    private List<Book> libraryCatalog;
     private List<LibraryUser> libraryUsers;
+
+    public LibraryManager(List<Book> libraryCatalog, List<LibraryUser> libraryUsers) {
+        this.libraryCatalog = libraryCatalog;
+        this.libraryUsers = libraryUsers;
+    }
 }
