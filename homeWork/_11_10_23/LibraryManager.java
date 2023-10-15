@@ -12,14 +12,6 @@ public class LibraryManager {
         this.libraryUsers = libraryUsers;
     }
 
-    public List<Book> getLibraryCatalog() {
-        return libraryCatalog;
-    }
-
-    public List<LibraryUser> getLibraryUsers() {
-        return libraryUsers;
-    }
-
     //Метод, который возвращает список доступных книг заданного жанра.
     public List<Book> listAvailableBooksByGenre(String genre) {
         return libraryCatalog.stream()
@@ -45,6 +37,10 @@ public class LibraryManager {
 
     //Метод, который удаляет книгу из библиотеки.
     public void removeBookFromLibrary(Book book) {
+        if (!(book.equals(Book.getBookList()))) {
+            System.out.println("Данной книги нет в списке книг");
+            return;
+        }
         List<Book> newListBook = new LinkedList<>(Book.getBookList());
         newListBook.remove(book);
         Book.setBookList(newListBook);
@@ -73,6 +69,27 @@ public class LibraryManager {
 
                     book1.setBookAvailable(false);
                     removeBookFromLibrary(book);
+                });
+    }
+
+    // Метод, который позволяет пользователю зарезервировать книгу.
+    public void reserveBook(LibraryUser user, Book book) {
+        libraryCatalog.stream()
+                .filter(book1 -> book1.equals(book) && book1.isBookAvailable())
+                .findFirst()
+                .ifPresent(book1 -> {
+                    LibraryUser.getLibraryUsers()
+                            .stream()
+                            .filter(libraryUser -> libraryUser.equals(user))
+                            .findFirst()
+                            .ifPresent(libraryUser -> {
+                                List<Book> bookList = Optional.ofNullable(libraryUser.getUserBooksReserved())
+                                        .map(ArrayList::new)
+                                        .orElseGet(ArrayList::new);
+                                bookList.add(book);
+                                libraryUser.setUserBooksReserved(bookList);
+                            });
+                    book1.setBookAvailable(false);
                 });
     }
 }
