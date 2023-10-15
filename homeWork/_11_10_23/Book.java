@@ -1,9 +1,6 @@
 package homeWork._11_10_23;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +8,7 @@ import java.util.List;
 @Getter
 @ToString
 @Setter
+@EqualsAndHashCode
 public class Book {
     private String bookId;
     private String bookTitle;
@@ -28,4 +26,7 @@ public class Book {
         return bookList;
     }
 
+    public static void setBookList(List<Book> bookList) {
+        Book.bookList = bookList;
+    }
 }

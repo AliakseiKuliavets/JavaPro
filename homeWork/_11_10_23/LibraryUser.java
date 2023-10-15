@@ -1,14 +1,14 @@
 package homeWork._11_10_23;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;
 @AllArgsConstructor
 @ToString
 @Getter
+@Setter
+@EqualsAndHashCode
 public class LibraryUser {
     private String userId;
     private String userName;
@@ -24,5 +24,7 @@ public class LibraryUser {
     public static List<LibraryUser> getLibraryUsers(){
         return libraryUsers;
     }
-
+    public static void setLibraryUsers(List<LibraryUser> libraryUsers) {
+        LibraryUser.libraryUsers = libraryUsers;
+    }
 }
