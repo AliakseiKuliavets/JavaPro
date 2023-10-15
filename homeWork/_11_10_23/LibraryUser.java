@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.Arrays;
 import java.util.List;
 @AllArgsConstructor
 @ToString
@@ -15,4 +16,13 @@ public class LibraryUser {
     private int userPhone;
     private List<Book> userBooksBorrowed;
     private List<Book> userBooksReserved;
+    private static List<LibraryUser> libraryUsers = Arrays.asList(
+            new LibraryUser("123AA", "Alex", "hujujk@gmail.com", 76543234, null, null),
+            new LibraryUser("113AA", "Kirill", "1234ujk@gmail.com", 1234234, null, null),
+            new LibraryUser("332AA", "Anton", "121234ujk@gmail.com", 198734, null, null)
+    );
+    public static List<LibraryUser> getLibraryUsers(){
+        return libraryUsers;
+    }
+
 }
