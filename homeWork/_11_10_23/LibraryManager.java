@@ -49,6 +49,29 @@ public class LibraryManager {
 
     //Метод, который позволяет пользователю взять книгу в аренду.
     public void borrowBook(LibraryUser user, Book book) {
+        /* Без стрима
+
+         for (Book book1 : libraryCatalog) {
+            if (book.equals(book1)) {
+                if (book1.isBookAvailable()) {
+                    for (LibraryUser libraryUser : LibraryUser.getLibraryUsers()) {
+                        if (user.equals(libraryUser)) {
+                            List<Book> bookList;
+                            if (libraryUser.getUserBooksBorrowed() == null) {
+                                bookList = List.of(book);
+                            } else {
+                                bookList = libraryUser.getUserBooksBorrowed();
+                                bookList.add(book);
+                            }
+                            libraryUser.setUserBooksBorrowed(bookList);
+                        }
+                        book1.setBookAvailable(false);
+                        removeBookFromLibrary(book);
+                    }
+                }
+            }
+        }
+         */
         libraryCatalog.stream()
                 .filter(book1 -> book1.equals(book) && book1.isBookAvailable())
                 .findFirst()
@@ -74,6 +97,28 @@ public class LibraryManager {
 
     // Метод, который позволяет пользователю зарезервировать книгу.
     public void reserveBook(LibraryUser user, Book book) {
+          /* Без стрима
+
+           for (Book book1 : libraryCatalog) {
+            if (book.equals(book1)) {
+                if (book1.isBookAvailable()) {
+                    for (LibraryUser libraryUser : LibraryUser.getLibraryUsers()) {
+                        if (libraryUser.equals(user)) {
+                            List<Book> bookList;
+                            if (libraryUser.getUserBooksReserved() == null) {
+                                bookList = List.of(book);
+                            } else {
+                                bookList = new LinkedList<>(libraryUser.getUserBooksReserved());
+                                bookList.add(book);
+                            }
+                            libraryUser.setUserBooksReserved(bookList);
+                        }
+                    }
+                }
+                book1.setBookAvailable(false);
+            }
+        }
+         */
         libraryCatalog.stream()
                 .filter(book1 -> book1.equals(book) && book1.isBookAvailable())
                 .findFirst()
