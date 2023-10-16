@@ -13,4 +13,5 @@ public class Calculator<T extends Number> {
     public double add(Calculator<? extends  Number> other){
         return  this.value.doubleValue() + other.value.doubleValue();
     }
+
 }
