@@ -1,6 +1,8 @@
 package homeWork.algorit._13_10_23;
 
 public class Main {
+    // Оценить эффективность алгоритма решения задачи Ханойской башни, предложенного на занятии (см. HanoiTower.java в репозитории)
+// TIME O(n2), Memory O(n) 
     public static void main(String[] args) {
         System.out.println(sum(7, 2));
         System.out.println(sum(12, 3));
