@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class UrgentTask extends Task {
 
-    public UrgentTask(String title, Date deadline, int priority, double reward) {
-        super(title, deadline, priority, reward);
+    public UrgentTask(String title, double reward) {
+        super(title, new Date(), 1, reward);
     }
 
     public double calculatePayment() {
