@@ -1,14 +1,10 @@
 package homeWork._11_10_23;
 
-import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@ToString
-@Getter
-@Setter
 public class LibraryUser {
     private String userId;
     private String userName;
@@ -27,6 +23,66 @@ public class LibraryUser {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPhone = userPhone;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public int getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(int userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public List<Book> getUserBooksBorrowed() {
+        return userBooksBorrowed;
+    }
+
+    public void setUserBooksBorrowed(List<Book> userBooksBorrowed) {
+        this.userBooksBorrowed = userBooksBorrowed;
+    }
+
+    public List<Book> getUserBooksReserved() {
+        return userBooksReserved;
+    }
+
+    public void setUserBooksReserved(List<Book> userBooksReserved) {
+        this.userBooksReserved = userBooksReserved;
+    }
+
+    @Override
+    public String toString() {
+        return "LibraryUser{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPhone=" + userPhone +
+                ", userBooksBorrowed=" + userBooksBorrowed +
+                ", userBooksReserved=" + userBooksReserved +
+                '}';
     }
 
     @Override

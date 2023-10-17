@@ -23,6 +23,7 @@ public class LibraryManager {
     //Метод, который возвращает множество адресов электронной почты пользователей, зарезервировавших книги.
     public Set<String> listUserEmailsWithReservedBooks() {
         return libraryUsers.stream()
+                .filter(el -> el.getUserBooksReserved() != null && !el.getUserBooksReserved().isEmpty())
                 .map(LibraryUser::getUserEmail)
                 .collect(Collectors.toSet());
     }
