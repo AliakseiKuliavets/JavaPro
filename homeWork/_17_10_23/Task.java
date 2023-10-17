@@ -1,11 +1,12 @@
 package homeWork._17_10_23;
 
 import java.util.Date;
+
 public class Task {
-    private String title;
-    private Date deadline;
-    private int priority;
-    private double reward;
+    private final String title;
+    private final Date deadline;
+    private final int priority;
+    private final double reward;
 
     public Task(String title, Date deadline, int priority, double reward) {
         this.title = title;
@@ -14,36 +15,8 @@ public class Task {
         this.reward = reward;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
-    }
-
     public int getPriority() {
         return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    public double getReward() {
-        return reward;
-    }
-
-    public void setReward(double reward) {
-        this.reward = reward;
     }
 
     @Override
@@ -56,8 +29,7 @@ public class Task {
                 '}';
     }
 
-    public double calculatePayment(){
+    public double calculatePayment() {
         return reward;
     }
-
 }
