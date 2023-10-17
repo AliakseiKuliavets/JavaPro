@@ -67,7 +67,6 @@ public class LibraryManager {
                             libraryUser.setUserBooksBorrowed(bookList);
                         }
                         book1.setBookAvailable(false);
-                        removeBookFromLibrary(book);
                     }
                 }
             }
@@ -92,7 +91,6 @@ public class LibraryManager {
                     }
 
                     book1.setBookAvailable(false);
-                    removeBookFromLibrary(book);
                 });
     }
 
