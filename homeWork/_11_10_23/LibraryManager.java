@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class LibraryManager {
     private List<Book> libraryCatalog;
-    private List<LibraryUser> libraryUsers;
+    private final List<LibraryUser> libraryUsers;
 
     public LibraryManager(List<Book> libraryCatalog, List<LibraryUser> libraryUsers) {
         this.libraryCatalog = libraryCatalog;

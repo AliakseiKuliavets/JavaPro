@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Book {
-    private String bookId;
-    private String bookTitle;
-    private String bookAuthor;
-    private String bookGenre;
-    private int bookYear;
+    private final String bookId;
+    private final String bookTitle;
+    private final String bookAuthor;
+    private final String bookGenre;
+    private final int bookYear;
     private boolean bookAvailable;
 
     public Book(String bookId, String bookTitle, String bookAuthor, String bookGenre, int bookYear, boolean bookAvailable) {
