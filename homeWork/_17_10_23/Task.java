@@ -19,6 +19,10 @@ public class Task {
         return priority;
     }
 
+    public double getReward() {
+        return reward;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
@@ -30,6 +34,9 @@ public class Task {
     }
 
     public double calculatePayment() {
+        if (getPriority() == 1) {
+            return this.reward * 2;
+        }
         return reward;
     }
 }

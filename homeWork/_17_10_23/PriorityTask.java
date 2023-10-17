@@ -12,7 +12,7 @@ public class PriorityTask extends Task {
 
     public double calculatePayment() {
         if (getPriority() == requiredPriority) {
-            return super.calculatePayment();
+            return this.getReward() * 2;
         }
         return 0;
     }

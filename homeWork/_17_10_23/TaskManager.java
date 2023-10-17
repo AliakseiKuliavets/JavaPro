@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TaskManager<T extends Task>  {
-    private List<T> tasks = new LinkedList<>();
+    private final List<T> tasks = new LinkedList<>();
     public void addTask(T task) {
         tasks.add(task);
     }
