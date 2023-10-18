@@ -24,6 +24,7 @@ public class StreamCollectEx {
                 new Dog("Rex",8),
                 new Dog("HOW",7)
         ).collect(MyCollection::new, MyCollection::add, MyCollection::addAll);
+        System.out.println(dogMyCollection);
 
     }
 }
