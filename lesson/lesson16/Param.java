@@ -2,7 +2,6 @@ package lesson.lesson16;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Param {
     List<String> list = new ArrayList<>();
