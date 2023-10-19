@@ -30,6 +30,9 @@ public class Task {
     }
 
     public double calculatePayment() {
+        if (priority == 1){
+            return reward * 2;
+        }
         return reward;
     }
 }

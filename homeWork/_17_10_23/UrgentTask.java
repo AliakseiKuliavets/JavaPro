@@ -6,6 +6,6 @@ public class UrgentTask extends Task {
 
 
     public UrgentTask(String title, double reward) {
-        super(title, new Date(), 1, reward * 2);
+        super(title, new Date(), 1, reward);
     }
 }
