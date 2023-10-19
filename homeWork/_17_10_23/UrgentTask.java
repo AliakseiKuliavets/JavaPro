@@ -5,14 +5,7 @@ import java.util.Date;
 public class UrgentTask extends Task {
 
 
-    public UrgentTask(String title, Date deadline, int priority, double reward) {
-        super(title, deadline, priority, reward);
-    }
-
-    public double calculatePayment() {
-        if (getPriority() == 1) {
-            return this.getReward() * 2;
-        }
-        return super.calculatePayment();
+    public UrgentTask(String title, double reward) {
+        super(title, new Date(), 1, reward * 2);
     }
 }
