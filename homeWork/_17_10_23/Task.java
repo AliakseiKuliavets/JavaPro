@@ -19,10 +19,6 @@ public class Task {
         return priority;
     }
 
-    public double getReward() {
-        return reward;
-    }
-
     @Override
     public String toString() {
         return "Task{" +
