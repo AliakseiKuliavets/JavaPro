@@ -1,6 +1,5 @@
 package summarySession.friday201023;
 
-import java.util.Objects;
 
 public class Monkey {
     private final String name;
