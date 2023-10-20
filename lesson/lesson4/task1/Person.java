@@ -1,12 +1,11 @@
 package lesson.lesson4.task1;
 
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-@Getter
-@Setter
 public class Person implements Comparable<Person>{
     private int age;
     private String name;
@@ -29,17 +28,34 @@ public class Person implements Comparable<Person>{
                 '}';
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
     @Override
     public int compareTo(Person o) {
 //        return this.age - o.age; // по возрасту
         return this.name.compareTo(o.name); // по имени
-    }
-}
-class SalaryComparator implements Comparator<Person>{
-
-    @Override
-    public int compare(Person o1, Person o2) {
-        return (int) (o1.getSalary() - o2.getSalary());
     }
 }
 
@@ -64,7 +80,6 @@ class Main {
         personList.add(p4);
         System.out.println(personList);
 
-        Collections.sort(personList, new SalaryComparator());
         System.out.println(personList);
     }
 }
