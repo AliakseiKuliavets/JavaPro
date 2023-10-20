@@ -47,12 +47,36 @@ public class StrEx5 {
         System.out.println(list);
     }
 }
-@AllArgsConstructor
-@Getter
-@ToString
+
 class Em {
     private String firstName;
     private String lastName;
     private double salary;
 
+    public Em(String firstName, String lastName, double salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Em{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
