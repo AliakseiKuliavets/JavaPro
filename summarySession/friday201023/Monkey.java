@@ -47,17 +47,4 @@ public class Monkey {
     public double getWeight() {
         return weight;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Monkey monkey = (Monkey) o;
-        return Double.compare(weight, monkey.weight) == 0 && Objects.equals(name, monkey.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, weight);
-    }
 }
