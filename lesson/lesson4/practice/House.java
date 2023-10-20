@@ -1,8 +1,7 @@
 package lesson.lesson4.practice;
 
-import lombok.Getter;
 
-@Getter
+
 public class House implements Comparable<House> {
     private final int numberHouse;
     private final double areaHouse;
@@ -46,5 +45,21 @@ public class House implements Comparable<House> {
 //        } else {
 //            return this.city.compareTo(o.city);
 //        }
+    }
+
+    public int getNumberHouse() {
+        return numberHouse;
+    }
+
+    public double getAreaHouse() {
+        return areaHouse;
+    }
+
+    public double getPriceHouse() {
+        return priceHouse;
+    }
+
+    public String getCity() {
+        return city;
     }
 }
