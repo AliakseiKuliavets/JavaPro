@@ -21,8 +21,17 @@ public class CollectorEx {
         Set<String> collect2 = new HashSet<>(names);
         System.out.println(collect2);
 
-        Map<String, Integer> collect = names.stream().collect(Collectors.toMap(s -> s, el-> 1, Integer::sum));
+        Map<String, Integer> collect = names.stream().
+                collect(Collectors.toMap(s -> s, el-> 1, Integer::sum));
         System.out.println(collect.getClass());
         System.out.println(collect);
+
+        Map<Integer,Long> lettersCount = names.stream().
+                collect(Collectors.groupingBy(String::length,Collectors.counting()));
+        System.out.println(lettersCount);
+
+        Map<Integer,List<String>> groupByNameLength = names.stream()
+                .collect(Collectors.groupingBy(String::length,Collectors.toList()));
+        System.out.println(groupByNameLength);
     }
 }
