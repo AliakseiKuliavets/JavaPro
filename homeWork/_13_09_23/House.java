@@ -1,10 +1,9 @@
 package homeWork._13_09_23;
 
-import lombok.Getter;
 
 import java.util.Objects;
-@Getter
-public class House implements Comparable<House>{
+
+public class House implements Comparable<House> {
     private final int flors;
     private final int numberHouse;
     private final String city;
@@ -22,6 +21,18 @@ public class House implements Comparable<House>{
                 ", numberHouse=" + numberHouse +
                 ", city='" + city + '\'' +
                 '}';
+    }
+
+    public int getFlors() {
+        return flors;
+    }
+
+    public int getNumberHouse() {
+        return numberHouse;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     @Override
