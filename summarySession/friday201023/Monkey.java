@@ -46,4 +46,18 @@ public class Monkey {
     public double getWeight() {
         return weight;
     }
+
+    public int compareTo(Monkey another) {
+        int result = this.name.compareTo(another.name); // name
+        if (result != 0) return result;
+
+        result = this.age - another.age; // age
+        if (result != 0) return result;
+
+        result = this.colour.compareTo(another.colour); // colour
+        if (result != 0) return result;
+
+        result = (this.isHungry ? 1 : 0) - (another.isHungry ? 1 : 0); // isHungry
+        return result;
+    }
 }
