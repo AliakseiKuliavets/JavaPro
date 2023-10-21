@@ -10,6 +10,7 @@ public class PriorityTask extends Task {
         this.requiredPriority = requiredPriority;
     }
 
+    @Override
     public double calculatePayment() {
         if (getPriority() == requiredPriority) {
             return super.calculatePayment();
