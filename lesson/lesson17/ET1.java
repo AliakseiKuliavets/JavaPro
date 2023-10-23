@@ -14,7 +14,7 @@ public class ET1 {
                 break;
             } catch (InputMismatchException exception) {
                 System.out.println("It is not a digit");
-                scanner.nextInt();
+                scanner.nextLine();
             }
         }
         System.out.println("End");
