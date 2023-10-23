@@ -5,19 +5,16 @@ import java.util.Scanner;
 
 public class ET1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        while (true){
+        while (true) {
             System.out.println("Please enter your digit");
-            try {
+            try (Scanner scanner = new Scanner(System.in)) {
                 int digit = scanner.nextInt();
                 System.out.println("Digit: " + digit);
                 break;
             } catch (InputMismatchException exception) {
                 System.out.println("It is not a digit");
-                scanner.nextLine();
             }
         }
         System.out.println("End");
-        scanner.close();
     }
 }
