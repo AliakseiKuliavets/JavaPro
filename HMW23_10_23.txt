@@ -1,0 +1,11 @@
+I spend a lot of time around my programmer friends and they encouraged me to increase my interest in IT.
+I took a course and during my studying I have learned basics of IT inclouding front end,Linux, git, sql.
+Later i mastered my skills in Java Backend such as Collections, Lambdas & Stream , IO , Multithreading, Spring.
+Sometimes I struggled to understand some topics but this never discouraged me and I would do the research
+until i found the answer I was looking for.
+My hard work has been noticed, I started to be considered the strongest student and eventually became the leader of my group.
+Moreover I was helping one of my classmates to catch up with the studying by
+giving him lessons explaining the current material.
+My biggest strenght is determination and motivation to work hard, constantly improve myself and use every
+given opportunity to become a significant part of your company. 
+In the future I see myself using my experience to help young programmers, such as myself right now, to learn more and more.
