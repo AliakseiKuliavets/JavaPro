@@ -1,0 +1,50 @@
+**Подсчет общего числа имен в файле
+public long countTotalNames(String fileName)
+
+**Нахождение уникальных имен в файле
+public Set<String> uniqueNames(String fileName)
+
+**Подсчет числа имен, содержащих заданную подстроку
+public long countNamesContainingSubstring(String fileName, String substring)
+
+**Нахождение имен, длина которых находится в заданном диапазоне
+public List<String> namesWithLengthInRange(String fileName, int minLength, int maxLength)
+
+**Вывод первых N имен в алфавитном порядке
+public List<String> firstNNamesAlphabetically(String fileName, int n)
+
+**Нахождение пяти самых часто встречающихся имен в файле
+public List<String> topFiveCommonNames(String fileName)
+
+**Нахождение имен, которые начинаются на заданную букву и встречаются больше двух раз
+public Set<String> namesStartingWithAndOccurMoreThanTwice(String fileName, char c)
+
+**Нахождение двух имен с самой длинной и самой короткой длиной
+public Pair<String, String> longestAndShortestNames(String fileName)
+
+// Для этого метода потребуется класс Pair:
+public static class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "key=" + key +
+                ", value=" + value +
+                '}';
+    }
+}
