@@ -47,7 +47,7 @@ public class StreamEE {
                 .collect(Collectors.toSet());
     }
 }
-@Getter
+
 class Student {
     private int age;
     private String name;
@@ -61,8 +61,24 @@ class Student {
         this.grade = grade;
         this.faculty = faculty;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public List<Faculty> getFaculty() {
+        return faculty;
+    }
 }
-@Getter
+
 class Faculty {
     private String facultyName;
     private int id;
@@ -70,5 +86,13 @@ class Faculty {
     public Faculty(String facultyName, int id) {
         this.facultyName = facultyName;
         this.id = id;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public int getId() {
+        return id;
     }
 }
