@@ -14,7 +14,7 @@ public class CardGenerate {
     }
 
     private String generateNumber() {
-        return String.valueOf(random.nextLong(1_000_000_000_000_000L, 9_999_999_999_999_999L));
+        return String.valueOf(random.nextLong(1_000_000_000_000_000L, 10_000_000_000_000_000L));
     }
 
     private String generateDataCard() {
