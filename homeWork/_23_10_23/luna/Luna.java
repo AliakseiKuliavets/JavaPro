@@ -36,7 +36,7 @@ public class Luna {
 
     private  List<Integer> lunaMethods(List<Integer> integerList) {
         List<Integer> newNumberList = new ArrayList<>(integerList);
-        for (int i = 1; i < integerList.size(); i += 2) {
+        for (int i = 0; i < integerList.size(); i += 2) {
             if (integerList.get(i) * 2 > 9) {
                 newNumberList.set(i, (integerList.get(i) * 2) - 9);
             } else {
