@@ -3,6 +3,7 @@ package homeWork._23_10_23.luna;
 import java.util.Random;
 
 public class CardGenerate {
+    private static final int years = 2023;
     Random random = new Random();
 
     public String returnNumberCard() {
@@ -10,14 +11,14 @@ public class CardGenerate {
     }
 
     private String generateNumberCard() {
-        return generateNumber() + generateDataCard() + generateCVVCard();
+        return generateNumber() + generateDataMonthsCard() + generateDataYearCard() + generateCVVCard();
     }
 
     private String generateNumber() {
         return String.valueOf(random.nextLong(1_000_000_000_000_000L, 10_000_000_000_000_000L));
     }
 
-    private String generateDataCard() {
+    private String generateDataMonthsCard() {
         String months;
         int numberOfMounts = random.nextInt(1, 13);
         if (numberOfMounts >= 1 && numberOfMounts < 10) {
@@ -25,8 +26,10 @@ public class CardGenerate {
         } else {
             months = String.valueOf(numberOfMounts);
         }
-        String year = String.valueOf(random.nextInt(4, 6) + 23);
-        return months + year;
+        return months;
+    }
+    private String generateDataYearCard(){
+        return String.valueOf(random.nextInt(4, 6) + ( CardGenerate.years- 2000));
     }
 
     private String generateCVVCard() {
