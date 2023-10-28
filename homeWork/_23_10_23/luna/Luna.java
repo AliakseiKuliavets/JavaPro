@@ -21,8 +21,8 @@ public class Luna {
     }
 
     private  List<Integer> fromStringToListNumber(String number) {
-        List<Integer> integerList = new ArrayList<>(23);
-        for (int i = 0; i < number.length(); i++) {
+        List<Integer> integerList = new ArrayList<>(16);
+        for (int i = 0; i < 16; i++) {
             char c = number.charAt(i);
             if (Character.isDigit(c)) {
                 int digit = Character.getNumericValue(c);
