@@ -1,26 +1,75 @@
 package lesson.lesson19;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     private static int count = 0;
 
     public static void main(String[] args) {
-        System.out.println(isPal("mamam mamam"));
-        int i = 12321;
-        System.out.println(isPalNum(i));
-        String s = "mama";
-        String end = "ma";
-        System.out.println(Arrays.toString(solution(s)));
-        System.out.println(solution(s, end));
-        System.out.println(isValid(new char[]{'n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's'}));
-        System.out.println(uglifyWord("qwe123asdf456zxc"));
-        System.out.println();
-        System.out.println(nbYear(1500000, 2.5, 10000, 2000000));
-        System.out.println(nbYearY(1500000, 2.5, 10000, 2000000));
+//        System.out.println(isPal("mamam mamam"));
+//        int i = 12321;
+//        System.out.println(isPalNum(i));
+//        String s = "mama";
+//        String end = "ma";
+//        System.out.println(Arrays.toString(solution(s)));
+//        System.out.println(solution(s, end));
+//        System.out.println(isValid(new char[]{'n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's'}));
+//        System.out.println(uglifyWord("qwe123asdf456zxc"));
+//        System.out.println();
+//        System.out.println(nbYear(1500000, 2.5, 10000, 2000000));
+//        System.out.println(nbYearY(1500000, 2.5, 10000, 2000000));
+//        System.out.println(findEvenIndex(new int[]{4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4}));
+        System.out.println(duplicateCount("indivisibility"));
 
+    }
+
+    public static int duplicateCountS(String text) {
+        List<String> list = new ArrayList<>();
+        List<String> listNew = new ArrayList<>();
+        for (int i = 0; i < text.toLowerCase().length(); i++) {
+            list.add(String.valueOf(text.charAt(i)));
+        }
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    listNew.add(list.get(i));
+                }
+            }
+        }
+        return (int) listNew.stream().distinct().count();
+    }
+    public static int duplicateCount(String text) {
+        text = text.toLowerCase();
+        Set<Character> set = new HashSet<>();
+        Set<Character> dubl = new HashSet<>();
+        for (Character c : text.toCharArray()){
+            if (set.contains(c)){
+                dubl.add(c);
+            }else {
+                set.add(c);
+            }
+        }
+        return dubl.size();
+    }
+
+    public static int findEvenIndex(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int sumLeft = 0;
+            int sumRight = 0;
+            for (int j = 0; j < i; j++) {
+                sumLeft += arr[j];
+            }
+            for (int j = arr.length - 1; j > i; j--) {
+                sumRight += arr[j];
+            }
+            if (sumLeft == sumRight) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public static int nbYear(int p0, double percent, int aug, int p) {
@@ -32,6 +81,7 @@ public class Main {
         nbYear(newPopulation, percent, aug, p);
         return count;
     }
+
     public static int nbYearY(int p0, double percent, int aug, int p) {
         int count = 0; // Initialize the count variable
         while (p0 < p) {
