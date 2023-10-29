@@ -50,7 +50,7 @@ public class Main {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
             for (Student student : students) {
                 if (student.getGrade() >= gradeThreshold) {
-                    out.writeObject(students);
+                    out.writeObject(student);
                 }
             }
             System.out.println("Serialization was done");
