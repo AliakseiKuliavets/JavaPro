@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     private final Calculator calculator = new Calculator();
-    private int a = 6;
-    private int b = 5;
+    private int a;
+    private int b;
     private int expected;
     private final int[] array = {1, 6, 7, 8, 9, 10, 2, 3, 4, 5};
     private String input;
@@ -17,6 +17,8 @@ class CalculatorTest {
     // 1. Простое сложение двух чисел
     @Test
     void addPositiveTest() {
+        a = 6;
+        b = 5;
         expected = 11;
         Assertions.assertEquals(expected, calculator.add(a, b));
     }
@@ -24,26 +26,33 @@ class CalculatorTest {
     // 2. Вычитание
     @Test
     void subtractPositiveTest() {
-        expected = 1;
+        a = 11;
+        b = 5;
+        expected = 6;
         Assertions.assertEquals(expected, calculator.subtract(a, b));
     }
 
     // 3. Умножение
     @Test
     void multiplyPositiveTest() {
-        expected = 30;
+        a = 7;
+        b = 4;
+        expected = 28;
         Assertions.assertEquals(expected, calculator.multiply(a, b));
     }
 
     // 4. Деление
     @Test
     void dividePositiveTest() {
-        expected = a / b;
+        a = 10;
+        b = 2;
+        expected = 5;
         Assertions.assertEquals(expected, calculator.divide(a, b));
     }
 
     @Test
     void divideByZeroTest() {
+        a = 12;
         b = 0;
         Assertions.assertThrows(ArithmeticException.class, () -> calculator.divide(a, b));
     }
