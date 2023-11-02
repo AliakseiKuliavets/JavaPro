@@ -75,7 +75,7 @@ class LibraryTest {
 
     /**
      * Тест который проверяет возвращает ли все книг List<Book>  данного Author
-     * предположим что у нас уже есть одна книга значит размер в Set<Book> а значит в List<Authors>
+     * предположим что у нас уже есть одна книга значит размер в Set<Book> будет равна 1 и в List<Authors>
      * тоже будет один Author , мы добавляем все книги этого автора в List<Book> и он будет равен 1
      */
     @Test
@@ -103,8 +103,16 @@ class LibraryTest {
         Assertions.assertEquals(1, library.getAllAuthors().size());
     }
 
-    ////////////////////////////////
+    /**
+     * Тест который проверяет что бы метод getAllAuthors() при пустых значениях не возвращал NULL
+     */
+    @Test
+    void getAllAuthorsReturnNotNullListTest() {
+        library.removeBook(book);
+        Assertions.assertNotNull(library.getAllAuthors());
+    }
 
+    ////////////////////////////////
     /**
      * Тест который проверяет возвращает ли Book по ISBN
      * В Set<Book> мы имеем данную книгу , и если метод будет успешно выполнен то он вернет эту книгу
@@ -134,7 +142,6 @@ class LibraryTest {
     @Test
     void searchBooksByTitlePositiveTest() {
         String title = "Koshka";
-        library.removeBook(Mockito.mock());
         Assertions.assertEquals(1, library.searchBooksByTitle(title).size());
     }
 
@@ -144,6 +151,15 @@ class LibraryTest {
     @Test
     void searchBooksByTitleIllegalArgumentExceptionTest() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> library.searchBooksByTitle(null));
+    }
+    /**
+     * Тест который проверяет что бы метод searchBooksByTitle() при пустых значениях не возвращал NULL
+     */
+    @Test
+    void searchBooksByTitleReturnNotNullListTest() {
+        String title = "Koshka";
+        library.removeBook(book);
+        Assertions.assertNotNull(library.searchBooksByTitle(title));
     }
 
     //////////////////////////////
