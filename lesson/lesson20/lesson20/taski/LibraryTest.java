@@ -182,6 +182,14 @@ class LibraryTest {
     void addCopiesIllegalArgumentExceptionBookNullTest() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> library.addCopies(null, 2));
     }
+    /**
+     * Тест который проверяет на ошибку IllegalArgumentException если мы добавляем копии неизвестной книге
+     */
+    @Test
+    void addCopiesIllegalArgumentExceptionBookNotFoundTest() {
+        Book book1 = Mockito.mock(Book.class);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> library.addCopies(book1, 2));
+    }
 
     /**
      * Тест который проверяет на ошибку IllegalArgumentException если мы добавляем копии меньше 0
