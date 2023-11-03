@@ -1,6 +1,5 @@
 package lesson.lesson2.practice;
 
-import lesson.lesson2.practice.Season;
 import java.util.Arrays;
 
 public class EnumPractice {

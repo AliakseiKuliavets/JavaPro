@@ -1,6 +1,5 @@
 package lesson.lesson14;
 
-import lesson.lesson13.lesson1.Person;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;

@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.*;
-
 public class Main {
     public static void main(String[] args) {
         List<Cat> catList = Arrays.asList(

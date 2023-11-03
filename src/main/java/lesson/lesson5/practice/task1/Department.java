@@ -1,6 +1,5 @@
 package lesson.lesson5.practice.task1;
 
-import lesson.lesson2.example1.Employee222;
 import lombok.Getter;
 
 import java.util.Arrays;
