@@ -1,4 +1,4 @@
-package lesson.taski;
+package lesson.lesson20.taski;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

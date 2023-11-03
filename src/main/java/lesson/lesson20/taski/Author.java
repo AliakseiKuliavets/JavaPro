@@ -1,4 +1,4 @@
-package lesson.taski;
+package lesson.lesson20.taski;
 
 import java.util.Objects;
 

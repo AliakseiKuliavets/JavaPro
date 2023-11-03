@@ -1,4 +1,4 @@
-package lesson.taski;
+package lesson.lesson20.taski;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,8 +7,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Library {
-    private Set<Book> books;
-    private List<Author> authors;
+    private final Set<Book> books;
+    private final List<Author> authors;
 
     public Library() {
         this.books = new HashSet<>();
@@ -22,7 +22,6 @@ public class Library {
     public List<Author> getAuthors() {
         return authors;
     }
-
 
 
     public void addBook(Book book) {
@@ -70,10 +69,9 @@ public class Library {
     }
 
     /**
-     *
-     *  Добавил дополнительное условие (additionalCopies <= 0)
-     *   если мы хотим добавить -2 копии то это же должен быть по сути уже метод для удаления копий
-     *   потому что он уже будет проверять а сколько есть копий и т.д.
+     * Добавил дополнительное условие (additionalCopies <= 0)
+     * если мы хотим добавить -2 копии то это же должен быть по сути уже метод для удаления копий
+     * потому что он уже будет проверять а сколько есть копий и т.д.
      */
     public void addCopies(Book book, int additionalCopies) {
         if ((!books.contains(book)) || (additionalCopies <= 0)) {
