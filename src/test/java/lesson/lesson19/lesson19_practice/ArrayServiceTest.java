@@ -1,11 +1,12 @@
-package lesson.lesson19.Lesson1.lesson19_practice;
+package lesson.lesson19.lesson19_practice;
 
+import lesson.lesson19.Lesson1.lesson19_practice.ArrayService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 class ArrayServiceTest {
-    private final ArrayService service = new ArrayService();
+    private final lesson.lesson19.Lesson1.lesson19_practice.ArrayService service = new ArrayService();
     private int[] ints;
     private int size;
     private int expected;

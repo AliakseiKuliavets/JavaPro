@@ -271,4 +271,5 @@ class LibraryTest {
         Book book1 = Mockito.mock(Book.class);
         Assertions.assertThrows(IllegalArgumentException.class, () -> library.returnBook(book1));
     }
+
 }

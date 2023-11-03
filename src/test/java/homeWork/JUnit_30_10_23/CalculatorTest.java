@@ -1,10 +1,11 @@
-package lesson.lesson19.Lesson19.Calcul;
+package homeWork.JUnit_30_10_23;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 class CalculatorTest {
+
     private final Calculator calculator = new Calculator();
     private int a;
     private int b;

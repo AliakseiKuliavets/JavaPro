@@ -69,8 +69,14 @@ public class Library {
         return books.stream().filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase())).collect(Collectors.toList());
     }
 
+    /**
+     *
+     *  Добавил дополнительное условие (additionalCopies <= 0)
+     *   если мы хотим добавить -2 копии то это же должен быть по сути уже метод для удаления копий
+     *   потому что он уже будет проверять а сколько есть копий и т.д.
+     */
     public void addCopies(Book book, int additionalCopies) {
-        if (!books.contains(book)) {
+        if ((!books.contains(book)) || (additionalCopies <= 0)) {
             throw new IllegalArgumentException("Book is not in the library");
         }
         book.setCopies(book.getCopies() + additionalCopies);
