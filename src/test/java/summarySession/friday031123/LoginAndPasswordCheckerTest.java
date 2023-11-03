@@ -33,5 +33,6 @@ class LoginAndPasswordCheckerTest {
         assertFalse(checker.checkLoginAndPassword("john","___","123"));
 
         assertThrows(NullPointerException.class, () -> checker.checkLoginAndPassword("john",null,"123"));
+        assertThrows(NullPointerException.class, () -> checker.checkLoginAndPassword("john","123",null));
     }
 }
