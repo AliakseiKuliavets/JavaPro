@@ -74,6 +74,9 @@ public class Library {
      * потому что он уже будет проверять а сколько есть копий и т.д.
      */
     public void addCopies(Book book, int additionalCopies) {
+        if (book == null) {
+            throw new IllegalArgumentException("Book cannot be null");
+        }
         if ((!books.contains(book)) || (additionalCopies <= 0)) {
             throw new IllegalArgumentException("Book is not in the library");
         }
@@ -81,13 +84,19 @@ public class Library {
     }
 
     public void lendBook(Book book) {
-        if (!books.contains(book) || book.getCopies() <= 0) {
+        if (book == null) {
+            throw new IllegalArgumentException("Book cannot be null");
+        }
+        if (!books.contains(book) || book.getCopies() <= 0 ) {
             throw new IllegalArgumentException("Book is not available");
         }
         book.setCopies(book.getCopies() - 1);
     }
 
     public void returnBook(Book book) {
+        if (book == null) {
+            throw new IllegalArgumentException("Book cannot be null");
+        }
         if (!books.contains(book)) {
             throw new IllegalArgumentException("Book is not from this library");
         }
