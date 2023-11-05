@@ -100,10 +100,14 @@ class CalculatorTest {
 
     // 9. Определение простого числа
     @Test
-    void isPrimePositiveTest() {
+    void isPrimePositiveTrueTest() {
         a = 2;
-        boolean expected = true;
-        Assertions.assertEquals(expected, calculator.isPrime(a));
+        Assertions.assertTrue(calculator.isPrime(a));
+    }
+    @Test
+    void isPrimePositiveFalseTest() {
+        a = 4;
+        Assertions.assertFalse(calculator.isPrime(a));
     }
 
     @Test
