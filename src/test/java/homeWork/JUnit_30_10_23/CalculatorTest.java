@@ -120,8 +120,8 @@ class CalculatorTest {
     @Test
     void toBaseStringPositiveTest() {
         a = 143;
-        b = 15;
-        String expected = "98";
+        b = 2;
+        String expected = "10001111";
         Assertions.assertEquals(expected, calculator.toBaseString(a, b));
     }
 
