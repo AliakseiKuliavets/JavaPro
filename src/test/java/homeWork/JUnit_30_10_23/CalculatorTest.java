@@ -78,8 +78,12 @@ class CalculatorTest {
     @Test
     void isEvenPositiveTest() {
         a = 2;
-        boolean expected = true;
-        Assertions.assertEquals(expected, calculator.isEven(a));
+        Assertions.assertTrue(calculator.isEven(a));
+    }
+    @Test
+    void isEvenFalseTest() {
+        a = 3;
+        Assertions.assertFalse(calculator.isEven(a));
     }
 
     // 8. Поиск максимального числа в массиве
