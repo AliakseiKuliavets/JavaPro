@@ -168,10 +168,15 @@ class CalculatorTest {
 
     // 13. Проверка, является ли строка палиндромом
     @Test
-    void isPalindromePositiveTest() {
+    void isPalindromePositiveTrueTest() {
         input = "mamam";
-        boolean expected = true;
-        Assertions.assertEquals(expected, calculator.isPalindrome(input));
+        Assertions.assertTrue(calculator.isPalindrome(input));
+    }
+
+    @Test
+    void isPalindromePositiveFalseTest() {
+        input = "mama";
+        Assertions.assertFalse(calculator.isPalindrome(input));
     }
 
     @Test
@@ -229,11 +234,16 @@ class CalculatorTest {
 
     // 18. Проверка на вхождение подстроки в строку (без использования стандартных методов Java)
     @Test
-    void containsSubstringPositiveTest() {
+    void containsSubstringPositiveTrueTest() {
         main = "mama";
         sub = "ma";
-        boolean expected = true;
-        Assertions.assertEquals(expected, calculator.containsSubstring(main, sub));
+        Assertions.assertTrue(calculator.containsSubstring(main, sub));
+    }
+    @Test
+    void containsSubstringPositiveFalseTest() {
+        main = "mama";
+        sub = "lsd";
+        Assertions.assertFalse(calculator.containsSubstring(main, sub));
     }
 
     @Test
@@ -258,10 +268,14 @@ class CalculatorTest {
         Assertions.assertEquals(expected, calculator.sumOfDigits(a));
     }
     @Test
-    void isLeapYearToPositiveTest(){
+    void isLeapYearToPositiveTrueTest(){
         a = 2024;
-        boolean expected = true;
-        Assertions.assertEquals(expected, calculator.isLeapYear(a));
+        Assertions.assertTrue(calculator.isLeapYear(a));
+    }
+    @Test
+    void isLeapYearToPositiveFalseTest(){
+        a = 2023;
+        Assertions.assertFalse(calculator.isLeapYear(a));
     }
     @Test
     void isLeapYearToExceptionsTest(){

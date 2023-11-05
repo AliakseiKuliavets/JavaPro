@@ -148,16 +148,18 @@ public class Calculator {
 
     // 18. Проверка на вхождение подстроки в строку (без использования стандартных методов Java)
     public boolean containsSubstring(String main, String sub) {
-        if (main.length() < sub.length()){
-            throw new IllegalArgumentException("Нельзя использовать substring больше main строки");
-        }
         if (main == null || sub == null){
             throw new NullPointerException("Строка не должна быть равно null");
         }
-        for (int i = 0; i < main.length() - sub.length(); i++) {
-            if (main.startsWith(sub, i)) return true;
+        if (main.length() < sub.length()){
+            throw new IllegalArgumentException("Нельзя использовать substring больше main строки");
         }
-        return true;
+        for (int i = 0; i <= main.length() - sub.length(); i++) {
+            if (main.substring(i, i + sub.length()).equals(sub)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // 19. Сумма цифр числа
