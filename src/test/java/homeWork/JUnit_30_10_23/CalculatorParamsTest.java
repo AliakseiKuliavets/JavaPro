@@ -375,27 +375,336 @@ public class CalculatorParamsTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.sqrt(a));
     }
 
-    private static Object[] testReverseStringValues(){
+    private static Object[] testReverseStringValues() {
         return new Object[]{
-                new Object[]{"mama","amam"},
-                new Object[]{"Asd12","21dsA"},
-                new Object[]{"123ASD","DSA321"},
-                new Object[]{"Aliaksei","ieskailA"}
+                new Object[]{"mama", "amam"},
+                new Object[]{"Asd12", "21dsA"},
+                new Object[]{"123ASD", "DSA321"},
+                new Object[]{"Aliaksei", "ieskailA"}
         };
     }
 
     /**
      * Тест метода reverseString(String input) который проверяет делает он инвертирование или нет
-     * @param input - строка на вход
+     *
+     * @param input    - строка на вход
      * @param expected - инвертированная строка на выход
-     *                         ссылка на данные метод "testReverseStringValues"
+     *                 ссылка на данные метод "testReverseStringValues"
      */
     @Test
     @Parameters(method = "testReverseStringValues")
-    public void reverseStringTest(String input, String expected){
-        Assertions.assertEquals(expected,calculator.reverseString(input));
+    public void reverseStringTest(String input, String expected) {
+        Assertions.assertEquals(expected, calculator.reverseString(input));
     }
 
+    /**
+     * Тест метода reverseString(String input) который проверяет на ошибку IllegalArgumentException если была передана
+     * строка была равно NULL
+     */
+    @Test
+    public void reverseStringExceptionsTest() {
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.reverseString(null));
+    }
 
+    private static Object[] testIsPalindromeValues() {
+        return new Object[]{
+                new Object[]{"mamam", true},
+                new Object[]{"123aaa321", true},
+                new Object[]{"123aAa321", true},
+                new Object[]{"AAssAA", true},
+                new Object[]{"123aaA", false},
+                new Object[]{"AAssaaSS", false},
+                new Object[]{"AAssaa123SS", false}
+        };
+    }
+
+    /**
+     * Тест метода isPalindrome(String input) который проверяет является ли строка палиндромом
+     *
+     * @param input    - строка на вход (String)
+     * @param expected - получаемый результат (boolean)
+     *                 ссылка на данные метод "testIsPalindromeValues"
+     */
+    @Test
+    @Parameters(method = "testIsPalindromeValues")
+    public void isPalindromeTest(String input, boolean expected) {
+        Assertions.assertEquals(expected, calculator.isPalindrome(input));
+    }
+
+    /**
+     * Тест метода isPalindrome(String input) который проверяет на ошибку IllegalArgumentException если была передана
+     * строка была равно NULL
+     */
+    @Test
+    public void isPalindromeExceptionsTest() {
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.isPalindrome(null));
+    }
+
+    private static Object[] testGSDValues() {
+        return new Object[]{
+                new Object[]{10, 5, 5},
+                new Object[]{5, 10, 5},
+                new Object[]{9, 6, 3},
+                new Object[]{6, 9, 3},
+        };
+    }
+
+    /**
+     * Тест метода gcd(int a, int b) который вычисляет Наибольший общий делитель (НОД)
+     *
+     * @param a        - первое число (int)
+     * @param b        - второе число (int)
+     * @param expected - наибольший общий делить (int)
+     *                 ссылка на данные метод "testGSDValues"
+     */
+    @Test
+    @Parameters(method = "testGSDValues")
+    public void gcdTest(int a, int b, int expected) {
+        Assertions.assertEquals(expected, calculator.gcd(a, b));
+    }
+
+    /**
+     * Тест метода gcd(int a, int b) который проверяет на ошибку IllegalArgumentException если значение а или в ,было равно 0
+     */
+    @Test
+    public void gcdExceptionsAEqualsZeroTest() {
+        int a = 0;
+        int b = 3;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.gcd(a, b));
+    }
+
+    /**
+     * Тест метода gcd(int a, int b) который проверяет на ошибку IllegalArgumentException если значение b ,было равно 0
+     */
+    @Test
+    public void gcdExceptionsBEqualsZeroTest() {
+        int a = 3;
+        int b = 0;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.gcd(a, b));
+    }
+
+    /**
+     * Тест метода gcd(int a, int b) который проверяет на ошибку IllegalArgumentException если значение а ,было меньше 0
+     */
+    @Test
+    public void gcdExceptionsALessZeroTest() {
+        int a = -1;
+        int b = 3;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.gcd(a, b));
+    }
+
+    /**
+     * Тест метода gcd(int a, int b) который проверяет на ошибку IllegalArgumentException если значение b ,было меньше 0
+     */
+    @Test
+    public void gcdExceptionsBLessZeroTest() {
+        int a = 3;
+        int b = -1;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.gcd(a, b));
+    }
+
+    private static Object[] testProductOfArrayValues() {
+        int[] array1 = {1, 2, 3, 8, 9};
+        int[] array2 = {-1, 6, 9, 7};
+        int[] array3 = {-1, 6, 9, -7};
+        return new Object[]{
+                new Object[]{array1, 432},
+                new Object[]{array2, -378},
+                new Object[]{array3, 378}
+        };
+    }
+
+    /**
+     * Тест метода productOfArray(int[] array) который принимает на вход массив целых чисел и выводит перемноженные
+     * элементы массива
+     *
+     * @param array    - массив чисел (int[])
+     * @param expected - результат перемноженное число (int)
+     *                 ссылка на данные метод "testProductOfArrayValues"
+     */
+    @Test
+    @Parameters(method = "testProductOfArrayValues")
+    public void productOfArrayTest(int[] array, int expected) {
+        Assertions.assertEquals(expected, calculator.productOfArray(array));
+    }
+
+    /**
+     * Тест метода productOfArray(int[] array) на ошибку NullPointerException если был перед массив со значением NULL
+     */
+    @Test
+    public void productOfArrayExceptionsTest() {
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.productOfArray(null));
+    }
+
+    private static Object[] testLengthOfLongestWordValues() {
+        return new Object[]{
+                new Object[]{"Mam a ty myla ramu", 4},
+                new Object[]{"Da Anton ja pomyla ramy", 6},
+                new Object[]{"Horosho", 7}
+        };
+    }
+
+    /**
+     * Тест метода lengthOfLongestWord(sentence) который принимает на вход предложение и выводит максимальную длину
+     * максимально большого слова
+     *
+     * @param sentence - предложение(String)
+     * @param expected - длинна максимального слова(int)
+     *                 ссылка на данные метод "testLengthOfLongestWordValues"
+     */
+    @Test
+    @Parameters(method = "testLengthOfLongestWordValues")
+    public void lengthOfLongestWordTest(String sentence, int expected) {
+        Assertions.assertEquals(expected, calculator.lengthOfLongestWord(sentence));
+    }
+
+    /**
+     * Тест метода lengthOfLongestWord(sentence) на ошибку NullPointerException если была передана строка со значением
+     * NULL
+     */
+    @Test
+    public void lengthOfLongestWordExceptionsTest() {
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.lengthOfLongestWord(null));
+    }
+
+    private static Object[] testCelsiusToFahrenheitValues() {
+        return new Object[]{
+                new Object[]{12, 53.6},
+                new Object[]{-11, 12.2},
+                new Object[]{0, 32}
+        };
+    }
+
+    /**
+     * Тест метода celsiusToFahrenheit(double celsius) который принимает на вход температуру в цельсиях и выводит
+     * температуру в фаренгейтах
+     *
+     * @param celsius  - температура в цельсиях double)
+     * @param expected - результат температура в фаренгейтах (double)
+     *                 ссылка на данные метод "testCelsiusToFahrenheitValues"
+     */
+    @Test
+    @Parameters(method = "testCelsiusToFahrenheitValues")
+    public void celsiusToFahrenheitTest(double celsius, double expected) {
+        Assertions.assertEquals(expected, calculator.celsiusToFahrenheit(celsius));
+    }
+
+    private static Object[] testContainsSubstringValues() {
+        return new Object[]{
+                new Object[]{"mama", "ma", true},
+                new Object[]{"mama", "a", true},
+                new Object[]{"mama", "jj", false},
+                new Object[]{"mama", "ja", false},
+                new Object[]{"ma", "ma", true},
+        };
+    }
+
+    /**
+     * Тест метода containsSubstring(String main, String sub) который принимает на вход проверка на вхождение подстроки
+     * в строку
+     *
+     * @param main     - строка (String)
+     * @param sub      - подстрока (String)
+     * @param expected - входит в строку подстрока (boolean)
+     *                 ссылка на данные метод "testContainsSubstringValues"
+     */
+    @Test
+    @Parameters(method = "testContainsSubstringValues")
+    public void containsSubstringTest(String main, String sub, boolean expected) {
+        Assertions.assertEquals(expected, calculator.containsSubstring(main, sub));
+    }
+
+    /**
+     * Тест метода containsSubstring(String main, String sub) который проверяет на ошибку IllegalArgumentException
+     * если подстрока больше строки
+     */
+    @Test
+    public void containsSubstringExceptionsLengthTest() {
+        String main = "ma";
+        String sub = "mama";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.containsSubstring(main, sub));
+    }
+
+    /**
+     * Тест метода containsSubstring(String main, String sub) который проверяет на ошибку NullPointerException
+     * если подстрока равна NULL
+     */
+    @Test
+    public void containsSubstringNullExceptionsTest() {
+        String main = "mama";
+        String sub = null;
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.containsSubstring(main, sub));
+    }
+
+    /**
+     * Тест метода containsSubstring(String main, String sub) который проверяет на ошибку NullPointerException
+     * если строка равна NULL
+     */
+    @Test
+    public void containsSubstringExceptionsTest() {
+        String main = null;
+        String sub = "ma";
+        Assertions.assertThrows(NullPointerException.class, () -> calculator.containsSubstring(main, sub));
+    }
+
+    private static Object[] testSumDigitsValues() {
+        return new Object[]{
+                new Object[]{256, 13},
+                new Object[]{11, 2},
+                new Object[]{100, 1},
+                new Object[]{-25, -7},
+                new Object[]{-76, -13},
+                new Object[]{0, 0},
+                new Object[]{-1, -1}
+        };
+    }
+
+    /**
+     * Тест метода sumOfDigits(int number) который считает сумму цифр числа 256 --> 2 + 5 + 6
+     *
+     * @param number   - число на вход (int)
+     * @param expected - полученное число
+     *                 ссылка на данные метод "testSumDigitsValues"
+     */
+    @Test
+    @Parameters(method = "testSumDigitsValues")
+    public void sumOfDigitsTest(int number, int expected) {
+        Assertions.assertEquals(expected, calculator.sumOfDigits(number));
+    }
+
+    private static Object[] testIsLeapYearsValues() {
+        return new Object[]{
+                new Object[]{2024, true},
+                new Object[]{2023, false},
+                new Object[]{1956, true},
+                new Object[]{1958, false},
+                new Object[]{2000, true},
+                new Object[]{1804, true},
+                new Object[]{1800, false}
+        };
+    }
+
+    /**
+     * Тест метода isLeapYearTest(int year) который проверяет является ли этот год високосным
+     *
+     * @param year     - год (int)
+     * @param expected - високосный год (boolean)
+     *                 ссылка на данные метод "testIsLeapYearsValues"
+     */
+    @Test
+    @Parameters(method = "testIsLeapYearsValues")
+    public void isLeapYearTest(int year, boolean expected) {
+        Assertions.assertEquals(expected, calculator.isLeapYear(year));
+    }
+
+    /**
+     * Тест метода isLeapYearTest(int year) который проверяет на ошибку IllegalArgumentException год был указан
+     * меньше чем 1582 неуч L
+     */
+    @Test
+    public void isLeapYearToExceptionsTest() {
+        int years = 1581;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.isLeapYear(years));
+    }
 
 }
