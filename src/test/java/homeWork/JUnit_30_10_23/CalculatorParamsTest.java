@@ -311,7 +311,8 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Тест метода toBaseString(int n, int base) который переводит число n в систему счисления base и выводит результат в виде String
+     * Тест метода toBaseString(int n, int base) который переводит число n в систему счисления base и выводит результат
+     * в виде String
      *
      * @param n        - число (int)
      * @param base     - в какую систему счисления перевести с 2 до 16 (int)
@@ -346,7 +347,8 @@ public class CalculatorParamsTest {
         return new Object[]{
                 new Object[]{16, 4},
                 new Object[]{25, 5},
-                new Object[]{9, 3}
+                new Object[]{9, 3},
+                new Object[]{0, 0}
         };
     }
 
@@ -362,4 +364,38 @@ public class CalculatorParamsTest {
     public void sqrtTest(double a, double expected) {
         Assertions.assertEquals(expected, calculator.sqrt(a));
     }
+
+    /**
+     * Тест метода sqrt(double a) который проверяет на ошибку IllegalArgumentException если было передано число а
+     * отрицательным
+     */
+    @Test
+    public void sqrtExceptionsTest() {
+        double a = -2;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.sqrt(a));
+    }
+
+    private static Object[] testReverseStringValues(){
+        return new Object[]{
+                new Object[]{"mama","amam"},
+                new Object[]{"Asd12","21dsA"},
+                new Object[]{"123ASD","DSA321"},
+                new Object[]{"Aliaksei","ieskailA"}
+        };
+    }
+
+    /**
+     * Тест метода reverseString(String input) который проверяет делает он инвертирование или нет
+     * @param input - строка на вход
+     * @param expected - инвертированная строка на выход
+     *                         ссылка на данные метод "testReverseStringValues"
+     */
+    @Test
+    @Parameters(method = "testReverseStringValues")
+    public void reverseStringTest(String input, String expected){
+        Assertions.assertEquals(expected,calculator.reverseString(input));
+    }
+
+
+
 }
