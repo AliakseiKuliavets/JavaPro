@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 
 /**
  * Использую параметризацию тестов поэтому важно иметь зависимость
- *
  * <dependency>
  * <groupId>pl.pragmatists</groupId>
  * <artifactId>JUnitParams</artifactId>
@@ -228,7 +227,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Метод который проверяет на ошибку если в переданный метод findMax() был перед массив со значением NULL
+     * Метод, который проверяет на ошибку если в переданный метод findMax() был передан массив со значением NULL
      */
     @Test
     public void findMaxExceptionsTest() {
@@ -261,7 +260,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Методы которые проверяют на ошибку если в переданный метод isPrime() было передано число меньше или равно 1
+     * Методы, которые проверяют на ошибку если в переданный метод isPrime() было передано число меньше или равно 1
      */
     @Test
     public void isPrimeExceptionsOneTest() {
@@ -326,7 +325,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Методы которые проверяют на ошибку если в переданный метод toBaseString() была передана систему счисления base
+     * Методы, которые проверяют на ошибку если в переданный метод toBaseString() была передана систему счисления base
      * больше 16 и меньше 2
      */
     @Test
@@ -366,7 +365,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Тест метода sqrt(double a) который проверяет на ошибку IllegalArgumentException если было передано число а
+     * Тест метода sqrt(double a) который проверяет на ошибку IllegalArgumentException если было передано число, а
      * отрицательным
      */
     @Test
@@ -385,7 +384,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Тест метода reverseString(String input) который проверяет делает он инвертирование или нет
+     * Тест метода reverseString(String input) который проверяет, делает ли он инвертирование или нет
      *
      * @param input    - строка на вход
      * @param expected - инвертированная строка на выход
@@ -398,7 +397,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Тест метода reverseString(String input) который проверяет на ошибку IllegalArgumentException если была передана
+     * Тест метода reverseString(String input) который проверяет на ошибку IllegalArgumentException если  переданная
      * строка была равно NULL
      */
     @Test
@@ -419,7 +418,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Тест метода isPalindrome(String input) который проверяет является ли строка палиндромом
+     * Тест метода isPalindrome(String input) который проверяет, является ли строка палиндромом
      *
      * @param input    - строка на вход (String)
      * @param expected - получаемый результат (boolean)
@@ -433,7 +432,7 @@ public class CalculatorParamsTest {
 
     /**
      * Тест метода isPalindrome(String input) который проверяет на ошибку IllegalArgumentException если была передана
-     * строка была равно NULL
+     * строка равная NULL
      */
     @Test
     public void isPalindromeExceptionsTest() {
@@ -579,7 +578,7 @@ public class CalculatorParamsTest {
      * Тест метода celsiusToFahrenheit(double celsius) который принимает на вход температуру в цельсиях и выводит
      * температуру в фаренгейтах
      *
-     * @param celsius  - температура в цельсиях double)
+     * @param celsius  - температура в цельсиях (double)
      * @param expected - результат температура в фаренгейтах (double)
      *                 ссылка на данные метод "testCelsiusToFahrenheitValues"
      */
@@ -685,7 +684,7 @@ public class CalculatorParamsTest {
     }
 
     /**
-     * Тест метода isLeapYearTest(int year) который проверяет является ли этот год високосным
+     * Тест метода isLeapYearTest(int year) который проверяет, является ли этот год високосным
      *
      * @param year     - год (int)
      * @param expected - високосный год (boolean)
@@ -706,5 +705,4 @@ public class CalculatorParamsTest {
         int years = 1581;
         Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.isLeapYear(years));
     }
-
 }
