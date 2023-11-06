@@ -54,7 +54,8 @@ public class InventoryServiceTest {
      * Тест, который проверяет, возвращает ли метод updateStock(String sku, int quantityChange) false если было передано
      * неправильное название продукта или хотят купить продуктов больше чем есть в складу.
      * Тест, который проверяет, возвращает ли метод updateStock(String sku, int quantityChange) true если было передано
-     * правильное название продукта и если хотят купить продуктов меньше чем есть на складу
+     * правильное название продукта и хотят добавить n количество продуктов или хотят купить продуктов меньше чем есть
+     * на складу
      *
      * @param sky            - уникальный идентификатор продукта (String)
      * @param quantityChange - количество продуктов (int)
@@ -80,14 +81,14 @@ public class InventoryServiceTest {
 
     /**
      * Тест, который проверяет 1:
-     * Возвращает ли метод updateStock(String sku, int quantityChange) true если мы успешно изменили количество продуктов
+     * Возвращает ли метод updateStock(String sku, int quantityChange) true если мы успешно изменили количество продуктов.
      * Тест, который проверяет 2:
-     * Увеличилось ли количество продуктов в складу после успешного добавления если мы успешно добавили продукты
+     * Изменилось ли количество продуктов в складу после успешного изменения продуктов
      *
      * @param sky            - уникальный идентификатор продукта (String)
      * @param quantityChange - количество продуктов (int)
      * @param expected       - что ожидаем получить
-     *                        ссылка на данные метод "testUpdateStockTrueValues"
+     *                       ссылка на данные метод "testUpdateStockTrueValues"
      */
     @Test
     @Parameters(method = "testUpdateStockTrueValues")
