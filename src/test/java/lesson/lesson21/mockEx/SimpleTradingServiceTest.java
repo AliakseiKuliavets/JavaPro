@@ -22,9 +22,7 @@ class SimpleTradingServiceTest {
         Mockito.when(tradeRepository.createTrade(trade)).thenReturn(anyLong());
         TradingService tradingService = new SimpleTradingService(tradeRepository,auditService);
         tradingService.createTrade(trade);
+
         Mockito.verify(auditService).logNewTrade(trade);
-    }
-    @Test
-    public void createTrade() {
     }
 }
