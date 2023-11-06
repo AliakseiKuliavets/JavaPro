@@ -28,6 +28,10 @@ public class StudentService {
         return student;
     }
 
+    public void clear(){
+        students.clear();
+    }
+
 //        7. Методы сервиса должны:
 //                А. Возвращать список всех студентов.
 

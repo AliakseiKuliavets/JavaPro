@@ -79,3 +79,16 @@ class OrderService {
         return paymentProcessed;
     }
 }
+//    @Test
+//    public void placeOrderTrueTest() {
+//        externalPaymentApi = Mockito.mock(ExternalPaymentApi.class);
+//        when(externalPaymentApi.requestPayment(order)).thenReturn(true);
+//        paymentService = new PaymentService(externalPaymentApi);
+//        orderService = new OrderService(paymentService);
+//        Mockito.when(paymentService.processPayment(order)).thenReturn(true);
+//
+//        orderService.placeOrder(order);
+//        Assertions.assertTrue(orderService.placeOrder(order));
+//        Assertions.assertTrue(order.isPaid());
+//        verify(orderService).placeOrder(order);
+//    }

@@ -1,29 +1,50 @@
 package lesson.lesson21.taski;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
-    @InjectMocks
+    @Mock
     private OrderService orderService;
+
     @Mock
     private PaymentService paymentService;
 
-    @Test
-    public void placeOrderTrueTest() {
-        Order order = new Order("1", 100.0, false);
-        when(paymentService.processPayment(order)).thenReturn(true);
+    @BeforeEach
+    public void setUp(){
+        orderService = new OrderService(paymentService);
+    }
 
-        orderService.placeOrder(order);
-        Assertions.assertTrue(orderService.placeOrder(order));
-        Assertions.assertTrue(order.isPaid());
-//        verify(orderService).placeOrder(order);
+    @Test
+    public void placeOrderTrue() {
+        Order order = new Order("ad", 20.2, false);
+        Mockito.when(paymentService.processPayment(order)).thenReturn(true);
+
+        boolean result = orderService.placeOrder(order);
+
+        assertTrue(result);
+        assertTrue(order.isPaid());
+
+        Mockito.verify(paymentService).processPayment(order);
+    }
+    @Test
+    public void placeOrderFalse() {
+        Order order = new Order("ad", 20.2, false);
+        Mockito.when(paymentService.processPayment(order)).thenReturn(false);
+
+        boolean result = orderService.placeOrder(order);
+
+        Assertions.assertFalse(result);
+        Assertions.assertFalse(order.isPaid());
+
+        Mockito.verify(paymentService).processPayment(order);
     }
 }
