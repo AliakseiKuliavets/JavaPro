@@ -51,6 +51,10 @@ class InventoryService {
         productStockDatabase.put("IJK654", 150);
     }
 
+    public Map<String, Integer> getProductStockDatabase() {
+        return productStockDatabase;
+    }
+
     public int checkProductStock(String sku) {
         return productStockDatabase.getOrDefault(sku, 0);
     }
