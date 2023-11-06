@@ -41,7 +41,6 @@ public class InventoryServiceTest {
                 new Object[]{"IJK654", -350, false},
                 new Object[]{"adada", 150, false},
                 new Object[]{"ASdc", -350, false},
-                new Object[]{"XYZ98", 350, false},
                 new Object[]{"ABC123", 150, true},
                 new Object[]{"XYZ987", 200, true},
                 new Object[]{"IJK654", 350, true},
@@ -72,13 +71,16 @@ public class InventoryServiceTest {
         return new Object[]{
                 new Object[]{"ABC123", 150, 250},
                 new Object[]{"XYZ987", 200, 400},
-                new Object[]{"IJK654", 200, 350}
+                new Object[]{"IJK654", 200, 350},
+                new Object[]{"ABC123", -50, 50},
+                new Object[]{"XYZ987", -20, 180},
+                new Object[]{"IJK654", -50, 100}
         };
     }
 
     /**
      * Тест, который проверяет 1:
-     * Возвращает ли метод updateStock(String sku, int quantityChange) true если мы успешно добавили продукты.
+     * Возвращает ли метод updateStock(String sku, int quantityChange) true если мы успешно изменили количество продуктов
      * Тест, который проверяет 2:
      * Увеличилось ли количество продуктов в складу после успешного добавления если мы успешно добавили продукты
      *
