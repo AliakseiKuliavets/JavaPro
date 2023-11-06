@@ -57,15 +57,15 @@ public class InventoryServiceTest {
      * правильное название продукта и хотят добавить n количество продуктов или хотят купить продуктов меньше чем есть
      * на складу
      *
-     * @param sky            - уникальный идентификатор продукта (String)
+     * @param sku            - уникальный идентификатор продукта (String)
      * @param quantityChange - количество продуктов (int)
      * @param expected       - что ожидаем получить
      *                       ссылка на данные метод "testUpdateStockBooleanValues"
      */
     @Test
     @Parameters(method = "testUpdateStockBooleanValues")
-    public void updateStockBooleanTest(String sky, int quantityChange, boolean expected) {
-        Assertions.assertEquals(expected, inventoryService.updateStock(sky, quantityChange));
+    public void updateStockBooleanTest(String sku, int quantityChange, boolean expected) {
+        Assertions.assertEquals(expected, inventoryService.updateStock(sku, quantityChange));
     }
 
     private static Object testUpdateStockTrueValues() {
@@ -85,16 +85,16 @@ public class InventoryServiceTest {
      * Тест, который проверяет 2:
      * Изменилось ли количество продуктов в складу после успешного изменения продуктов
      *
-     * @param sky            - уникальный идентификатор продукта (String)
+     * @param sku            - уникальный идентификатор продукта (String)
      * @param quantityChange - количество продуктов (int)
      * @param expected       - что ожидаем получить
      *                       ссылка на данные метод "testUpdateStockTrueValues"
      */
     @Test
     @Parameters(method = "testUpdateStockTrueValues")
-    public void updateStockProductAddMoreSameProductOnStockTest(String sky, int quantityChange, int expected) {
-        Assertions.assertTrue(inventoryService.updateStock(sky, quantityChange));
+    public void updateStockProductAddMoreSameProductOnStockTest(String sku, int quantityChange, int expected) {
+        Assertions.assertTrue(inventoryService.updateStock(sku, quantityChange));
 
-        Assertions.assertEquals(expected, inventoryService.checkProductStock(sky));
+        Assertions.assertEquals(expected, inventoryService.checkProductStock(sku));
     }
 }
