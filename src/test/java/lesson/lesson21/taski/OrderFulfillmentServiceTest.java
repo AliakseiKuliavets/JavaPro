@@ -1,6 +1,6 @@
 package lesson.lesson21.taski;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,9 +18,6 @@ public class OrderFulfillmentServiceTest {
     @Mock
     private InventoryService inventoryService;
 
-    @BeforeEach
-    public void setUp() {
-    }
 
     @Test
     public void fulfillOrderWithSufficientStock() {
@@ -28,12 +25,8 @@ public class OrderFulfillmentServiceTest {
         String sku = product.getSku();
         int quantity = 50;
 
-//        InventoryService inventoryService = Mockito.mock(InventoryService.class);
-
         Mockito.when(inventoryService.checkProductStock(sku)).thenReturn(100);
         Mockito.when(inventoryService.updateStock(sku, -quantity)).thenReturn(true);
-
-        orderFulfillmentService = new OrderFulfillmentService(inventoryService);
 
         boolean result = orderFulfillmentService.fulfillOrder(product, quantity);
 
@@ -49,11 +42,8 @@ public class OrderFulfillmentServiceTest {
         Product product = new Product("123", 150);
         String sku = product.getSku();
         int quantity = -200;
-        InventoryService inventoryService = Mockito.mock(InventoryService.class);
 
         Mockito.when(inventoryService.checkProductStock(sku)).thenReturn(150);
-
-        OrderFulfillmentService orderFulfillmentService = new OrderFulfillmentService(inventoryService);
 
         boolean result = orderFulfillmentService.fulfillOrder(product, quantity);
 
@@ -64,12 +54,35 @@ public class OrderFulfillmentServiceTest {
         Mockito.verify(inventoryService).updateStock(sku, -quantity);
     }
 
-//    @Test
-//    public  void returnItemsToInventoryTrueTest(){
-//        Product product = new Product("123", 150);
-//        String sku = product.getSku();
-//        int quantity = 50;
-//
-//        Mockito.when()
-//    }
+    @Test
+    public  void returnItemsToInventoryTrueTest(){
+        Product product = new Product("123", 150);
+        String sku = product.getSku();
+        int quantity = 50;
+
+        Mockito.when(inventoryService.updateStock(sku, quantity)).thenReturn(true);
+
+        boolean result = orderFulfillmentService.returnItemsToInventory(product, quantity);
+
+        Assertions.assertTrue(result);
+        Assertions.assertEquals(200, product.getStockQuantity());
+
+        Mockito.verify(inventoryService).updateStock(sku, quantity);
+    }
+
+    @Test
+    public void returnItemsToInventoryFalseTest(){
+        Product product = new Product("123", 150);
+        String sku = product.getSku();
+        int quantity = -150;
+
+        Mockito.when(inventoryService.updateStock(sku, quantity)).thenReturn(false);
+
+        boolean result = orderFulfillmentService.returnItemsToInventory(product, quantity);
+
+        Assertions.assertFalse(result);
+        Assertions.assertEquals(150, product.getStockQuantity());
+
+        Mockito.verify(inventoryService).updateStock(sku, quantity);
+    }
 }
