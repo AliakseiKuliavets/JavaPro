@@ -1,9 +1,9 @@
 package lesson.lesson21.mockEx;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 public class MockNotCallMethods {
-    @Mock
+    @Spy
     List<String> list = new ArrayList<>();
     
     @Test
