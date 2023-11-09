@@ -15,6 +15,9 @@ public class ProductService {
         this.merchService = merchService;
     }
 
+    public Map<Integer, Product> getProducts() {
+        return products;
+    }
     // Запрос всех продуктов:
     // Мы должны запросить сторонний сервис, нужна ли информация о поставщике.
     // Если нет - удаляем информацию из объектов продуктов.
