@@ -35,4 +35,16 @@ class PaymentServiceTest {
         Mockito.verify(paymentApi).requestPayment(order);
         Mockito.verify(paymentApi).verifyPayment(order.getId());
     }
+
+    @Test
+    public void processPaymentTrueAndFalse(){
+        Mockito.when(paymentApi.requestPayment(order)).thenReturn(true);
+        Mockito.when(paymentApi.verifyPayment(order.getId())).thenReturn(false);
+
+        boolean result = paymentService.processPayment(order);
+
+        Assertions.assertFalse(result);
+        Mockito.verify(paymentApi).requestPayment(order);
+        Mockito.verify(paymentApi).verifyPayment(order.getId());
+    }
 }
