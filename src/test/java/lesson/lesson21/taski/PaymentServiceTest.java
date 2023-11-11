@@ -11,22 +11,22 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class PaymentServiceTest {
-    @InjectMocks
+
     private PaymentService paymentService;
 
     @Mock
     private ExternalPaymentApi paymentApi;
 
-    private static Order order ;
+    private static Order order;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         paymentService = new PaymentService(paymentApi);
-        order = new Order("123",20.0,true);
+        order = new Order("123", 20.0, true);
     }
 
     @Test
-    public void processPaymentTrueAndTrue(){
+    public void processPaymentTrueAndTrue() {
         Mockito.when(paymentApi.requestPayment(order)).thenReturn(true);
         Mockito.when(paymentApi.verifyPayment(order.getId())).thenReturn(true);
 
@@ -38,7 +38,7 @@ class PaymentServiceTest {
     }
 
     @Test
-    public void processPaymentTrueAndFalse(){
+    public void processPaymentTrueAndFalse() {
         Mockito.when(paymentApi.requestPayment(order)).thenReturn(true);
         Mockito.when(paymentApi.verifyPayment(order.getId())).thenReturn(false);
 
@@ -50,7 +50,7 @@ class PaymentServiceTest {
     }
 
     @Test
-    public void processPaymentFalseAndFalse(){
+    public void processPaymentFalseAndFalse() {
         Mockito.when(paymentApi.requestPayment(order)).thenReturn(false);
 
         boolean result = paymentService.processPayment(order);
