@@ -17,11 +17,12 @@ class PaymentServiceTest {
     @Mock
     private ExternalPaymentApi paymentApi;
 
-    private static final Order order = new Order("123",20.0,true);
+    private static Order order ;
 
     @BeforeEach
     public void setUp(){
         paymentService = new PaymentService(paymentApi);
+        order = new Order("123",20.0,true);
     }
 
     @Test
@@ -46,5 +47,15 @@ class PaymentServiceTest {
         Assertions.assertFalse(result);
         Mockito.verify(paymentApi).requestPayment(order);
         Mockito.verify(paymentApi).verifyPayment(order.getId());
+    }
+
+    @Test
+    public void processPaymentFalseAndFalse(){
+        Mockito.when(paymentApi.requestPayment(order)).thenReturn(false);
+
+        boolean result = paymentService.processPayment(order);
+
+        Assertions.assertFalse(result);
+        Mockito.verify(paymentApi).requestPayment(order);
     }
 }
