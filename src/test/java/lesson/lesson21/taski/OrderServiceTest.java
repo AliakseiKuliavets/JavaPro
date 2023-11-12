@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
-    @Mock
+
     private OrderService orderService;
 
     @Mock
