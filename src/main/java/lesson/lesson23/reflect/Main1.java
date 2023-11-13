@@ -16,6 +16,5 @@ public class Main1 {
 //        System.out.println(emp);
         System.out.println(object);
 
-
     }
 }
