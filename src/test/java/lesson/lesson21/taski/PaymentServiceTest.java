@@ -24,6 +24,11 @@ class PaymentServiceTest {
         order = new Order("123", 20.0, true);
     }
 
+    /**
+     * Тест который проверяет processPayment(Order order) если все методы пройдут
+     * paymentApi.requestPayment(order) == true
+     * paymentApi.verifyPayment(order.getId()) == true
+     */
     @Test
     public void processPaymentTrueAndTrue() {
         Mockito.when(paymentApi.requestPayment(order)).thenReturn(true);
@@ -36,6 +41,11 @@ class PaymentServiceTest {
         Mockito.verify(paymentApi).verifyPayment(order.getId());
     }
 
+    /**
+     * Тест который проверяет processPayment(Order order) если не все методы пройдут
+     * paymentApi.requestPayment(order) == true
+     * paymentApi.verifyPayment(order.getId()) == false
+     */
     @Test
     public void processPaymentTrueAndFalse() {
         Mockito.when(paymentApi.requestPayment(order)).thenReturn(true);
@@ -48,6 +58,10 @@ class PaymentServiceTest {
         Mockito.verify(paymentApi).verifyPayment(order.getId());
     }
 
+    /**
+     * Тест который проверяет processPayment(Order order) если первый не пройдет
+     * paymentApi.requestPayment(order) == false
+     */
     @Test
     public void processPaymentFalseAndFalse() {
         Mockito.when(paymentApi.requestPayment(order)).thenReturn(false);
