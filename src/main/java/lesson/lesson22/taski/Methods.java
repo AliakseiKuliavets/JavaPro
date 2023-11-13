@@ -1,8 +1,5 @@
 package lesson.lesson22.taski;
 
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.*;
 
 public class Methods {
