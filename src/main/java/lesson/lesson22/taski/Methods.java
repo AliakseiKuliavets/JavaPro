@@ -140,4 +140,23 @@ public class Methods {
         return result.toString();
     }
 
+    public static String incrementString(String str) {
+        if (str == null || str.isEmpty()) {
+            return "1";
+        }
+
+        String[] parts = str.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+
+        if (parts.length == 2) {
+            String nonDigitPart = parts[0];
+            String digitPart = parts[1];
+
+            int number = Integer.parseInt(digitPart) + 1;
+            String formattedNumber = String.format("%0" + digitPart.length() + "d", number);
+
+            return nonDigitPart + formattedNumber;
+        } else {
+            return str + "1";
+        }
+    }
 }

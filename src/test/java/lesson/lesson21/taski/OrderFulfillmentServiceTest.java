@@ -37,7 +37,7 @@ public class OrderFulfillmentServiceTest {
     }
 
     @Test
-    public void fulfillOrderWithFalsetStock() {
+    public void fulfillOrderWithFalseStock() {
         Product product = new Product("123", 150);
         String sku = product.getSku();
         int quantity = -200;

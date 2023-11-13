@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -82,5 +83,19 @@ class MethodsTest {
         assertEquals("I", Methods.solution(1));
         assertEquals( "IV", Methods.solution(4));
         assertEquals( "VI", Methods.solution(6));
+    }
+
+    private static void doTest(String str, String expected) {
+        String actual = assertDoesNotThrow(() -> Methods.incrementString(str), "Solution thrown an unexpected exception for str=\"" + str + "\"\n\n");
+        assertEquals(expected, actual, "Incorrect answer for str=\"" + str + "\"\n\n");
+    }
+    @Test
+    public void exampleTests() {
+        doTest("foobar000", "foobar001");
+        doTest("foo", "foo1");
+        doTest("foobar001", "foobar002");
+        doTest("foobar99", "foobar100");
+        doTest("foobar099", "foobar100");
+        doTest("", "1");
     }
 }
