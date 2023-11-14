@@ -12,16 +12,11 @@ public class Methods {
     public static void main(String[] args) {
         String fileName = "D:\\tel_ran\\JavaPro\\src\\main\\java\\homeWork\\_08_11_2023\\1.txt";
         List<String> stringListName = stringName(fileName);
-        List<String> stringListLastName = stringLastName(fileName);
+        List<String> stringListLastName = Arrays.asList("Edwards","Edwards", "Herman", "Blake", "Griffin", "Mitchell");
+        List<String> stringsNumberPhone = Arrays.asList("+1-240-701-5763x6875", "(432)461-5121", "+1-159-322-4388x60509");
         Map<Character, Long> characterLongMap = returnKeyStartNameLetterValueCount(stringListName);
 
-        System.out.println(stringListName);
-        System.out.println(stringListLastName);
-        System.out.println(characterLongMap);
-        System.out.println(returnMostPopularLetterName(characterLongMap));
-        System.out.println(returnSortedLengthName(stringListName));
-        System.out.println(returnFirstLastLetterAlphabetName(stringListName));
-        System.out.println(returnAvgLengthName(stringListName));
+        System.out.println(returnUniqueLastName(stringListLastName));
     }
 
     public static List<String> stringName(String fileName) {
@@ -100,6 +95,26 @@ public class Methods {
                 .toString();
     }
 
+    //4.Метод для создания списка номеров телефонов, где каждый номер преобразован в числовой формат
+    public static List<Long> returnInLongNumberPhone(List<String> stringsNumberPhone) {
+        if (stringsNumberPhone == null || stringsNumberPhone.isEmpty()) {
+            throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
+        }
+        List<Long> integerList = new ArrayList<>();
+        for (String number : stringsNumberPhone) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int j = 0; j < number.length(); j++) {
+                if (Character.isDigit(number.charAt(j))) {
+                    stringBuilder.append(number.charAt(j));
+                }
+                if (j == number.length() - 1) {
+                    integerList.add(Long.parseLong((String.valueOf(stringBuilder))));
+                }
+            }
+        }
+        return integerList;
+    }
+
     //5.Метод для группировки имен по длине имени
     public static List<String> returnSortedLengthName(List<String> stringListName) {
         if (stringListName == null || stringListName.isEmpty()) {
@@ -107,6 +122,16 @@ public class Methods {
         }
         return stringListName.stream()
                 .sorted()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    //6.Метод для поиска уникальных фамилий
+    public static List<String> returnUniqueLastName(List<String> stringListLastName) {
+        if (stringListLastName == null || stringListLastName.isEmpty()) {
+            throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
+        }
+        return stringListLastName.stream()
                 .distinct()
                 .collect(Collectors.toList());
     }

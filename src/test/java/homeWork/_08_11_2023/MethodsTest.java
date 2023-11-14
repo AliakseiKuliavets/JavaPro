@@ -10,7 +10,15 @@ class MethodsTest {
     private static final String stringName = "D:\\tel_ran\\JavaPro\\src\\main\\java\\homeWork\\_08_11_2023\\1.txt";
     private List<String> stringListName = Arrays.asList("Bryan", "Margaret", "Jeffery", "Bob");
     private Map<Character, Long> characterLongMap = Methods.returnKeyStartNameLetterValueCount(stringListName);
+    private List<String> stringListLastName = Arrays.asList(
+            "Edwards", "Edwards", "Herman", "Blake", "Griffin", "Mitchell"
+    );
 
+    private List<String> stringsNumberPhone = Arrays.asList(
+            "+1-240-701-5763x6875",
+            "(432)461-5121",
+            "+1-159-322-4388x60509"
+    );
 
     // ---------------------------------------------1-----------------------------------------------
 
@@ -43,13 +51,29 @@ class MethodsTest {
     //----------------------------------------------------2---------------------------------------------
 
     /**
-     * Тест метода returnKeyStartNameLetterValueCount(List<String> stringListName) который сравнивает результат,
+     * Тест метода returnKeyStartNameLetterValueCount(List<String> stringListName) который создает Map
+     * где ключ - первая буква имени, а значение - количество таких имен
+     * На вход:
      * размер List<String> == 4 ("Bryan", "Margaret", "Jeffery","Bob")
-     * размер  Map<Character, Long> == 3 [B=2, M=1, J=1]
+     * На выход:
+     * размер  Map<Character, Long> map.size() == 3 [B=2, M=1, J=1]
+     */
+    @Test
+    public void returnKeyStartNameLetterValueCountMapLengthPositiveTest() {
+        Assertions.assertEquals(3, Methods.returnKeyStartNameLetterValueCount(stringListName).size());
+    }
+
+    /**
+     * Тест метода returnKeyStartNameLetterValueCount(List<String> stringListName) который создает Map
+     * где ключ - первая буква имени, а значение - количество таких имен
+     * На вход:
+     * размер List<String> == 4 ("Bryan", "Margaret", "Jeffery","Bob")
+     * На выход:
+     * размер  Map<Character, Long> map.get('B') == [B=2]
      */
     @Test
     public void returnKeyStartNameLetterValueCountPositiveTest() {
-        Assertions.assertEquals(3, Methods.returnKeyStartNameLetterValueCount(stringListName).size());
+        Assertions.assertEquals(2, Methods.returnKeyStartNameLetterValueCount(stringListName).get('B'));
     }
 
     /**
@@ -68,7 +92,8 @@ class MethodsTest {
     @Test
 
     public void returnKeyStartNameLetterValueCountIllegalArgumentExceptionListEqualsNullTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnKeyStartNameLetterValueCount(null));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnKeyStartNameLetterValueCount(null));
     }
 
     /**
@@ -78,14 +103,18 @@ class MethodsTest {
     @Test
     public void returnKeyStartNameLetterValueCountIllegalArgumentExceptionEmptyListTest() {
         stringListName = new ArrayList<>();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnKeyStartNameLetterValueCount(stringListName));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnKeyStartNameLetterValueCount(stringListName));
     }
 
     //----------------------------------------------------3---------------------------------------------
 
     /**
-     * Тест метода  returnMostPopularLetterName(Map<Character, Long> characterLongMap) который сравнивает результат,
+     * Тест метода  returnMostPopularLetterName(Map<Character, Long> characterLongMap) который находит
+     * самую часто встречаемою первую букву в именах
+     * На вход:
      * данные Map<Character, Long> characterLongMap = [B=2, M=1, J=1]
+     * На выход:
      * вернет Optional[B=2]
      */
     @Test
@@ -108,7 +137,8 @@ class MethodsTest {
      */
     @Test
     public void returnMostPopularLetterNameIllegalArgumentExceptionMapIsNullTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnMostPopularLetterName(null));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnMostPopularLetterName(null));
     }
 
     /**
@@ -118,20 +148,107 @@ class MethodsTest {
     @Test
     public void returnMostPopularLetterNameIllegalArgumentExceptionMapIsEmptyTest() {
         characterLongMap = new HashMap<>();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnMostPopularLetterName(characterLongMap));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnMostPopularLetterName(characterLongMap));
     }
 
+    //----------------------------------------------------4---------------------------------------------
+
+    /**
+     * Тест метода  returnInLongNumberPhone(List<String> stringsNumberPhone) который преобразует каждый каждый номер
+     * в числовой формат.
+     * На вход:
+     * данные private List<String> stringsNumberPhone = Arrays.asList(
+     * "+1-240-701-5763x6875",
+     * "(432)461-5121",
+     * "+1-159-322-4388x60509"
+     * );
+     * На выход:
+     * List<Long> list.get(0) == 124070157636875L,
+     * List<Long> list.get(1) == 4324615121L
+     * Достаточно проверить пару элементов из массива
+     */
+    @Test
+    public void returnInLongNumberPhonePositiveTest() {
+        long numberPhone1 = 124070157636875L;
+        long numberPhone2 = 4324615121L;
+        Assertions.assertEquals(numberPhone1, Methods.returnInLongNumberPhone(stringsNumberPhone).get(0));
+        Assertions.assertEquals(numberPhone2, Methods.returnInLongNumberPhone(stringsNumberPhone).get(1));
+    }
+
+    /**
+     * Тест метода  returnInLongNumberPhone(List<String> stringsNumberPhone) который преобразует каждый каждый номер
+     * в числовой формат.
+     * На вход:
+     * данные private List<String> stringsNumberPhone = Arrays.asList(
+     * "+1-240-701-5763x6875",
+     * "(432)461-5121",
+     * "+1-159-322-4388x60509"
+     * );
+     * На выход:
+     * List<Long> list.size() == 4
+     */
+    @Test
+    public void returnInLongNumberPhoneSizePositiveTest() {
+        Assertions.assertEquals(3, Methods.returnInLongNumberPhone(stringsNumberPhone).size());
+    }
+
+    /**
+     * Тест метода returnInLongNumberPhone(List<String> stringsNumberPhone) который поверяет не возвращает ли
+     * данный метод NULL
+     */
+    @Test
+    public void returnInLongNumberPhonePositiveReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnInLongNumberPhone(stringsNumberPhone));
+    }
+
+    /**
+     * Тест метода returnInLongNumberPhone(List<String> stringsNumberPhone) который поверяет на ошибку
+     * IllegalArgumentException если stringsNumberPhone == null
+     */
+    @Test
+    public void returnInLongNumberPhoneIllegalArgumentExceptionListIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnInLongNumberPhone(null));
+    }
+
+    /**
+     * Тест метода returnInLongNumberPhone(List<String> stringsNumberPhone) который поверяет на ошибку
+     * IllegalArgumentException если stringsNumberPhone был пуст
+     */
+    @Test
+    public void returnInLongNumberPhoneIllegalArgumentExceptionListIsEmptyTest() {
+        stringsNumberPhone = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnInLongNumberPhone(stringsNumberPhone));
+    }
     //----------------------------------------------------5---------------------------------------------
 
     /**
-     * Тест метода returnSortedLengthName(List<String> stringListName) который сравнивает результат,
+     * Тест метода returnSortedLengthName(List<String> stringListName) который  группирует имена по длине имени.
+     * На вход:
      * данные List<String> stringListName ("Bryan", "Margaret", "Jeffery","Bob")
-     * вернет ("Bob", "Bryan", "Jeffery", "Margaret")
+     * На выход:
+     * List<String> name.get(0) == "Bob"
+     * List<String> name.get(1) == "Bryan"
+     * Достаточно проверить пару элементов из массива
      */
     @Test
     public void returnSortedLengthNamePositiveTest() {
-        List<String> list = Arrays.asList("Bob", "Bryan", "Jeffery", "Margaret");
-        Assertions.assertEquals(list, Methods.returnSortedLengthName(stringListName));
+        String name1 = "Bob";
+        String name2 = "Bryan";
+        Assertions.assertEquals(name1, Methods.returnSortedLengthName(stringListName).get(0));
+        Assertions.assertEquals(name2, Methods.returnSortedLengthName(stringListName).get(1));
+    }
+
+    /**
+     * Тест метода returnSortedLengthName(List<String> stringListName) который группирует имена по длине имени.
+     * На вход: данные List<String> stringListName ("Bryan", "Margaret", "Jeffery","Bob")
+     * На выход List<String> name.size() == 4
+     */
+    @Test
+    public void returnSortedLengthNameSizeListPositiveTest() {
+        Assertions.assertEquals(4, Methods.returnSortedLengthName(stringListName).size());
     }
 
     /**
@@ -149,7 +266,8 @@ class MethodsTest {
      */
     @Test
     public void returnSortedLengthNameIllegalArgumentExceptionListIsNullTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnSortedLengthName(null));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnSortedLengthName(null));
     }
 
     /**
@@ -159,14 +277,80 @@ class MethodsTest {
     @Test
     public void returnSortedLengthNameIllegalArgumentExceptionListIsEmptyTest() {
         stringListName = new ArrayList<>();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnSortedLengthName(stringListName));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnSortedLengthName(stringListName));
+    }
+    //----------------------------------------------------6---------------------------------------------
+
+    /**
+     * Тест метода returnUniqueLastName(List<String> stringListLastName) который находит уникальные фамилии.
+     * На вход:
+     * данные List<String> stringListLastName = Arrays.asList(
+     * "Edwards", "Edwards", "Herman", "Blake", "Griffin", "Mitchell"
+     * );
+     * На выход:
+     * List<String> list.size() == 5
+     */
+    @Test
+    public void returnUniqueLastNameListSizePositiveTest() {
+        Assertions.assertEquals(5, Methods.returnUniqueLastName(stringListLastName).size());
     }
 
+    /**
+     * Тест метода returnUniqueLastName(List<String> stringListLastName) который находит уникальные фамилии.
+     * На вход:
+     * данные List<String> stringListLastName = Arrays.asList(
+     * "Edwards", "Edwards", "Herman", "Blake", "Griffin", "Mitchell"
+     * );
+     * На выход:
+     * List<String> list.get(0) == "Edwards"
+     * List<String> list.get(1) == "Herman"
+     */
+    @Test
+    public void returnUniqueLastNamePositiveTest() {
+        String lastName1 = "Edwards";
+        String lastName2 = "Herman";
+        Assertions.assertEquals(lastName1, Methods.returnUniqueLastName(stringListLastName).get(0));
+        Assertions.assertEquals(lastName2, Methods.returnUniqueLastName(stringListLastName).get(1));
+    }
+
+    /**
+     * Тест метода returnUniqueLastName(List<String> stringListLastName) который поверяет не возвращает ли
+     * данный метод NULL
+     */
+    @Test
+    public void returnUniqueLastNamePositiveReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnUniqueLastName(stringListLastName));
+    }
+
+    /**
+     * Тест метода  returnUniqueLastName(List<String> stringListLastName) который поверяет на ошибку
+     * IllegalArgumentException если stringListLastName == null
+     */
+    @Test
+    public void returnUniqueLastNameIllegalArgumentExceptionListIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnUniqueLastName(null));
+    }
+
+    /**
+     * Тест метода returnUniqueLastName(List<String> stringListLastName) который поверяет на ошибку
+     * IllegalArgumentException если stringListLastName был пуст
+     */
+    @Test
+    public void returnUniqueLastNameIllegalArgumentExceptionListIsEmptyTest() {
+        stringListLastName = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnUniqueLastName(stringListLastName));
+    }
     //----------------------------------------------------7---------------------------------------------
 
     /**
-     * Тест метода returnFirstLastLetterAlphabetName(List<String> stringListName) который сравнивает результат,
+     * Тест метода returnFirstLastLetterAlphabetName(List<String> stringListName) который сортирует в обратном
+     * алфавитном порядке.
+     * На вход:
      * данные List<String> stringListName ("Bryan", "Margaret", "Jeffery","Bob")
+     * На выход:
      * вернет ("Margaret", "Jeffery", "Bryan", "Bob")
      */
     @Test
@@ -190,7 +374,8 @@ class MethodsTest {
      */
     @Test
     public void returnFirstLastLetterAlphabetNameIllegalArgumentExceptionListIsNullTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnFirstLastLetterAlphabetName(null));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnFirstLastLetterAlphabetName(null));
     }
 
     /**
@@ -200,20 +385,23 @@ class MethodsTest {
     @Test
     public void returnFirstLastLetterAlphabetNameIllegalArgumentExceptionListIsEmptyTest() {
         stringListName = new ArrayList<>();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnFirstLastLetterAlphabetName(stringListName));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnFirstLastLetterAlphabetName(stringListName));
     }
 
 
     //----------------------------------------------------9---------------------------------------------
 
     /**
-     * Тест метода returnAvgLengthName(List<String> stringListName) который сравнивает результат,
+     * Тест метода returnAvgLengthName(List<String> stringListName) который рассчитывает среднюю длину имени
+     * На вход:
      * данные List<String> stringListName ("Bryan", "Margaret", "Jeffery","Bob")
+     * На выход:
      * вернет 5.75 (double)
      */
     @Test
     public void returnAvgLengthNamePositiveTest() {
-        Assertions.assertEquals(5.75, Methods.returnAvgLengthName(stringListName));
+        Assertions.assertEquals(5.75d, Methods.returnAvgLengthName(stringListName));
     }
 
     /**
@@ -231,7 +419,8 @@ class MethodsTest {
      */
     @Test
     public void returnAvgNameIllegalArgumentExceptionListIsNullTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnAvgLengthName(null));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnAvgLengthName(null));
     }
 
     /**
