@@ -45,7 +45,7 @@ class MethodsTest {
      */
     @Test
     public void stringNameRuntimeExceptionTest() {
-        Assertions.assertThrows(RuntimeException.class, () -> Methods.stringName("hcsvjjac"));
+        Assertions.assertThrows(RuntimeException.class, () -> Methods.stringName("some23232"));
     }
 
     //----------------------------------------------------2---------------------------------------------
