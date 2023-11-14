@@ -615,6 +615,51 @@ class MethodsTest {
     }
     //----------------------------------------------------8---------------------------------------------
 
+
+    //----------------------------------------------------9---------------------------------------------
+
+    /**
+     * Тест метода returnAvgLengthName(List<String> stringListName) который рассчитывает среднюю длину имени
+     * На вход:
+     * данные List<String> stringListName ("Bryan", "Margaret", "Jeffery","Bob","Dana")
+     * На выход:
+     * вернет 5.4 (double)
+     */
+    @Test
+    public void returnAvgLengthNamePositiveTest() {
+        Assertions.assertEquals(5.4d, Methods.returnAvgLengthName(stringListName));
+    }
+
+    /**
+     * Тест метода  returnAvgLengthName(List<String> stringListName) который поверяет не возвращает ли данный метод NULL
+     */
+    @Test
+
+    public void returnAvgNamePositiveReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnAvgLengthName(stringListName));
+    }
+
+    /**
+     * Тест метода  returnAvgLengthName(List<String> stringListName) который поверяет на ошибку IllegalArgumentException
+     * если stringListName == null
+     */
+    @Test
+    public void returnAvgNameIllegalArgumentExceptionListIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnAvgLengthName(null));
+    }
+
+    /**
+     * Тест метода returnAvgLengthName(List<String> stringListName) который поверяет на ошибку IllegalArgumentException
+     * если stringListName был пуст
+     */
+    @Test
+    public void returnAvgNameIllegalArgumentExceptionListIsEmptyTest() {
+        stringListName = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnAvgLengthName(stringListName));
+    }
+    //----------------------------------------------------10---------------------------------------------
+
     /**
      * Тест метода  returnMapNumberPhoneKeyNameValue(List<String> lines) который преобразует данные в формат номер=имя
      * На вход:
@@ -687,46 +732,4 @@ class MethodsTest {
                 () -> Methods.returnMapNumberPhoneKeyNameValue(lines));
     }
 
-    //----------------------------------------------------9---------------------------------------------
-
-    /**
-     * Тест метода returnAvgLengthName(List<String> stringListName) который рассчитывает среднюю длину имени
-     * На вход:
-     * данные List<String> stringListName ("Bryan", "Margaret", "Jeffery","Bob","Dana")
-     * На выход:
-     * вернет 5.4 (double)
-     */
-    @Test
-    public void returnAvgLengthNamePositiveTest() {
-        Assertions.assertEquals(5.4d, Methods.returnAvgLengthName(stringListName));
-    }
-
-    /**
-     * Тест метода  returnAvgLengthName(List<String> stringListName) который поверяет не возвращает ли данный метод NULL
-     */
-    @Test
-
-    public void returnAvgNamePositiveReturnNotNullTest() {
-        Assertions.assertNotNull(Methods.returnAvgLengthName(stringListName));
-    }
-
-    /**
-     * Тест метода  returnAvgLengthName(List<String> stringListName) который поверяет на ошибку IllegalArgumentException
-     * если stringListName == null
-     */
-    @Test
-    public void returnAvgNameIllegalArgumentExceptionListIsNullTest() {
-        Assertions.assertThrows(IllegalArgumentException.class,
-                () -> Methods.returnAvgLengthName(null));
-    }
-
-    /**
-     * Тест метода returnAvgLengthName(List<String> stringListName) который поверяет на ошибку IllegalArgumentException
-     * если stringListName был пуст
-     */
-    @Test
-    public void returnAvgNameIllegalArgumentExceptionListIsEmptyTest() {
-        stringListName = new ArrayList<>();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Methods.returnAvgLengthName(stringListName));
-    }
 }

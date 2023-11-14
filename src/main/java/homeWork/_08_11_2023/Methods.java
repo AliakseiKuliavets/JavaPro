@@ -180,7 +180,20 @@ public class Methods {
                 .collect(Collectors.toList());
     }
 
-    // 8. Метод для преобразования данных в формат имя=номер (!!!!!!!!! переделал на номер=имя !!!!!!!!!!!!!!)
+    // 8. Метод для преобразования данных в формат имя=номер
+
+
+    //9. Метод для расчета средней длины имени
+    public static Double returnAvgLengthName(List<String> stringListName) {
+        if (stringListName == null || stringListName.isEmpty()) {
+            throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
+        }
+        return stringListName.stream()
+                .mapToInt(String::length)
+                .average()
+                .orElse(-1);
+    }
+    //10. Метод для создания карты, где ключ - номер телефона, а значение - имя
     public static Map<String, String> returnMapNumberPhoneKeyNameValue(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
@@ -203,16 +216,5 @@ public class Methods {
         }
 
         return phoneNumbersNameMap;
-    }
-
-    //9. Метод для расчета средней длины имени
-    public static Double returnAvgLengthName(List<String> stringListName) {
-        if (stringListName == null || stringListName.isEmpty()) {
-            throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
-        }
-        return stringListName.stream()
-                .mapToInt(String::length)
-                .average()
-                .orElse(-1);
     }
 }
