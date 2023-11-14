@@ -11,68 +11,98 @@ import java.util.stream.Collectors;
 public class Methods {
     public static void main(String[] args) {
         String fileName = "D:\\tel_ran\\JavaPro\\src\\main\\java\\homeWork\\_08_11_2023\\1.txt";
-        List<String> stringListName = stringName(fileName);
-        List<String> stringListLastName = Arrays.asList("Edwards", "Edwards", "Herman", "Blake", "Griffin", "Mitchell");
-        List<String> stringsNumberPhone = Arrays.asList("+1-240-701-5763x6875", "(432)461-5121", "+1-159-322-4388x60509");
+        List<String> lines = readFileToList(fileName);
+        List<String> stringListName = stringName(lines);
+//        System.out.println(stringListName);
+        List<String> stringListLastName = stringLastName(lines);
+//        System.out.println(stringListLastName);
+        System.out.println(lines);
+        List<String> stringsNumberPhone = stringsNumberPhone(lines);
+        System.out.println(stringsNumberPhone);
         Map<Character, Long> characterLongMap = returnKeyStartNameLetterValueCount(stringListName);
 
 
     }
 
-    public static List<String> stringName(String fileName) {
+    public static List<String> readFileToList(String fileName) {
         if (fileName == null) {
             throw new IllegalArgumentException("Переданная ссылка на файл не может быть NULL");
         }
+        List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
-            StringBuilder stringBuilder = new StringBuilder();
+
             while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
-            }
-            String input = stringBuilder.toString();
-
-            String regex = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(input);
-
-            List<String> namesList = new ArrayList<>();
-
-            while (matcher.find()) {
-                namesList.add(matcher.group(1));
+                lines.add(line);
             }
 
-            return namesList;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         }
+
+        return lines;
     }
 
-    public static List<String> stringLastName(String fileName) {
-        if (fileName == null) {
-            throw new IllegalArgumentException("Переданная ссылка на файл не может быть NULL");
+    public static List<String> stringName(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            StringBuilder stringBuilder = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
-            }
-            String input = stringBuilder.toString();
+        String regex = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern pattern = Pattern.compile(regex);
 
-            String regex = "";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(input);
+        List<String> namesList = new ArrayList<>();
 
-            List<String> namesList = new ArrayList<>();
+        for (String line : lines) {
+            Matcher matcher = pattern.matcher(line);
 
             while (matcher.find()) {
                 namesList.add(matcher.group(1));
             }
-
-            return namesList;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
+        return namesList;
+    }
+
+    public static List<String> stringLastName(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
+        }
+        String regex = "\\p{L}+$";
+        Pattern pattern = Pattern.compile(regex);
+
+        List<String> lastNamesList = new ArrayList<>();
+
+        for (String line : lines) {
+            String[] parts = line.split("\\s+");
+            if (parts.length > 1) {
+                String lastName = parts[parts.length - 1];
+                Matcher matcher = pattern.matcher(lastName);
+
+                if (matcher.find()) {
+                    lastNamesList.add(matcher.group());
+                }
+            }
+        }
+        return lastNamesList;
+    }
+
+    public static List<String> stringsNumberPhone(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
+        }
+        String regex = "\\+\\d{1}-\\d{3}-\\d{3}-\\d{4}x\\d+|\\(\\d{3}\\)\\d{3}-\\d{4}";
+        Pattern pattern = Pattern.compile(regex);
+
+        List<String> phoneNumbersList = new ArrayList<>();
+
+        for (String line : lines) {
+            Matcher matcher = pattern.matcher(line);
+
+            while (matcher.find()) {
+                phoneNumbersList.add(matcher.group());
+            }
+        }
+
+        return phoneNumbersList;
     }
 
 
