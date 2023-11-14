@@ -11,21 +11,6 @@ import java.util.stream.Collectors;
 public class Methods {
     public static void main(String[] args) {
         String fileName = "D:\\tel_ran\\JavaPro\\src\\main\\java\\homeWork\\_08_11_2023\\1.txt";
-        List<String> lines = readFileToList(fileName);
-        List<String> stringListName = stringName(lines);
-//        System.out.println(stringListName);
-        List<String> stringListLastName = stringLastName(lines);
-//        System.out.println(stringListLastName);
-        System.out.println(lines);
-        List<String> stringsNumberPhone = stringsNumberPhone(lines);
-//        System.out.println(stringsNumberPhone);
-//        System.out.println(returnMapNumberPhoneKeyNameValue(lines));
-        System.out.println(returnListNamePhoneNumber(lines));
-        System.out.println(returnContactMaxLength(lines));
-        System.out.println(returnContactMinLength(lines));
-        Map<Character, Long> characterLongMap = returnKeyStartNameLetterValueCount(stringListName);
-
-
     }
 
     public static List<String> readFileToList(String fileName) {
@@ -270,6 +255,7 @@ public class Methods {
         }
         return lineContact;
     }
+
     public static String returnContactMinLength(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
