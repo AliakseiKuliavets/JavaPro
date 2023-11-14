@@ -89,7 +89,7 @@ public class Methods {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
         }
-        String regex = "\\+\\d{1}-\\d{3}-\\d{3}-\\d{4}x\\d+|\\(\\d{3}\\)\\d{3}-\\d{4}";
+        String regex = "[+\\d().-]+x?\\d*";
         Pattern pattern = Pattern.compile(regex);
 
         List<String> phoneNumbersList = new ArrayList<>();
@@ -98,9 +98,11 @@ public class Methods {
             Matcher matcher = pattern.matcher(line);
 
             while (matcher.find()) {
-                phoneNumbersList.add(matcher.group());
+                String phoneNumber = matcher.group().replaceAll("[^0-9]", "");
+                phoneNumbersList.add(phoneNumber);
             }
         }
+        phoneNumbersList.removeIf(String::isEmpty);
 
         return phoneNumbersList;
     }
