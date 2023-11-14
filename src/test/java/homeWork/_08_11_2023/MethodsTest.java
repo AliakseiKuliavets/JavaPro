@@ -800,5 +800,104 @@ class MethodsTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Methods.returnMapNumberPhoneKeyNameValue(lines));
     }
+    //---------------------------------------------11 MaxLength---------------------------------------------
 
+    /**
+     * Тест метода  returnContactMaxLength(List<String> lines) который находит контактов с максимальной длиной имени
+     * На вход:
+     * данные List<String> lines = Arrays.asList(
+     * "+1-240-701-5763x6875 - Bryan Edwards",
+     * "(432)461-5121 - Margaret Herman",
+     * "+1-159-322-4388x60509 - Jeffery Blake",
+     * "8853301072 - Bob Griffin MD",
+     * "(885)624-5862x792 - Dana Edwards"
+     * );
+     * На выход:
+     * String name = "(432)461-5121 - Margaret Herman"
+     */
+    @Test
+    public void returnContactMaxLengthPositiveTest() {
+        String name = "(432)461-5121 - Margaret Herman";
+        Assertions.assertEquals(name, Methods.returnContactMaxLength(lines));
+    }
+
+    /**
+     * Тест метода returnContactMaxLength(List<String> lines) который поверяет не возвращает ли
+     * данный метод NULL
+     */
+    @Test
+    public void returnContactMaxLengthPositiveReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnMapNumberPhoneKeyNameValue(lines));
+    }
+
+    /**
+     * Тест метода returnContactMaxLength(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines == NULL
+     */
+    @Test
+    public void returnContactMaxLengthIllegalArgumentExceptionMapIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnMapNumberPhoneKeyNameValue(null));
+    }
+
+    /**
+     * Тест метода returnContactMaxLength(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines был пуст
+     */
+    @Test
+    public void returnContactMaxLengthIllegalArgumentExceptionMapIsEmptyTest() {
+        lines = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnMapNumberPhoneKeyNameValue(lines));
+    }
+    //---------------------------------------------11 minLength---------------------------------------------
+
+    /**
+     * Тест метода  returnContactMinLength(List<String> lines) который находит контактов с максимальной длиной имени
+     * На вход:
+     * данные List<String> lines = Arrays.asList(
+     * "+1-240-701-5763x6875 - Bryan Edwards",
+     * "(432)461-5121 - Margaret Herman",
+     * "+1-159-322-4388x60509 - Jeffery Blake",
+     * "8853301072 - Bob Griffin MD",
+     * "(885)624-5862x792 - Dana Edwards"
+     * );
+     * На выход:
+     * String name = "8853301072 - Bob Griffin MD"
+     */
+    @Test
+    public void returnContactMinLengthPositiveTest() {
+        String name = "8853301072 - Bob Griffin MD";
+        Assertions.assertEquals(name, Methods.returnContactMinLength(lines));
+    }
+
+    /**
+     * Тест метода returnContactMinLength(List<String> lines) который поверяет не возвращает ли
+     * данный метод NULL
+     */
+    @Test
+    public void returnContactMinLengthReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnContactMinLength(lines));
+    }
+
+    /**
+     * Тест метода returnContactMinLength(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines == NULL
+     */
+    @Test
+    public void returnContactMinLengthIllegalArgumentExceptionMapIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnContactMinLength(null));
+    }
+
+    /**
+     * Тест метода returnContactMinLength(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines был пуст
+     */
+    @Test
+    public void returnContactMinLengthIllegalArgumentExceptionMapIsEmptyTest() {
+        lines = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnContactMinLength(lines));
+    }
 }
