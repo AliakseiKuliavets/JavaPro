@@ -18,7 +18,8 @@ public class Methods {
 //        System.out.println(stringListLastName);
         System.out.println(lines);
         List<String> stringsNumberPhone = stringsNumberPhone(lines);
-        System.out.println(stringsNumberPhone);
+//        System.out.println(stringsNumberPhone);
+        System.out.println(returnMapNumberPhoneKeyNameValue(lines));
         Map<Character, Long> characterLongMap = returnKeyStartNameLetterValueCount(stringListName);
 
 
@@ -177,6 +178,31 @@ public class Methods {
                 .sorted(Collections.reverseOrder())
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    // 8. Метод для преобразования данных в формат имя=номер (!!!!!!!!! переделал на номер=имя !!!!!!!!!!!!!!)
+    public static Map<String, String> returnMapNumberPhoneKeyNameValue(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
+        }
+        String regex1 = "[+\\d().-]+x?\\d*";
+        String regex2 = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern pattern1 = Pattern.compile(regex1);
+        Pattern pattern2 = Pattern.compile(regex2);
+
+        Map<String, String> phoneNumbersNameMap = new LinkedHashMap<>();
+
+        for (String line : lines) {
+            Matcher matcher1 = pattern1.matcher(line);
+            Matcher matcher2 = pattern2.matcher(line);
+
+            while (matcher1.find() && matcher2.find()) {
+                String phoneNumber = matcher1.group().replaceAll("[^0-9]", "");
+                phoneNumbersNameMap.put(phoneNumber, matcher2.group(1));
+            }
+        }
+
+        return phoneNumbersNameMap;
     }
 
     //9. Метод для расчета средней длины имени

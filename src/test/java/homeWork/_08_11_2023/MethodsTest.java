@@ -103,7 +103,7 @@ class MethodsTest {
 
     /**
      * Тест метода stringName(List<String> lines) который поверяет на ошибку
-     * IllegalArgumentException если stringListName == null
+     * IllegalArgumentException если lines == null
      */
     @Test
 
@@ -176,7 +176,7 @@ class MethodsTest {
 
     /**
      * Тест метода stringLastName(List<String> lines) который поверяет на ошибку
-     * IllegalArgumentException если stringListName == null
+     * IllegalArgumentException если lines == null
      */
     @Test
 
@@ -247,7 +247,7 @@ class MethodsTest {
 
     /**
      * Тест метода stringsNumberPhone(List<String> lines) который поверяет на ошибку
-     * IllegalArgumentException если stringListName == null
+     * IllegalArgumentException если lines == null
      */
     @Test
 
@@ -613,7 +613,79 @@ class MethodsTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Methods.returnFirstLastLetterAlphabetName(stringListName));
     }
+    //----------------------------------------------------8---------------------------------------------
 
+    /**
+     * Тест метода  returnMapNumberPhoneKeyNameValue(List<String> lines) который преобразует данные в формат номер=имя
+     * На вход:
+     * данные List<String> lines = Arrays.asList(
+     * "+1-240-701-5763x6875 - Bryan Edwards",
+     * "(432)461-5121 - Margaret Herman",
+     * "+1-159-322-4388x60509 - Jeffery Blake",
+     * "8853301072 - Bob Griffin MD",
+     * "(885)624-5862x792 - Dana Edwards"
+     * );
+     * На выход:
+     * Map<String,String> map.size() == 5
+     */
+    @Test
+    public void returnMapNumberPhoneKeyNameValueMapSizePositiveTest() {
+        Assertions.assertEquals(5, Methods.returnMapNumberPhoneKeyNameValue(lines).size());
+    }
+
+    /**
+     * Тест метода  returnMapNumberPhoneKeyNameValue(List<String> lines) который преобразует данные в формат номер=имя
+     * На вход:
+     * данные List<String> lines = Arrays.asList(
+     * "+1-240-701-5763x6875 - Bryan Edwards",
+     * "(432)461-5121 - Margaret Herman",
+     * "+1-159-322-4388x60509 - Jeffery Blake",
+     * "8853301072 - Bob Griffin MD",
+     * "(885)624-5862x792 - Dana Edwards"
+     * );
+     * На выход:
+     * Map<String,String> map.get("124070157636875") == Bryan
+     * Map<String,String> map.get("4324615121") == Margaret
+     */
+    @Test
+    public void returnMapNumberPhoneKeyNameValueNameGetPositiveTest() {
+        String keyNumber1 = "124070157636875";
+        String keyNumber2 = "4324615121";
+        String valueName1 = "Bryan";
+        String valueName2 = "Margaret";
+        Assertions.assertEquals(valueName1, Methods.returnMapNumberPhoneKeyNameValue(lines).get(keyNumber1));
+        Assertions.assertEquals(valueName2, Methods.returnMapNumberPhoneKeyNameValue(lines).get(keyNumber2));
+    }
+
+    /**
+     * Тест метода returnMapNumberPhoneKeyNameValue(List<String> lines) который поверяет не возвращает ли
+     * данный метод NULL
+     */
+    @Test
+    public void returnMapNumberPhoneKeyNameValuePositiveReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnMapNumberPhoneKeyNameValue(lines));
+    }
+
+    /**
+     * Тест метода returnMapNumberPhoneKeyNameValue(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines == NULL
+     */
+    @Test
+    public void returnMapNumberPhoneKeyNameValueIllegalArgumentExceptionMapIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnMapNumberPhoneKeyNameValue(null));
+    }
+
+    /**
+     * Тест метода returnMapNumberPhoneKeyNameValue(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines был пуст
+     */
+    @Test
+    public void returnMapNumberPhoneKeyNameValueIllegalArgumentExceptionMapIsEmptyTest() {
+        lines = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnMapNumberPhoneKeyNameValue(lines));
+    }
 
     //----------------------------------------------------9---------------------------------------------
 
