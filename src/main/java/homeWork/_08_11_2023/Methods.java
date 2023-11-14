@@ -12,11 +12,11 @@ public class Methods {
     public static void main(String[] args) {
         String fileName = "D:\\tel_ran\\JavaPro\\src\\main\\java\\homeWork\\_08_11_2023\\1.txt";
         List<String> stringListName = stringName(fileName);
-        List<String> stringListLastName = Arrays.asList("Edwards","Edwards", "Herman", "Blake", "Griffin", "Mitchell");
+        List<String> stringListLastName = Arrays.asList("Edwards", "Edwards", "Herman", "Blake", "Griffin", "Mitchell");
         List<String> stringsNumberPhone = Arrays.asList("+1-240-701-5763x6875", "(432)461-5121", "+1-159-322-4388x60509");
         Map<Character, Long> characterLongMap = returnKeyStartNameLetterValueCount(stringListName);
 
-        System.out.println(returnUniqueLastName(stringListLastName));
+
     }
 
     public static List<String> stringName(String fileName) {
@@ -76,7 +76,7 @@ public class Methods {
     }
 
 
-    //2. Метод для создания мапы, где ключ - первая буква имени, а значение - количество таких имен
+    //2. Метод для создания Map, где ключ - первая буква имени, а значение - количество таких имен
     public static Map<Character, Long> returnKeyStartNameLetterValueCount(List<String> stringListName) {
         if (stringListName == null || stringListName.isEmpty()) {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
@@ -85,7 +85,7 @@ public class Methods {
                 .collect(Collectors.groupingBy(el -> el.charAt(0), Collectors.counting()));
     }
 
-    //3.Метод для нахождения самой часто встречающейся первой буквы в именах
+    //3. Метод для нахождения самой часто встречающейся первой буквы в именах
     public static String returnMostPopularLetterName(Map<Character, Long> characterLongMap) {
         if (characterLongMap == null || characterLongMap.isEmpty()) {
             throw new IllegalArgumentException("Map не должна быть пустой или равна NULL");
@@ -95,7 +95,7 @@ public class Methods {
                 .toString();
     }
 
-    //4.Метод для создания списка номеров телефонов, где каждый номер преобразован в числовой формат
+    //4. Метод для создания списка номеров телефонов, где каждый номер преобразован в числовой формат
     public static List<Long> returnInLongNumberPhone(List<String> stringsNumberPhone) {
         if (stringsNumberPhone == null || stringsNumberPhone.isEmpty()) {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
@@ -115,7 +115,7 @@ public class Methods {
         return integerList;
     }
 
-    //5.Метод для группировки имен по длине имени
+    //5. Метод для группировки имен по длине имени
     public static List<String> returnSortedLengthName(List<String> stringListName) {
         if (stringListName == null || stringListName.isEmpty()) {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
@@ -126,7 +126,7 @@ public class Methods {
                 .collect(Collectors.toList());
     }
 
-    //6.Метод для поиска уникальных фамилий
+    //6. Метод для поиска уникальных фамилий
     public static List<String> returnUniqueLastName(List<String> stringListLastName) {
         if (stringListLastName == null || stringListLastName.isEmpty()) {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
