@@ -19,7 +19,10 @@ public class Methods {
         System.out.println(lines);
         List<String> stringsNumberPhone = stringsNumberPhone(lines);
 //        System.out.println(stringsNumberPhone);
-        System.out.println(returnMapNumberPhoneKeyNameValue(lines));
+//        System.out.println(returnMapNumberPhoneKeyNameValue(lines));
+        System.out.println(returnListNamePhoneNumber(lines));
+        System.out.println(returnContactMaxLength(lines));
+        System.out.println(returnContactMinLength(lines));
         Map<Character, Long> characterLongMap = returnKeyStartNameLetterValueCount(stringListName);
 
 
@@ -182,6 +185,33 @@ public class Methods {
 
     // 8. Метод для преобразования данных в формат имя=номер
 
+    public static List<String> returnListNamePhoneNumber(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
+        }
+        String regex1 = "[+\\d().-]+x?\\d*";
+        String regex2 = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern pattern1 = Pattern.compile(regex1);
+        Pattern pattern2 = Pattern.compile(regex2);
+
+        List<String> namePhoneNumberMap = new ArrayList<>();
+
+        for (String line : lines) {
+            Matcher matcher1 = pattern1.matcher(line);
+            Matcher matcher2 = pattern2.matcher(line);
+
+            while (matcher1.find() && matcher2.find()) {
+                StringBuilder stringBuilder = new StringBuilder();
+                String phoneNumber = matcher1.group().replaceAll("[^0-9]", "");
+                stringBuilder.append(matcher2.group(1));
+                stringBuilder.append("=");
+                stringBuilder.append(phoneNumber);
+                namePhoneNumberMap.add(String.valueOf(stringBuilder));
+            }
+        }
+
+        return namePhoneNumberMap;
+    }
 
     //9. Метод для расчета средней длины имени
     public static Double returnAvgLengthName(List<String> stringListName) {
@@ -193,6 +223,7 @@ public class Methods {
                 .average()
                 .orElse(-1);
     }
+
     //10. Метод для создания карты, где ключ - номер телефона, а значение - имя
     public static Map<String, String> returnMapNumberPhoneKeyNameValue(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
@@ -216,5 +247,47 @@ public class Methods {
         }
 
         return phoneNumbersNameMap;
+    }
+
+    //11.Метод для поиска контактов с максимальной и минимальной длиной имени
+    public static String returnContactMaxLength(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
+        }
+        String regex = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern pattern = Pattern.compile(regex);
+        String lineContact = "";
+        String maxLengthName = "";
+        for (String line : lines) {
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.find()) {
+                String name = matcher.group(1);
+                if (name.length() > maxLengthName.length()) {
+                    maxLengthName = matcher.group(1);
+                    lineContact = line;
+                }
+            }
+        }
+        return lineContact;
+    }
+    public static String returnContactMinLength(List<String> lines) {
+        if (lines == null || lines.isEmpty()) {
+            throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
+        }
+        String regex = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern pattern = Pattern.compile(regex);
+        String lineContact = "";
+        String minLengthName = "qwertyuiopkjhvdahgvshgvhsgvchgs";
+        for (String line : lines) {
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.find()) {
+                String name = matcher.group(1);
+                if (name.length() < minLengthName.length()) {
+                    minLengthName = matcher.group(1);
+                    lineContact = line;
+                }
+            }
+        }
+        return lineContact;
     }
 }

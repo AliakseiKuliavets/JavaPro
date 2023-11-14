@@ -615,6 +615,75 @@ class MethodsTest {
     }
     //----------------------------------------------------8---------------------------------------------
 
+    /**
+     * Тест метода  returnListNamePhoneNumber(List<String> lines) который преобразует данные в формат имя=номер
+     * На вход:
+     * данные List<String> lines = Arrays.asList(
+     * "+1-240-701-5763x6875 - Bryan Edwards",
+     * "(432)461-5121 - Margaret Herman",
+     * "+1-159-322-4388x60509 - Jeffery Blake",
+     * "8853301072 - Bob Griffin MD",
+     * "(885)624-5862x792 - Dana Edwards"
+     * );
+     * На выход:
+     * List<String> map.size() == 5
+     */
+    @Test
+    public void returnListNamePhoneNumberListSizePositiveTest() {
+        Assertions.assertEquals(5, Methods.returnListNamePhoneNumber(lines).size());
+    }
+
+    /**
+     * Тест метода  returnListNamePhoneNumber(List<String> lines) который преобразует данные в формат имя=номер
+     * На вход:
+     * данные List<String> lines = Arrays.asList(
+     * "+1-240-701-5763x6875 - Bryan Edwards",
+     * "(432)461-5121 - Margaret Herman",
+     * "+1-159-322-4388x60509 - Jeffery Blake",
+     * "8853301072 - Bob Griffin MD",
+     * "(885)624-5862x792 - Dana Edwards"
+     * );
+     * На выход:
+     * List<String> list.get(0) == Bryan=124070157636875
+     * List<String> list.get(1) == Margaret=4324615121
+     */
+    @Test
+    public void returnListNamePhoneNumberListGetPositiveTest() {
+        String name1 = "Bryan=124070157636875";
+        String name2 = "Margaret=4324615121";
+        Assertions.assertEquals(name1, Methods.returnListNamePhoneNumber(lines).get(0));
+        Assertions.assertEquals(name2, Methods.returnListNamePhoneNumber(lines).get(1));
+    }
+
+    /**
+     * Тест метода  returnListNamePhoneNumber(List<String> lines) который поверяет не возвращает ли
+     * данный метод NULL
+     */
+    @Test
+    public void returnListNamePhoneNumberPositiveReturnNotNullTest() {
+        Assertions.assertNotNull(Methods.returnListNamePhoneNumber(lines));
+    }
+
+    /**
+     * Тест метода returnMapNumberPhoneKeyNameValue(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines == NULL
+     */
+    @Test
+    public void returnListNamePhoneNumberIllegalArgumentExceptionMapIsNullTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnListNamePhoneNumber(null));
+    }
+
+    /**
+     * Тест метода returnListNamePhoneNumber(List<String> lines) который поверяет на ошибку
+     * IllegalArgumentException если lines был пуст
+     */
+    @Test
+    public void returnListNamePhoneNumberIllegalArgumentExceptionMapIsEmptyTest() {
+        lines = new ArrayList<>();
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Methods.returnListNamePhoneNumber(lines));
+    }
 
     //----------------------------------------------------9---------------------------------------------
 
