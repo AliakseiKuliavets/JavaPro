@@ -177,21 +177,21 @@ public class Methods {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
         }
-        String regex1 = "[+\\d().-]+x?\\d*";
-        String regex2 = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
-        Pattern pattern1 = Pattern.compile(regex1);
-        Pattern pattern2 = Pattern.compile(regex2);
+        String regexPhoneNumber = "[+\\d().-]+x?\\d*";
+        String regexName = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern patternPhoneNumber = Pattern.compile(regexPhoneNumber);
+        Pattern patternName = Pattern.compile(regexName);
 
         List<String> namePhoneNumberMap = new ArrayList<>();
 
         for (String line : lines) {
-            Matcher matcher1 = pattern1.matcher(line);
-            Matcher matcher2 = pattern2.matcher(line);
+            Matcher matcherPhoneNumber = patternPhoneNumber.matcher(line);
+            Matcher matcherName = patternName.matcher(line);
 
-            while (matcher1.find() && matcher2.find()) {
+            while (matcherPhoneNumber.find() && matcherName.find()) {
                 StringBuilder stringBuilder = new StringBuilder();
-                String phoneNumber = matcher1.group().replaceAll("[^0-9]", "");
-                stringBuilder.append(matcher2.group(1));
+                String phoneNumber = matcherPhoneNumber.group().replaceAll("[^0-9]", "");
+                stringBuilder.append(matcherName.group(1));
                 stringBuilder.append("=");
                 stringBuilder.append(phoneNumber);
                 namePhoneNumberMap.add(String.valueOf(stringBuilder));
@@ -218,20 +218,20 @@ public class Methods {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
         }
-        String regex1 = "[+\\d().-]+x?\\d*";
-        String regex2 = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
-        Pattern pattern1 = Pattern.compile(regex1);
-        Pattern pattern2 = Pattern.compile(regex2);
+        String regexPhoneNumber = "[+\\d().-]+x?\\d*";
+        String regexName = "-\\s(\\p{L}+)\\s+(\\p{L}+)";
+        Pattern patternPhoneNumber = Pattern.compile(regexPhoneNumber);
+        Pattern patternName = Pattern.compile(regexName);
 
         Map<String, String> phoneNumbersNameMap = new LinkedHashMap<>();
 
         for (String line : lines) {
-            Matcher matcher1 = pattern1.matcher(line);
-            Matcher matcher2 = pattern2.matcher(line);
+            Matcher matcherPhoneNumber = patternPhoneNumber.matcher(line);
+            Matcher matcherName = patternName.matcher(line);
 
-            while (matcher1.find() && matcher2.find()) {
-                String phoneNumber = matcher1.group().replaceAll("[^0-9]", "");
-                phoneNumbersNameMap.put(phoneNumber, matcher2.group(1));
+            while (matcherPhoneNumber.find() && matcherName.find()) {
+                String phoneNumber = matcherPhoneNumber.group().replaceAll("[^0-9]", "");
+                phoneNumbersNameMap.put(phoneNumber, matcherName.group(1));
             }
         }
 
