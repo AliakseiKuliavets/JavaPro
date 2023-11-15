@@ -32,6 +32,7 @@ public class Methods {
         return lines;
     }
 
+    // взял с чата только регулярное выражение все остальное делал сам
     public static List<String> stringName(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
@@ -51,6 +52,7 @@ public class Methods {
         return namesList;
     }
 
+    // взял с чата только регулярное выражение все остальное делал сам
     public static List<String> stringLastName(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
@@ -74,6 +76,7 @@ public class Methods {
         return lastNamesList;
     }
 
+    // взял с чата только регулярное выражение все остальное делал сам
     public static List<String> stringsNumberPhone(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
@@ -169,7 +172,7 @@ public class Methods {
     }
 
     // 8. Метод для преобразования данных в формат имя=номер
-
+    // взял с чата только регулярное выражение все остальное делал сам
     public static List<String> returnListNamePhoneNumber(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
@@ -210,6 +213,7 @@ public class Methods {
     }
 
     //10. Метод для создания карты, где ключ - номер телефона, а значение - имя
+    // взял с чата только регулярное выражение все остальное делал сам
     public static Map<String, String> returnMapNumberPhoneKeyNameValue(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
@@ -235,6 +239,7 @@ public class Methods {
     }
 
     //11.Метод для поиска контактов с максимальной и минимальной длиной имени
+    // взял с чата только регулярное выражение все остальное делал сам
     public static String returnContactMaxLength(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("Список строк не должен быть пустым или равен null");
