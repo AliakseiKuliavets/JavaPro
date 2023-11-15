@@ -6,7 +6,7 @@ public class RegEx6 {
     private static void info(Student student) {
         System.out.printf("%03d\t %-10s\t %-10s\t %,.1f\n",
                 student.getId(), student.getName(), student.getSurName(), student.getSalary());
-        // Формат чеков через пробелы      001	 Paula     	 Funk      	 99,0
+        // Формат чеков через пробелы      "001	 Paula     	 Funk      	 99,0"
     }
 
     public static void main(String[] args) {
