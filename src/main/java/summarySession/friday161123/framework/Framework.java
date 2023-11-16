@@ -87,7 +87,7 @@ public class Framework {
 
     private static AppService getService(String type) {
         for (Object service : services) {
-            service.getClass().getSimpleName().toLowerCase().startsWith(type) {
+            if (service.getClass().getSimpleName().toLowerCase().startsWith(type)) {
                 return (AppService) service;
             }
         }
