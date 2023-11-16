@@ -70,9 +70,12 @@ public class Framework {
             System.out.println("Введите запрос или exit для выхода");
             String reg = scanner.nextLine().toLowerCase();
             if (reg.equals("exit")) {
-                return;
+                break;
             }
             String[] reqArr = reg.split(" ");
+            if (reqArr.length != 2) {
+                continue;
+            }
             String type = reqArr[0];
             AppService service = getService(type);
             if (service != null) {
@@ -85,6 +88,7 @@ public class Framework {
                 System.out.println("Неверный запрос , такого сервиса нет");
             }
         }
+        scanner.close();
     }
 
     private static AppService getService(String type) {
