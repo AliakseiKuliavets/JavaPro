@@ -38,7 +38,7 @@ public class Framework {
                 result.add(object);
             }
         } catch (Exception e) {
-            System.out.println("Не удалось создать обьект");
+            System.out.println("Не удалось создать объект");
         }
         return result;
     }
@@ -55,7 +55,7 @@ public class Framework {
                             try {
                                 field.set(service, database);
                             } catch (IllegalAccessException e) {
-                                System.out.println("Не удалось засетить базу данных в сервис");
+                                System.out.println("Не удалось добавить в Set а далее в базу данных в сервис");
                             }
                         }
                     }
@@ -81,6 +81,8 @@ public class Framework {
                 } else {
                     service.printOne(Integer.parseInt(reqArr[1]));
                 }
+            } else {
+                System.out.println("Неверный запрос , такого сервиса нет");
             }
         }
     }
