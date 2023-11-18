@@ -1,9 +1,7 @@
 package practice.leetcode.kataArrayDiff;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
@@ -15,7 +13,10 @@ public class Some {
 //        moveZeroesToStart(nums);
 //        moveZeroesToEnd(nums);
 //        System.out.println(Arrays.toString(nums));
-        System.out.println(generate(5));
+//        System.out.println(generate(5));
+//        System.out.println(fizzBuzz(15));
+        int[] score = {5, 4, 3, 2, 1};
+        System.out.println(Arrays.toString(findRelativeRanks(score)));
     }
 
     public static int[] arrayDiff(int[] a, int[] b) {
@@ -105,8 +106,76 @@ public class Some {
 
             triangle.add(row);
         }
-
         return triangle;
+    }
+
+    public static List<String> fizzBuzz(int n) {
+        List<String> stringList = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            if (i % 5 == 0 && i % 3 == 0) {
+                stringList.add("FizzBuzz");
+            } else if (i % 5 == 0) {
+                stringList.add("Buzz");
+            } else if (i % 3 == 0) {
+                stringList.add("Fizz");
+            } else {
+                stringList.add(String.valueOf(i));
+            }
+        }
+        return stringList;
+    }
+
+
+    public static String[] findRelativeRanks(int[] score) {
+        int[] scoreCopy = score.clone();
+        String[] scoreWin = new String[score.length];
+        Arrays.sort(score);
+        int count = 1;
+        for (int i = score.length - 1; i >= 0; i--) {
+            for (int j = 0; j < scoreCopy.length; j++) {
+                if (scoreCopy[j] == score[i]) {
+                    if (count == 1) {
+                        scoreWin[j] = "Gold Medal";
+                        count++;
+                        break;
+                    } else if (count == 2) {
+                        scoreWin[j] = "Silver Medal";
+                        count++;
+                        break;
+                    } else if (count == 3) {
+                        scoreWin[j] = "Bronze Medal";
+                        count++;
+                        break;
+                    } else {
+                        scoreWin[j] = String.valueOf(count);
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        return scoreWin;
+    }
+
+    public static int longestPalindrome(String s) {
+        List<String> stringList = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            stringList.add(String.valueOf(s.charAt(i)));
+        }
+        Map<String, Long> collect = stringList.stream()
+                .collect(Collectors.groupingBy(el -> el, Collectors.counting()));
+        long countOddStringMax = 0;
+        long countPalindrome = 0;
+        for (Map.Entry<String, Long> entry : collect.entrySet()) {
+            if (entry.getValue() % 2 != 0) {
+                if (countOddStringMax < entry.getValue()) {
+                    countOddStringMax = entry.getValue();
+                }
+            } else {
+                countPalindrome += entry.getValue();
+            }
+        }
+        return (int) (countOddStringMax + countPalindrome);
     }
 }
 
