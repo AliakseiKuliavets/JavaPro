@@ -1,6 +1,7 @@
 package practice.leetcode.kataArrayDiff;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,6 +9,15 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.*;
 
 public class Some {
+    public static void main(String[] args) {
+        int[] nums = {1, 0};
+//        System.out.println(Arrays.toString(nums));
+//        moveZeroesToStart(nums);
+//        moveZeroesToEnd(nums);
+//        System.out.println(Arrays.toString(nums));
+        System.out.println(generate(5));
+    }
+
     public static int[] arrayDiff(int[] a, int[] b) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Integer i : a) {
@@ -52,4 +62,51 @@ public class Some {
         return Arrays.equals(squaredA, b);
     }
 
+    public static void moveZeroesToStart(int[] nums) {
+        int newNums = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                int a = nums[newNums];
+                nums[i] = a;
+                nums[newNums++] = 0;
+            }
+        }
+    }
+
+    public static void moveZeroesToEnd(int[] nums) {
+        if (nums.length == 1) {
+            return;
+        }
+        int newNums = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int temp = nums[i];
+                nums[i] = nums[newNums];
+                nums[newNums] = temp;
+                newNums++;
+            }
+        }
+    }
+
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> triangle = new ArrayList<>();
+
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<>();
+
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    row.add(1);
+                } else {
+                    int val = triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j);
+                    row.add(val);
+                }
+            }
+
+            triangle.add(row);
+        }
+
+        return triangle;
+    }
 }
+

@@ -4,12 +4,31 @@ import java.util.*;
 
 public class Methods {
     public static void main(String[] args) {
-        String s1 = "aa";
-        String s2 = "##aaaa##";
+        String s1 = "aaa";
+        String s2 = "###aaaaaa";
         System.out.println(twoStringEquals(s1, s2));
     }
 
     public static String count(String s) {
+        if (s == null) {
+            throw new IllegalArgumentException();
+        }
+        StringBuilder result = new StringBuilder();
+        int backspaceCount = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '#') {
+                backspaceCount++;
+            } else if (backspaceCount > 0) {
+                backspaceCount--;
+            } else {
+                result.append(s.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+    public static String countS(String s) {
         if (s == null) {
             throw new IllegalArgumentException();
         }
