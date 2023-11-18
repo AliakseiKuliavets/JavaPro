@@ -336,7 +336,7 @@ class MethodsTest {
      * вернет Optional[B=2]
      */
     @Test
-    public void returnMostPopularLetterNameNullPositiveTest() {
+    public void returnMostPopularLetterNamePositiveTest() {
         Assertions.assertEquals("Optional[B=2]", Methods.returnMostPopularLetterName(characterLongMap));
     }
 
