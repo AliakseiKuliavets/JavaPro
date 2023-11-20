@@ -1,6 +1,8 @@
 package practice.leetcode.kataArrayDiff;
 
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -176,6 +178,12 @@ public class Some {
             }
         }
         return (int) (countOddStringMax + countPalindrome);
+    }
+    public String dayOfTheWeek(int day, int month, int year) {
+        LocalDate localDate = LocalDate.of(year,month,day);
+        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+        String dayOfWeekString = dayOfWeek.toString();
+        return dayOfWeekString.substring(0,1).toUpperCase() + dayOfWeekString.substring(1).toLowerCase();
     }
 }
 
