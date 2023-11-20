@@ -1,5 +1,7 @@
 package lesson.lesson25.practice.third;
 
+import java.util.List;
+
 public class Some extends Thread {
     private final int id;
 
