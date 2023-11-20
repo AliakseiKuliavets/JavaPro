@@ -145,7 +145,7 @@ public class Methods {
             throw new IllegalArgumentException("Лист имен не должен быть пустой или равен NULL");
         }
         return stringListName.stream()
-                .sorted()
+                .sorted(Comparator.comparingInt(String::length))
                 .distinct()
                 .collect(Collectors.toList());
     }
