@@ -2,8 +2,8 @@ package homeWork._21_11_23;
 
 public class Product {
     private int id;
-    private String Name;
-    private double weight;
+    private final String Name;
+    private final double weight;
 
     public Product(String name, double weight) {
         if (name == null || weight == 0) {
@@ -22,9 +22,6 @@ public class Product {
         return Name;
     }
 
-    public double getWeight() {
-        return weight;
-    }
 
     @Override
     public String toString() {

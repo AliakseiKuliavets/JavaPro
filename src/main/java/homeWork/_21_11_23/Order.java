@@ -1,30 +1,40 @@
 package homeWork._21_11_23;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Order {
-    private int id;
+    private static int idCounter = 0;
+    private final int id;
     private StatusOrder statusOrder;
-    private Map<Integer, Product> productOrderMap;
+    private final Map<Integer, List<Product>> productOrderMap = new HashMap<>();
 
     public Order() {
-        ++id;
+        id = ++idCounter;
         statusOrder = StatusOrder.START;
     }
 
-    public void addProductInOrder(Product product) {
-        if (product == null) {
+    public synchronized void addProductInOrder(List<Product> productList) {
+        if (productList == null) {
             throw new IllegalArgumentException("Нельзя передавать товары в заказ которые равны NULL");
         }
-        productOrderMap.put(id, product);
+        if (isPaid()) {
+            statusOrder = StatusOrder.ACCEPTED;
+        }
+        productOrderMap.put(id, productList);
         System.out.println("Продукт добавлен в заказ");
     }
 
-    public void changeStatusOrder(StatusOrder newStatusOrder) {
+    public synchronized void changeStatusOrder(StatusOrder newStatusOrder) {
         if (statusOrder == newStatusOrder) {
             throw new IllegalArgumentException("Нельзя изменить на тот же статус");
         }
         statusOrder = newStatusOrder;
+    }
+
+    public boolean isPaid() {
+        return  true;
     }
 
     public int getId() {
@@ -35,7 +45,8 @@ public class Order {
         return statusOrder;
     }
 
-    public Map<Integer, Product> getProductOrderMap() {
+    public Map<Integer, List<Product>> getProductOrderMap() {
         return productOrderMap;
     }
+
 }

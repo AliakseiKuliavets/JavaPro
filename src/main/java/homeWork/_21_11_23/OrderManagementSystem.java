@@ -5,9 +5,11 @@ import java.util.List;
 public class OrderManagementSystem {
     private volatile List<OrderProcessor> orderProcessorList;
 
-    public OrderManagementSystem(List<OrderProcessor> orderProcessorList) {
+
+    public void setOrderProcessors(List<OrderProcessor> orderProcessorList) {
         this.orderProcessorList = orderProcessorList;
     }
+
 
     public void runManagementSystem(Order order) {
         System.out.println("Запуск системы распределение заказов по обработчикам");

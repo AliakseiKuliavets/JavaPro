@@ -3,7 +3,7 @@ package homeWork._21_11_23;
 import java.util.PriorityQueue;
 
 public class LogisticsCenter {
-    private PriorityQueue<Order> orderQueueStatusReadyToShip;
+    private final PriorityQueue<Order> orderQueueStatusReadyToShip = new PriorityQueue<>();
 
     public synchronized void addAcceptedOrderInReadyQueue(Order order) {
         if (order == null || order.getProductOrderMap().isEmpty()) {
@@ -13,6 +13,12 @@ public class LogisticsCenter {
             order.changeStatusOrder(StatusOrder.READY_TO_SHIP);
             orderQueueStatusReadyToShip.add(order);
             System.out.println("Заказ в пути до клиента");
+        } else {
+            System.out.println("Товар не готов к отправке");
         }
+    }
+
+    public synchronized Order extractReadyToShipOrder() {
+        return orderQueueStatusReadyToShip.poll();
     }
 }
