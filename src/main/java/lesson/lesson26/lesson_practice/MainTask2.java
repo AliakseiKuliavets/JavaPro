@@ -7,7 +7,7 @@ public class MainTask2 {
     static int sumNumber = 0;
 
     public static void main(String[] args) {
-        int[] array = {4, 6, 3, 7, 10};
+        int[] array = {4, 6, 3, 7, 10, 4, 6, 3, 7, 10, 4, 6, 3, 7, 10, 4, 6, 3, 7, 10};
         ExecutorService executorService = Executors.newFixedThreadPool(4);
         for (int j : array) {
             executorService.execute(new CountNumber(j));
@@ -19,7 +19,7 @@ public class MainTask2 {
 }
 
 class CountNumber implements Runnable {
-    int number = 0;
+    int number;
 
     public CountNumber(int number) {
         this.number = number;
