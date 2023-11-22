@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Создаем экземпляры необходимых классов
         OrderProcessor orderProcessor = new OrderProcessor();
         LogisticsCenter logisticsCenter = new LogisticsCenter();
         OrderManagementSystem orderManagementSystem = new OrderManagementSystem();
