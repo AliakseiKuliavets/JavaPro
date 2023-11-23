@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class Methods {
     public static void main(String[] args) {
         String fileName = "D:\\tel_ran\\JavaPro\\src\\main\\java\\homeWork\\_08_11_2023\\1.txt";
+        System.out.println(stringLastName(readFileToList(fileName)).size());
     }
 
     public static List<String> readFileToList(String fileName) {
@@ -65,8 +66,14 @@ public class Methods {
         for (String line : lines) {
             String[] parts = line.split("\\s+");
             if (parts.length > 1) {
-                String lastName = parts[parts.length - 1];
-                Matcher matcher = pattern.matcher(lastName);
+                Matcher matcher;
+                if (parts.length == 5){
+                    String lastName = parts[parts.length - 2];
+                    matcher = pattern.matcher(lastName);
+                } else {
+                    String lastName = parts[parts.length - 1];
+                    matcher = pattern.matcher(lastName);
+                }
 
                 if (matcher.find()) {
                     lastNamesList.add(matcher.group());
@@ -224,7 +231,6 @@ public class Methods {
         Pattern patternName = Pattern.compile(regexName);
 
         Map<String, String> phoneNumbersNameMap = new LinkedHashMap<>();
-
         for (String line : lines) {
             Matcher matcherPhoneNumber = patternPhoneNumber.matcher(line);
             Matcher matcherName = patternName.matcher(line);
@@ -234,7 +240,6 @@ public class Methods {
                 phoneNumbersNameMap.put(phoneNumber, matcherName.group(1));
             }
         }
-
         return phoneNumbersNameMap;
     }
 
