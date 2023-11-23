@@ -21,20 +21,22 @@ public class Order {
         }
         if (isPaid()) {
             statusOrder = StatusOrder.ACCEPTED;
+            productOrderMap.put(id, productList);
+            System.out.println("Продукт добавлен в заказ");
+        } else {
+            System.out.println("Продукт не был оплачен");
         }
-        productOrderMap.put(id, productList);
-        System.out.println("Продукт добавлен в заказ");
     }
 
     public synchronized void changeStatusOrder(StatusOrder newStatusOrder) {
-        if (statusOrder == newStatusOrder) {
-            throw new IllegalArgumentException("Нельзя изменить на тот же статус");
+        if (statusOrder == newStatusOrder || statusOrder == null) {
+            throw new IllegalArgumentException("Нельзя изменить на тот же статус или передавать NULL");
         }
         statusOrder = newStatusOrder;
     }
 
     public boolean isPaid() {
-        return  true;
+        return true;
     }
 
     public int getId() {
