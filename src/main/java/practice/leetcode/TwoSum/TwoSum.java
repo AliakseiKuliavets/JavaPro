@@ -25,6 +25,7 @@ package practice.leetcode.TwoSum;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class TwoSum {
@@ -41,7 +42,7 @@ public class TwoSum {
         while (left < right) {
             int sum = nums[left] + nums[right];
             if (sum == target) {
-                return new int[]{nums[left],nums[right]};
+                return new int[]{nums[left], nums[right]};
             } else if (sum > target) {
                 right--;
             } else {
@@ -50,8 +51,8 @@ public class TwoSum {
         }
         return new int[]{};
 
-    // time -> O(n^2), memory O(n)
-    //    public static int[] twoSum(int[] nums, int target) {
+        // time -> O(n^2), memory O(n)
+        //    public static int[] twoSum(int[] nums, int target) {
 //        for (int i = 0; i < nums.length; i++) {
 //            for (int j = i + 1; j < nums.length; j++) {
 //                if (nums[i] + nums[j] == target) {
@@ -63,7 +64,7 @@ public class TwoSum {
 //    }
 
 
-    // time -> O(log n), memory O(n)
+        // time -> O(log n), memory O(n)
 //    public static int[] twoSum(int[] nums, int target) {
 //        for (int i = 0; i < nums.length; i++) {
 //            int complement = target - nums[i];
@@ -103,6 +104,7 @@ public class TwoSum {
 //            numIndexMap.put(nums[i], i);
 //        }
 //        return new int[]{};
+
     }
 }
 
