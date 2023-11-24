@@ -17,8 +17,9 @@ public class Some {
 //        System.out.println(Arrays.toString(nums));
 //        System.out.println(generate(5));
 //        System.out.println(fizzBuzz(15));
-        int[] score = {5, 4, 3, 2, 1};
+        int[] score = {4, 3, 2, 7, 8, 2, 3, 1};
         System.out.println(Arrays.toString(findRelativeRanks(score)));
+        System.out.println(findDisappearedNumbers(score));
     }
 
     public static int[] arrayDiff(int[] a, int[] b) {
@@ -159,31 +160,40 @@ public class Some {
         return scoreWin;
     }
 
-    public static int longestPalindrome(String s) {
-        List<String> stringList = new ArrayList<>();
-        for (int i = 0; i < s.length(); i++) {
-            stringList.add(String.valueOf(s.charAt(i)));
+    public int longestPalindrome(String s) {
+        Map<Character, Integer> charsCounter = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            charsCounter.put(c, charsCounter.getOrDefault(c, 0) + 1);
         }
-        Map<String, Long> collect = stringList.stream()
-                .collect(Collectors.groupingBy(el -> el, Collectors.counting()));
-        long countOddStringMax = 0;
-        long countPalindrome = 0;
-        for (Map.Entry<String, Long> entry : collect.entrySet()) {
-            if (entry.getValue() % 2 != 0) {
-                if (countOddStringMax < entry.getValue()) {
-                    countOddStringMax = entry.getValue();
-                }
-            } else {
-                countPalindrome += entry.getValue();
-            }
+
+        int bigPallindrome = 0;
+        for (Integer val : charsCounter.values()) {
+            if (val % 2 == 0) bigPallindrome += val;
+            else bigPallindrome += val - 1;
         }
-        return (int) (countOddStringMax + countPalindrome);
+
+        return Math.min(bigPallindrome + 1, s.length());
     }
+
     public String dayOfTheWeek(int day, int month, int year) {
-        LocalDate localDate = LocalDate.of(year,month,day);
+        LocalDate localDate = LocalDate.of(year, month, day);
         DayOfWeek dayOfWeek = localDate.getDayOfWeek();
         String dayOfWeekString = dayOfWeek.toString();
-        return dayOfWeekString.substring(0,1).toUpperCase() + dayOfWeekString.substring(1).toLowerCase();
+        return dayOfWeekString.substring(0, 1).toUpperCase() + dayOfWeekString.substring(1).toLowerCase();
+    }
+
+    public static List<Integer> findDisappearedNumbers(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        for (int i = 1; i < nums.length; i++) {
+            if (!(set.contains(i))) {
+                list.add(i);
+            }
+        }
+        return list;
     }
 }
 
