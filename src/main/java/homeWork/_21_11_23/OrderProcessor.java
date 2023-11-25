@@ -1,10 +1,11 @@
 package homeWork._21_11_23;
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 public class OrderProcessor {
-    private final PriorityQueue<Order> orderQueue = new PriorityQueue<>();
+    private Queue<Order> orderQueue;
 
     public synchronized void addOrderInQueue(Order order) {
         if (order == null || order.getProductOrderMap().isEmpty()) {
@@ -16,7 +17,7 @@ public class OrderProcessor {
 
     public synchronized Order extractOrderFromQueue() {
         if (orderQueue.isEmpty()) {
-            return null;
+            throw new IllegalArgumentException("Очередь пуста");
         }
         return orderQueue.poll();
     }

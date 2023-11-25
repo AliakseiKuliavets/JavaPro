@@ -3,25 +3,30 @@ package homeWork._21_11_23;
 import java.util.List;
 
 public class OrderManagementSystem {
-    private volatile List<OrderProcessor> orderProcessorList;
+    private List<OrderProcessor> orderProcessorList;
 
+    private volatile boolean isRunning;
 
-    public void setOrderProcessors(List<OrderProcessor> orderProcessorList) {
+    public OrderManagementSystem(List<OrderProcessor> orderProcessorList) {
         this.orderProcessorList = orderProcessorList;
     }
 
-
     public void runManagementSystem(Order order) {
         System.out.println("Запуск системы распределение заказов по обработчикам");
-        for (OrderProcessor processor : orderProcessorList) {
-            if (!(stopManagementSystem())) {
+        isRunning = true;
+        if (isRunning) {
+            for (OrderProcessor processor : orderProcessorList) {
                 processor.addOrderInQueue(order);
             }
         }
     }
 
-    public boolean stopManagementSystem() {
+    public void stopManagementSystem() {
         System.out.println("Остановка системы распределение заказов по обработчикам");
-        return true;
+        isRunning = false;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }

@@ -9,7 +9,7 @@ public class MonitoringThread extends Thread {
 
     @Override
     public void run() {
-        while (!orderManagementSystem.stopManagementSystem()) {
+        while (orderManagementSystem.isRunning()) {
             monitorSystem();
         }
     }

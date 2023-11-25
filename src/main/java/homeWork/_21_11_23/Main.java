@@ -6,8 +6,7 @@ public class Main {
     public static void main(String[] args) {
         OrderProcessor orderProcessor = new OrderProcessor();
         LogisticsCenter logisticsCenter = new LogisticsCenter();
-        OrderManagementSystem orderManagementSystem = new OrderManagementSystem();
-        orderManagementSystem.setOrderProcessors(List.of(orderProcessor));
+        OrderManagementSystem orderManagementSystem = new OrderManagementSystem(List.of(orderProcessor));
 
         // Создаем и запускаем потоки
         OrderProcessingThread orderProcessingThread = new OrderProcessingThread(orderProcessor, logisticsCenter);
