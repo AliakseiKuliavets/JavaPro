@@ -1,12 +1,22 @@
 package homeWork._21_11_23;
 
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        Order order1 = new Order();
+        List<Product> productList1 = Arrays.asList(new Product("Tomate", 20.2),
+                new Product("Melon", 1.0));
+        order1.addProductInOrder(productList1);
+        List<Order> orderList = new ArrayList<>(Arrays.asList(order1));
+
+
         OrderProcessor orderProcessor = new OrderProcessor();
+        OrderManagementSystem orderManagementSystem = new OrderManagementSystem(List.of(orderProcessor), orderList);
         LogisticsCenter logisticsCenter = new LogisticsCenter();
-        OrderManagementSystem orderManagementSystem = new OrderManagementSystem(List.of(orderProcessor));
+        orderManagementSystem.runManagementSystem();
+        orderManagementSystem.managementSystem();
 
         // Создаем и запускаем потоки
         OrderProcessingThread orderProcessingThread = new OrderProcessingThread(orderProcessor, logisticsCenter);
@@ -35,6 +45,7 @@ public class Main {
         client.followStatusOrder(order);
 
 
-        orderManagementSystem.runManagementSystem(order);
+
+
     }
 }

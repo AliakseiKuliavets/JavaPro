@@ -3,6 +3,7 @@ package homeWork._21_11_23;
 import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class OrderGeneratorThread extends Thread {

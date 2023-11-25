@@ -5,7 +5,7 @@ import java.util.Queue;
 
 
 public class OrderProcessor {
-    private Queue<Order> orderQueue;
+    private Queue<Order> orderQueue = new LinkedList<>();
 
     public synchronized void addOrderInQueue(Order order) {
         if (order == null || order.getProductOrderMap().isEmpty()) {
@@ -16,9 +16,13 @@ public class OrderProcessor {
     }
 
     public synchronized Order extractOrderFromQueue() {
-        if (orderQueue.isEmpty()) {
+        if (orderQueue == null || orderQueue.isEmpty()) {
             throw new IllegalArgumentException("Очередь пуста");
         }
         return orderQueue.poll();
+    }
+
+    public Queue<Order> getOrderQueue() {
+        return orderQueue;
     }
 }
