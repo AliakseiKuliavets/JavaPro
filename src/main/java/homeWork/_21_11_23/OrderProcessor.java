@@ -3,7 +3,11 @@ package homeWork._21_11_23;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/*
+Обработчик Заказов (OrderProcessor)
+Поля: очередь заказов (Queue).
+Методы: добавление заказа в очередь (синхронизированный), извлечение заказа из очереди (синхронизированный).
+ */
 public class OrderProcessor {
     private Queue<Order> orderQueue = new LinkedList<>();
 
@@ -19,10 +23,14 @@ public class OrderProcessor {
         if (orderQueue == null || orderQueue.isEmpty()) {
             throw new IllegalArgumentException("Очередь пуста");
         }
+        System.out.println("Заказ был извлечен из очереди" + orderQueue);
         return orderQueue.poll();
     }
 
-    public Queue<Order> getOrderQueue() {
-        return orderQueue;
+    @Override
+    public String toString() {
+        return "OrderProcessor{" +
+                "orderQueue=" + orderQueue +
+                '}';
     }
 }

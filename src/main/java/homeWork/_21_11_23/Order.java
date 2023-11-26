@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+Заказ (Order)
+Поля: идентификатор заказа, статус, список товаров.
+Методы: добавление товара, изменение статуса заказа.
+ */
 public class Order {
     private static int idCounter = 0;
     private final int id;
@@ -24,13 +29,16 @@ public class Order {
             productOrderMap.put(id, productList);
             System.out.println("Продукт добавлен в заказ");
         } else {
-            System.out.println("Продукт не был оплачен");
+            throw new RuntimeException("Продукт не был оплачен");
         }
     }
 
     public synchronized void changeStatusOrder(StatusOrder newStatusOrder) {
-        if (statusOrder == newStatusOrder || statusOrder == null) {
-            throw new IllegalArgumentException("Нельзя изменить на тот же статус или передавать NULL");
+        if (statusOrder == null) {
+            throw new IllegalArgumentException("Нельзя передавать statusOrder == NULL");
+        }
+        if (statusOrder == newStatusOrder) {
+            throw new IllegalArgumentException("Нельзя изменить на тот же статус");
         }
         statusOrder = newStatusOrder;
     }
@@ -51,4 +59,12 @@ public class Order {
         return productOrderMap;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", statusOrder=" + statusOrder +
+                ", productOrderMap=" + productOrderMap +
+                '}';
+    }
 }

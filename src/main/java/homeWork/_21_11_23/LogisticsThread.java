@@ -1,7 +1,9 @@
 package homeWork._21_11_23;
 
-public class LogisticsThread extends Thread{
-    private final LogisticsCenter logisticsCenter;
+import java.util.List;
+
+public class LogisticsThread extends Thread {
+    private LogisticsCenter logisticsCenter;
 
     public LogisticsThread(LogisticsCenter logisticsCenter) {
         this.logisticsCenter = logisticsCenter;
@@ -9,8 +11,9 @@ public class LogisticsThread extends Thread{
 
     @Override
     public void run() {
+        List<Order> orderList = logisticsCenter.getOrderQueueStatusReadyToShip();
         while (true) {
-            Order order = logisticsCenter.extractReadyToShipOrder();
+            Order order = logisticsCenter.extractReadyToShipOrder(orderList);
             if (order != null) {
                 shipOrder(order);
             } else {

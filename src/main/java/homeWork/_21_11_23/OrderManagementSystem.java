@@ -3,10 +3,15 @@ package homeWork._21_11_23;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+Система Управления Заказами (OrderManagementSystem)
+Поля: список обработчиков заказов, volatile флаг работы системы.
+Методы: запуск и остановка системы, распределение заказов по обработчикам.
+ */
 public class OrderManagementSystem {
-    private List<OrderProcessor> orderProcessorList;
+    private final List<OrderProcessor> orderProcessorList;
 
-    private List<Order> orderList;
+    private final List<Order> orderList;
 
     private volatile boolean isRunning;
 
@@ -18,15 +23,26 @@ public class OrderManagementSystem {
     public void managementSystem() {
         System.out.println("Запуск менеджера систем");
         if (isRunning) {
-            Iterator<Order> iterator = orderList.iterator();
-            while (iterator.hasNext()) {
-                Order order = iterator.next();
-                for (OrderProcessor orderProcessor : orderProcessorList) {
-                    orderProcessor.addOrderInQueue(order);
-                    iterator.remove();
-                    break;
-                }
+            if (orderProcessorList.size() == 4 && !orderList.isEmpty()) {
+                distributeOrders();
             }
+            stopManagementSystem();
+        }
+    }
+
+    private void distributeOrders() {
+        Iterator<Order> iterator = orderList.iterator();
+        int processorIndex = 0;
+        while (iterator.hasNext()) {
+            if (processorIndex >= orderProcessorList.size()) {
+                processorIndex = 0;
+            }
+            Order order = iterator.next();
+            OrderProcessor orderProcessor = orderProcessorList.get(processorIndex);
+            orderProcessor.addOrderInQueue(order);
+            System.out.println("Заказ " + order + " был добавлен в " + orderProcessor);
+            iterator.remove();
+            processorIndex++;
         }
     }
 
