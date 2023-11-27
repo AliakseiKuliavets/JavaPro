@@ -1,4 +1,4 @@
-package lesson.lesson27;
+package lesson.lesson27.lesson;
 
 public class DaemonThreadExample {
     public static void main(String[] args) {

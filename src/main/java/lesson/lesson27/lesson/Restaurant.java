@@ -1,4 +1,4 @@
-package lesson.lesson27;
+package lesson.lesson27.lesson;
 
 public class Restaurant {
     private boolean isReady = false;

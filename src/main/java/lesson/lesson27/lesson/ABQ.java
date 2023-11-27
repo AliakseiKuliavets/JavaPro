@@ -1,4 +1,4 @@
-package lesson.lesson27;
+package lesson.lesson27.lesson;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
