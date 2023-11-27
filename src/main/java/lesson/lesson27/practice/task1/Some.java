@@ -8,6 +8,10 @@ public class Some {
         myThread1.start();
         myThread2.start();
 
+        DaemonThread daemonThread = new DaemonThread();
+        daemonThread.setDaemon(true);
+        daemonThread.start();
+
         Thread.currentThread().setName("Main Thread");
         for (int i = 0; i < 10; i++) {
             try {
@@ -17,6 +21,5 @@ public class Some {
                 throw new RuntimeException(e);
             }
         }
-
     }
 }
