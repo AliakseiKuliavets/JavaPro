@@ -35,7 +35,7 @@ public class LogisticsCenter {
         return null;
     }
 
-    public List<Order> getOrderQueueStatusReadyToShip() {
+    public synchronized List<Order> getOrderQueueStatusReadyToShip() {
         return orderQueueStatusReadyToShip;
     }
 }

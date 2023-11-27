@@ -22,7 +22,7 @@ public class OrderProcessingThread extends Thread {
         }
     }
 
-    private void processOrder(Order order) {
+    private synchronized void processOrder(Order order) {
         order.changeStatusOrder(StatusOrder.ACCEPTED_IN_STOCK);
         logisticsCenter.addAcceptedOrderInReadyQueue(order);
     }

@@ -14,7 +14,7 @@ public class MonitoringThread extends Thread {
         }
     }
 
-    private void monitorSystem() {
+    private synchronized void monitorSystem() {
         System.out.println("Система работает");
         try {
             Thread.sleep(5000);

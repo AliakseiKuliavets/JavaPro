@@ -22,7 +22,7 @@ public class LogisticsThread extends Thread {
         }
     }
 
-    private void shipOrder(Order order) {
+    private synchronized void shipOrder(Order order) {
         System.out.println("Заказ отправлен клиенту: " + order.getId());
     }
 }

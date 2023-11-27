@@ -1,5 +1,6 @@
 package homeWork._21_11_23;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class OrderManagementSystem {
     private final List<OrderProcessor> orderProcessorList;
 
-    private final List<Order> orderList;
+    private List<Order> orderList;
 
     private volatile boolean isRunning;
 
@@ -20,30 +21,27 @@ public class OrderManagementSystem {
         this.orderList = orderList;
     }
 
-    public void managementSystem() {
+    public synchronized void managementSystem() {
         System.out.println("Запуск менеджера систем");
         if (isRunning) {
-            if (orderProcessorList.size() == 4 && !orderList.isEmpty()) {
+            if (!orderList.isEmpty()) {
                 distributeOrders();
             }
             stopManagementSystem();
         }
     }
 
-    private void distributeOrders() {
-        Iterator<Order> iterator = orderList.iterator();
+    private synchronized void distributeOrders() {
         int processorIndex = 0;
-        while (iterator.hasNext()) {
+        for (Order order : orderList) {
+            OrderProcessor orderProcessor = orderProcessorList.get(processorIndex);
+            orderProcessor.addOrderInQueue(order);
+            processorIndex++;
             if (processorIndex >= orderProcessorList.size()) {
                 processorIndex = 0;
             }
-            Order order = iterator.next();
-            OrderProcessor orderProcessor = orderProcessorList.get(processorIndex);
-            orderProcessor.addOrderInQueue(order);
-            System.out.println("Заказ " + order + " был добавлен в " + orderProcessor);
-            iterator.remove();
-            processorIndex++;
         }
+        orderList = new ArrayList<>();
     }
 
     public void stopManagementSystem() {
