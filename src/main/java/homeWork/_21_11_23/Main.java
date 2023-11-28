@@ -19,7 +19,9 @@ public class Main {
         orderManagementSystem.runManagementSystem();
         orderManagementSystem.managementSystem();
 
-        for (OrderProcessor orderProcessor : orderProcessorList) {
+
+
+        /*for (OrderProcessor orderProcessor : orderProcessorList) {
             OrderProcessingThread orderProcessingThread = new OrderProcessingThread(orderProcessor, logisticsCenter);
             orderProcessingThread.start();
             try {
@@ -58,6 +60,8 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
+
+         */
 
 
         // Создаем клиента и товары для заказа

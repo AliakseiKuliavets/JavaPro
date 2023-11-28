@@ -36,6 +36,7 @@ public class OrderManagementSystem {
         for (Order order : orderList) {
             OrderProcessor orderProcessor = orderProcessorList.get(processorIndex);
             orderProcessor.addOrderInQueue(order);
+            order.changeStatusOrder(StatusOrder.ACCEPTED_IN_STOCK);
             processorIndex++;
             if (processorIndex >= orderProcessorList.size()) {
                 processorIndex = 0;
@@ -50,7 +51,7 @@ public class OrderManagementSystem {
     }
 
     public void runManagementSystem() {
-        System.out.println("Остановка системы распределение заказов по обработчикам");
+        System.out.println("Запуск системы распределение заказов по обработчикам");
         isRunning = true;
     }
 
