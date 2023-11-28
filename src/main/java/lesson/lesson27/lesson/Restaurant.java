@@ -1,11 +1,15 @@
 package lesson.lesson27.lesson;
 
 public class Restaurant {
-    private boolean isReady = false;
+    private boolean isReady;
+
+    private int counter;
+
 
     public synchronized void cookDish() {
+        counter++;
         try {
-            Thread.sleep(1500);
+            Thread.sleep(500);
             System.out.println("Cooking food");
             isReady = true;
             notifyAll();
@@ -15,20 +19,26 @@ public class Restaurant {
     }
 
     public synchronized void takeDish() {
-        while (!isReady) {
+        int counter1 = counter / 2;
+        while (counter1 != 0) {
+            counter1--;
+            if (counter1 == 0) {
+                isReady = false;
+            }
+            try {
+                Thread.sleep(700);
+                System.out.println("Waiter is working: " + Thread.currentThread().getName());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        while (isReady) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-        try {
-            Thread.sleep(1700);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("Waiter is working");
-        isReady = false;
     }
 }
 
@@ -36,13 +46,12 @@ class Cook extends Thread {
     private Restaurant restaurant;
 
     public Cook(Restaurant restaurant) {
-        super.start();
         this.restaurant = restaurant;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             restaurant.cookDish();
         }
     }
@@ -52,15 +61,12 @@ class Waiter extends Thread {
     private Restaurant restaurant;
 
     public Waiter(Restaurant restaurant) {
-        super.start();
         this.restaurant = restaurant;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
-            restaurant.takeDish();
-        }
+        restaurant.takeDish();
     }
 }
 
@@ -70,6 +76,12 @@ class Main {
         Cook cook = new Cook(restaurant);
 
         Waiter waiter1 = new Waiter(restaurant);
+        waiter1.setName("Официант 1");
         Waiter waiter2 = new Waiter(restaurant);
+        waiter2.setName("Официант 2");
+
+        cook.start();
+        waiter1.start();
+        waiter2.start();
     }
 }
