@@ -19,7 +19,7 @@ public class OrderProcessingThread extends Thread {
     public void run() {
         while (true) {
             Order order = orderProcessor.extractOrderFromQueue();
-            if (order != null && !order.getProductOrderMap().isEmpty()) {
+            if (order != null) {
                 processOrder(order);
             } else {
                 break;

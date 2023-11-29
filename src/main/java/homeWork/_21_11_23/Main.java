@@ -41,14 +41,6 @@ public class Main {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            OrderProcessingThread orderProcessingThread = new OrderProcessingThread(orderProcessor, logisticsCenter);
-            orderProcessingThread.start();
-            try {
-                orderProcessingThread.join();
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
 
             LogisticsThread logisticsThread = new LogisticsThread(logisticsCenter);
             logisticsThread.start();
@@ -59,6 +51,16 @@ public class Main {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
+            OrderProcessingThread orderProcessingThread = new OrderProcessingThread(orderProcessor, logisticsCenter);
+            orderProcessingThread.start();
+            try {
+                orderProcessingThread.join();
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
 
             MonitoringThread monitoringThread = new MonitoringThread(orderManagementSystem);
             monitoringThread.start();
