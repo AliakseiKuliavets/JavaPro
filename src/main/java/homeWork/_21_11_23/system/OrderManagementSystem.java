@@ -1,7 +1,10 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.system;
+
+import homeWork._21_11_23.enums.StatusOrder;
+import homeWork._21_11_23.model.Order;
+import homeWork._21_11_23.processor.OrderProcessor;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /*

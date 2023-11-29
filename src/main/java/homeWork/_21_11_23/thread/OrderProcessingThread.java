@@ -1,5 +1,10 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.thread;
 
+
+import homeWork._21_11_23.enums.StatusOrder;
+import homeWork._21_11_23.model.Order;
+import homeWork._21_11_23.processor.LogisticsCenter;
+import homeWork._21_11_23.processor.OrderProcessor;
 
 public class OrderProcessingThread extends Thread {
     private final OrderProcessor orderProcessor;
@@ -14,7 +19,7 @@ public class OrderProcessingThread extends Thread {
     public void run() {
         while (true) {
             Order order = orderProcessor.extractOrderFromQueue();
-            if (order != null) {
+            if (order != null && !order.getProductOrderMap().isEmpty()) {
                 processOrder(order);
             } else {
                 break;
@@ -23,7 +28,6 @@ public class OrderProcessingThread extends Thread {
     }
 
     private synchronized void processOrder(Order order) {
-        order.changeStatusOrder(StatusOrder.ACCEPTED_IN_STOCK);
         logisticsCenter.addAcceptedOrderInReadyQueue(order);
     }
 }

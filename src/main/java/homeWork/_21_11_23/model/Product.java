@@ -1,4 +1,4 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.model;
 
 public class Product {
     private int id;

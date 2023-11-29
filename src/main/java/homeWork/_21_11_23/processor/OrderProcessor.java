@@ -1,4 +1,6 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.processor;
+
+import homeWork._21_11_23.model.Order;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -20,9 +22,6 @@ public class OrderProcessor {
     }
 
     public synchronized Order extractOrderFromQueue() {
-        if (orderQueue == null || orderQueue.isEmpty()) {
-            throw new IllegalArgumentException("Очередь пуста");
-        }
         System.out.println("Заказ был извлечен из очереди" + orderQueue);
         return orderQueue.poll();
     }

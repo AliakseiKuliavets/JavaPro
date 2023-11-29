@@ -1,5 +1,16 @@
 package homeWork._21_11_23;
 
+import homeWork._21_11_23.model.Client;
+import homeWork._21_11_23.model.Order;
+import homeWork._21_11_23.model.Product;
+import homeWork._21_11_23.processor.LogisticsCenter;
+import homeWork._21_11_23.processor.OrderProcessor;
+import homeWork._21_11_23.system.OrderManagementSystem;
+import homeWork._21_11_23.thread.LogisticsThread;
+import homeWork._21_11_23.thread.MonitoringThread;
+import homeWork._21_11_23.thread.OrderGeneratorThread;
+import homeWork._21_11_23.thread.OrderProcessingThread;
+
 import java.util.*;
 
 public class Main {
@@ -21,7 +32,15 @@ public class Main {
 
 
 
-        /*for (OrderProcessor orderProcessor : orderProcessorList) {
+        for (OrderProcessor orderProcessor : orderProcessorList) {
+            OrderGeneratorThread orderGeneratorThread = new OrderGeneratorThread(orderProcessorList);
+            orderGeneratorThread.start();
+            try {
+                orderGeneratorThread.join();
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             OrderProcessingThread orderProcessingThread = new OrderProcessingThread(orderProcessor, logisticsCenter);
             orderProcessingThread.start();
             try {
@@ -51,18 +70,8 @@ public class Main {
                 throw new RuntimeException(e);
             }
 
-            OrderGeneratorThread orderGeneratorThread = new OrderGeneratorThread();
-            orderGeneratorThread.start();
-            try {
-                orderGeneratorThread.join();
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+
         }
-
-         */
-
 
         // Создаем клиента и товары для заказа
         Client client = new Client();

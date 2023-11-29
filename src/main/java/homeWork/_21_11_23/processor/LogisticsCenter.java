@@ -1,4 +1,7 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.processor;
+
+import homeWork._21_11_23.enums.StatusOrder;
+import homeWork._21_11_23.model.Order;
 
 import java.util.*;
 
@@ -22,9 +25,9 @@ public class LogisticsCenter {
         }
     }
 
-    public synchronized Order extractReadyToShipOrder(Queue<Order> orderQueueStatusReadyToShip) {
-        for (Order order: orderQueueStatusReadyToShip){
-            if (order.getStatusOrder() == StatusOrder.READY_TO_SHIP){
+    public synchronized Order extractReadyToShipOrder() {
+        for (Order order : orderQueueStatusReadyToShip) {
+            if (order.getStatusOrder() == StatusOrder.READY_TO_SHIP) {
                 orderQueueStatusReadyToShip.remove(order);
                 return order;
             }

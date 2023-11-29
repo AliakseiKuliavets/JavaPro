@@ -1,4 +1,6 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.model;
+
+import homeWork._21_11_23.enums.StatusOrder;
 
 import java.util.HashMap;
 import java.util.List;

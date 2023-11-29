@@ -1,4 +1,6 @@
-package homeWork._21_11_23;
+package homeWork._21_11_23.thread;
+
+import homeWork._21_11_23.system.OrderManagementSystem;
 
 public class MonitoringThread extends Thread {
     private final OrderManagementSystem orderManagementSystem;
