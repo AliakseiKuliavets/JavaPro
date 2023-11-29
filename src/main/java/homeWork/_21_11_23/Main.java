@@ -13,7 +13,7 @@ import homeWork._21_11_23.thread.OrderProcessingThread;
 
 import java.util.*;
 
-public class Main {
+  public  class  Main {
     public static void main(String[] args) {
 
         OrderProcessor orderProcessor1 = new OrderProcessor();
@@ -24,7 +24,8 @@ public class Main {
                 orderProcessor3,orderProcessor4);
 
         OrderManagementSystem orderManagementSystem = getOrderManagementSystem(orderProcessorList);
-        LogisticsCenter logisticsCenter = new LogisticsCenter();
+        LogisticsCenter logisticsCenter = new LogisticsCenter(orderProcessorList);
+        logisticsCenter.
 
 
         orderManagementSystem.runManagementSystem();
@@ -71,8 +72,6 @@ public class Main {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
-
         }
 
         // Создаем клиента и товары для заказа

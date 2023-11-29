@@ -12,23 +12,40 @@ import java.util.*;
  */
 public class LogisticsCenter {
     private final Queue<Order> orderQueueStatusReadyToShip = new LinkedList<>();
+    private List<OrderProcessor> orderProcessorList;
+
+    public LogisticsCenter(List<OrderProcessor> orderProcessorList) {
+        this.orderProcessorList = orderProcessorList;
+    }
 
     public synchronized void addAcceptedOrderInReadyQueue(Order order) {
         if (order == null || order.getProductOrderMap().isEmpty()) {
             throw new IllegalArgumentException("Заказ не должен быть пуст или равен NULL");
         }
-        if (order.getStatusOrder() == StatusOrder.ACCEPTED_IN_STOCK) {
+        if (order.getStatusOrder().equals(StatusOrder.ACCEPTED_IN_STOCK)) {
+            order.changeStatusOrder(StatusOrder.READY_TO_SHIP);
             orderQueueStatusReadyToShip.add(order);
-            System.out.println("Заказ в пути до клиента");
         } else {
             throw new RuntimeException("Товар не готов к отправке");
         }
     }
 
+    public void returnOrderFromList(){
+        for (OrderProcessor orderProcessor :orderProcessorList) {
+            if (!orderProcessor.getOrderQueue().isEmpty()){
+                for (Order order :orderProcessor.getOrderQueue()){
+                    addAcceptedOrderInReadyQueue(order);
+                }
+            }
+        }
+    }
+
     public synchronized Order extractReadyToShipOrder() {
         for (Order order : orderQueueStatusReadyToShip) {
-            if (order.getStatusOrder() == StatusOrder.READY_TO_SHIP) {
+            if (order.getStatusOrder().equals(StatusOrder.READY_TO_SHIP)) {
+                order.changeStatusOrder(StatusOrder.DELIVERED);
                 orderQueueStatusReadyToShip.remove(order);
+                System.out.println("Заказ в пути до клиента");
                 return order;
             }
         }

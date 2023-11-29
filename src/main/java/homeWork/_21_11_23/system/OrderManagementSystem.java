@@ -38,8 +38,8 @@ public class OrderManagementSystem {
         int processorIndex = 0;
         for (Order order : orderList) {
             OrderProcessor orderProcessor = orderProcessorList.get(processorIndex);
-            orderProcessor.addOrderInQueue(order);
             order.changeStatusOrder(StatusOrder.ACCEPTED_IN_STOCK);
+            orderProcessor.addOrderInQueue(order);
             processorIndex++;
             if (processorIndex >= orderProcessorList.size()) {
                 processorIndex = 0;

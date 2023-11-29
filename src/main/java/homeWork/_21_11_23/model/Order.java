@@ -2,6 +2,8 @@ package homeWork._21_11_23.model;
 
 import homeWork._21_11_23.enums.StatusOrder;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,10 +14,12 @@ import java.util.Map;
 Методы: добавление товара, изменение статуса заказа.
  */
 public class Order {
+
     private static int idCounter = 0;
     private final int id;
     private StatusOrder statusOrder;
-    private final Map<Integer, List<Product>> productOrderMap = new HashMap<>();
+    private static final Map<Integer, List<Product>> productOrderMap = new HashMap<>();
+
 
     public Order() {
         id = ++idCounter;

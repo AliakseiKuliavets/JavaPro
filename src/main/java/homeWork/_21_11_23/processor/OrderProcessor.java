@@ -26,6 +26,10 @@ public class OrderProcessor {
         return orderQueue.poll();
     }
 
+    public Queue<Order> getOrderQueue() {
+        return orderQueue;
+    }
+
     @Override
     public String toString() {
         return "OrderProcessor{" +
