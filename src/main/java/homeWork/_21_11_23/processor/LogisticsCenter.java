@@ -12,11 +12,7 @@ import java.util.*;
  */
 public class LogisticsCenter {
     private final Queue<Order> orderQueueStatusReadyToShip = new LinkedList<>();
-    private List<OrderProcessor> orderProcessorList;
 
-    public LogisticsCenter(List<OrderProcessor> orderProcessorList) {
-        this.orderProcessorList = orderProcessorList;
-    }
 
     public synchronized void addAcceptedOrderInReadyQueue(Order order) {
         if (order == null || order.getProductOrderMap().isEmpty()) {
@@ -30,7 +26,7 @@ public class LogisticsCenter {
         }
     }
 
-    public void returnOrderFromList(){
+    public void returnOrderFromList(List<OrderProcessor> orderProcessorList){
         for (OrderProcessor orderProcessor :orderProcessorList) {
             if (!orderProcessor.getOrderQueue().isEmpty()){
                 for (Order order :orderProcessor.getOrderQueue()){

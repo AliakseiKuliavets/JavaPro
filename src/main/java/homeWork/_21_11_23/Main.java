@@ -24,8 +24,8 @@ import java.util.*;
                 orderProcessor3,orderProcessor4);
 
         OrderManagementSystem orderManagementSystem = getOrderManagementSystem(orderProcessorList);
-        LogisticsCenter logisticsCenter = new LogisticsCenter(orderProcessorList);
-        logisticsCenter.
+        LogisticsCenter logisticsCenter = new LogisticsCenter();
+        logisticsCenter.returnOrderFromList(orderProcessorList);
 
 
         orderManagementSystem.runManagementSystem();
