@@ -26,24 +26,28 @@ public class LogisticsCenter {
         }
     }
 
-    public void returnOrderFromList(List<OrderProcessor> orderProcessorList){
-        for (OrderProcessor orderProcessor :orderProcessorList) {
-            if (!orderProcessor.getOrderQueue().isEmpty()){
-                for (Order order :orderProcessor.getOrderQueue()){
-                    addAcceptedOrderInReadyQueue(order);
+    public synchronized void returnOrderFromList(List<OrderProcessor> orderProcessorList) {
+        for (OrderProcessor orderProcessor : orderProcessorList) {
+            if (!orderProcessor.getOrderQueue().isEmpty()) {
+                for (int i = 0; i <= orderProcessor.getOrderQueue().size(); i++) {
+                    addAcceptedOrderInReadyQueue(orderProcessor.extractOrderFromQueue());
                 }
             }
         }
     }
 
     public synchronized Order extractReadyToShipOrder() {
-        for (Order order : orderQueueStatusReadyToShip) {
-            if (order.getStatusOrder().equals(StatusOrder.READY_TO_SHIP)) {
-                order.changeStatusOrder(StatusOrder.DELIVERED);
-                orderQueueStatusReadyToShip.remove(order);
-                System.out.println("Заказ в пути до клиента");
-                return order;
+        if (!orderQueueStatusReadyToShip.isEmpty()) {
+            for (Order order : orderQueueStatusReadyToShip) {
+                if (order.getStatusOrder().equals(StatusOrder.READY_TO_SHIP)) {
+                    order.changeStatusOrder(StatusOrder.DELIVERED);
+                    orderQueueStatusReadyToShip.remove(order);
+                    System.out.println("Заказ в пути до клиента");
+                    return order;
+                }
             }
+        } else {
+            System.out.println("Заказов нет");
         }
         return null;
     }
