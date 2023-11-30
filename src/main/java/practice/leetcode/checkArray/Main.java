@@ -152,6 +152,7 @@ public class Main {
             number = String.valueOf(result);
             if (i != k) {
                 result = 0;
+
             }
         }
         return result;
