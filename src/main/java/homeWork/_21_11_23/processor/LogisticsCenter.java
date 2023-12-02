@@ -27,6 +27,9 @@ public class LogisticsCenter {
     }
 
     public synchronized void returnOrderFromList(List<OrderProcessor> orderProcessorList) {
+        if (orderProcessorList == null || orderProcessorList.isEmpty()) {
+            throw new RuntimeException("Лист обработчиков заказа пуст");
+        }
         for (OrderProcessor orderProcessor : orderProcessorList) {
             if (!orderProcessor.getOrderQueue().isEmpty()) {
                 for (int i = 0; i <= orderProcessor.getOrderQueue().size(); i++) {
@@ -50,9 +53,5 @@ public class LogisticsCenter {
             System.out.println("Заказов нет");
         }
         return null;
-    }
-
-    public synchronized Queue<Order> getOrderQueueStatusReadyToShip() {
-        return orderQueueStatusReadyToShip;
     }
 }

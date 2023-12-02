@@ -58,6 +58,10 @@ public class OrderManagementSystem {
         isRunning = true;
     }
 
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     public boolean isRunning() {
         return isRunning;
     }

@@ -11,8 +11,8 @@ import java.util.Queue;
  */
 public class Client {
     private static int counter = 0;
-    private int id;
-    private final List<Order> orderQueueClient = new LinkedList<>();
+    private final int id;
+    private final List<Order> orderListClient = new LinkedList<>();
 
     public Client() {
         this.id = ++counter;
@@ -24,7 +24,7 @@ public class Client {
         }
         Order orderClient = new Order();
         orderClient.addProductInOrder(productList);
-        orderQueueClient.add(orderClient);
+        orderListClient.add(orderClient);
         System.out.println("Создан новый заказ");
         return orderClient;
     }
@@ -33,7 +33,14 @@ public class Client {
         if (orderClient == null) {
             throw new IllegalArgumentException("Для просмотра статуса заказа нужно указать какой товар");
         }
-
-        System.out.println("Статус заказа: " + orderClient.getStatusOrder());
+        if (orderListClient.contains(orderClient)) {
+            for (Order o : orderListClient) {
+                if (orderClient.equals(o)) {
+                    System.out.println("Статус заказа: " + orderClient.getStatusOrder());
+                }
+            }
+        } else {
+            System.out.println("У вас нет доступа к этому заказа");
+        }
     }
 }

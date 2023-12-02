@@ -16,12 +16,11 @@ import java.util.List;
  */
 
 public class OrderGeneratorThread extends Thread {
-
-    private List<OrderProcessor> processorList;
     private List<Order> listOrder = new ArrayList<>();
+    private OrderManagementSystem orderManagementSystem;
 
-    public OrderGeneratorThread(List<OrderProcessor> processorList) {
-        this.processorList = processorList;
+    public OrderGeneratorThread(OrderManagementSystem orderManagementSystem) {
+        this.orderManagementSystem = orderManagementSystem;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class OrderGeneratorThread extends Thread {
                 throw new RuntimeException(e);
             }
         }
-        OrderManagementSystem orderManagementSystem = new OrderManagementSystem(processorList, listOrder);
+        orderManagementSystem.setOrderList(listOrder);
         orderManagementSystem.runManagementSystem();
         orderManagementSystem.managementSystem();
     }
