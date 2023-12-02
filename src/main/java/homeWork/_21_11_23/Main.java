@@ -34,7 +34,7 @@ import java.util.*;
 
 
         for (OrderProcessor orderProcessor : orderProcessorList) {
-            OrderGeneratorThread orderGeneratorThread = new OrderGeneratorThread(orderProcessorList);
+            OrderGeneratorThread orderGeneratorThread = new OrderGeneratorThread(orderManagementSystem);
             orderGeneratorThread.start();
             try {
                 orderGeneratorThread.join();

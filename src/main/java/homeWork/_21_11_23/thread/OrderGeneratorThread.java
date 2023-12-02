@@ -15,9 +15,9 @@ import java.util.List;
 Создает новые заказы и добавляет их в систему управления заказами.
  */
 
-public class OrderGeneratorThread extends Thread {
-    private List<Order> listOrder = new ArrayList<>();
-    private OrderManagementSystem orderManagementSystem;
+public class OrderGeneratorThread extends Thread{
+    private final List<Order> listOrder = new ArrayList<>();
+    private final OrderManagementSystem orderManagementSystem;
 
     public OrderGeneratorThread(OrderManagementSystem orderManagementSystem) {
         this.orderManagementSystem = orderManagementSystem;
