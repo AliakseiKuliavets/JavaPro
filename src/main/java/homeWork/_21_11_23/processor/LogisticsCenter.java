@@ -54,4 +54,8 @@ public class LogisticsCenter {
         }
         return null;
     }
+
+    public Queue<Order> getOrderQueueStatusReadyToShip() {
+        return orderQueueStatusReadyToShip;
+    }
 }

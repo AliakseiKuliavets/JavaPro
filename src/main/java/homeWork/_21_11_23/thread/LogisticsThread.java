@@ -13,13 +13,8 @@ public class LogisticsThread extends Thread {
 
     @Override
     public void run() {
-        while (true) {
-            Order order = logisticsCenter.extractReadyToShipOrder();
-            if (order != null) {
-                shipOrder(order);
-            } else {
-                break;
-            }
+        while (!(logisticsCenter.getOrderQueueStatusReadyToShip().isEmpty())) {
+            logisticsCenter.extractReadyToShipOrder();
         }
     }
 

@@ -26,9 +26,9 @@ public class OrderGeneratorThread extends Thread{
     @Override
     public void run() {
         for (int i = 0; i < 4; i++) {
+            createNewOrder();
             try {
                 sleep(1000);
-                listOrder.add(createNewOrder(createProduct()));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -38,19 +38,15 @@ public class OrderGeneratorThread extends Thread{
         orderManagementSystem.managementSystem();
     }
 
-    public synchronized Order createNewOrder(List<Product> productList) {
-        if (productList == null) {
-            throw new IllegalArgumentException("Продукт не может быть добавлен в заказ если он равен NULL");
-        }
+    public synchronized void createNewOrder() {
         Order order = new Order();
-        order.addProductInOrder(productList);
+        order.addProductInOrder(createProduct(2));
         System.out.println("Заказ успешно создан");
-        return order;
     }
 
-    private synchronized List<Product> createProduct() {
+    private synchronized List<Product> createProduct(int k) {
         List<Product> productList = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < k; i++) {
             Faker faker = new Faker();
             productList.add(new Product(faker.stock().nsdqSymbol(),
                     faker.number().randomDouble(2, 0, 25)));
