@@ -86,28 +86,32 @@ public class Some {
             num2 = num1;
             num1 = tmp;
         }
+
         int count = 0;
         StringBuilder stringBuilder = new StringBuilder();
+
         for (int i = 1; i <= num2.length(); i++) {
             int a = 0;
             if (i <= num1.length()) {
-                a = num1.charAt(num1.length() - i) - 48;
+                a = num1.charAt(num1.length() - i) - '0';
             }
-            int b = num2.charAt(num2.length() - i) - 48;
-            while (count != 0) {
-                count--;
-                b++;
-            }
+
+            int b = num2.charAt(num2.length() - i) - '0' + count;
+            count = 0;
+
             int c = a + b;
-            if (c > 9) {
-                while (c != 10) {
-                    count++;
-                    c--;
-                }
-                c = 0;
+            if (c >= 10) {
+                count = 1;
+                c -= 10;
             }
-            stringBuilder.insert(0,c);
+
+            stringBuilder.insert(0, c);
         }
-        return String.valueOf(stringBuilder);
+
+        if (count > 0) {
+            stringBuilder.insert(0, count);
+        }
+
+        return stringBuilder.toString();
     }
 }
