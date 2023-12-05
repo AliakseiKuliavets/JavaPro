@@ -33,7 +33,7 @@ public class OrderGeneratorThread extends Thread{
                 throw new RuntimeException(e);
             }
         }
-        orderManagementSystem.setOrderList(listOrder);
+
         orderManagementSystem.runManagementSystem();
         orderManagementSystem.managementSystem();
     }

@@ -1,15 +1,15 @@
 package practice.leetcode.day_23_12_04;
 
-import practice.leetcode.TreeNode;
-
 import java.util.*;
 
 public class Some {
     public static void main(String[] args) {
-        int[] array = {1, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] array = {1, 7, 4, 3, 2, 7, 4, 2};
         System.out.println(dominantIndex(array));
         System.out.println(findMaxConsecutiveOnes(array));
         System.out.println(checkDistances("abaccb", array));
+        System.out.println(checkArray(array, 2));
+        checkArray3(new String[]{"students", "student", "word", "drow"});
     }
 
     public static String destCity(List<List<String>> paths) {
@@ -107,12 +107,70 @@ public class Some {
                 }
             }
         }
-        for (int i = distance.length - 1; i > s.length()/2 + 1; i--) {
-            if (distance[i] != distance[i-1]){
+        for (int i = distance.length - 1; i > s.length() / 2 + 1; i--) {
+            if (distance[i] != distance[i - 1]) {
                 return false;
             }
         }
         return true;
+    }
+
+    public static int checkArray(int[] distance, int n) {
+        Map<Integer, Integer> mapa = new LinkedHashMap<>();
+        for (int j : distance) {
+            mapa.put(j, mapa.getOrDefault(j, 0) + 1);
+        }
+        for (Map.Entry<Integer, Integer> entry : mapa.entrySet()) {
+            if (entry.getValue() == n) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+
+    public static boolean checkArray2(int[] distance, int[] distance2) {
+        Arrays.sort(distance);
+        Arrays.sort(distance2);
+        return Arrays.equals(distance, distance2);
+    }
+
+    public static void checkArray3(String[] strings) {
+        Map<String, List<String>> resultMap = new HashMap<>();
+        Map<String, String> stringMap = new HashMap<>();
+        for (String string : strings) {
+            char[] chars = string.toCharArray();
+            Arrays.sort(chars);
+            Set<Character> set = new HashSet<>();
+            StringBuilder stringBuilder = new StringBuilder();
+            for (char aChar : chars) {
+                if (!(set.contains(aChar))) {
+                    set.add(aChar);
+                    stringBuilder.append(aChar);
+                }
+            }
+            String s = String.valueOf(stringBuilder);
+            stringMap.put(string, s);
+
+        }
+        System.out.println(stringMap);
+        for (Map.Entry<String, String> entry : stringMap.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+
+            List<String> keysWithSameValue = resultMap.getOrDefault(value, new ArrayList<>());
+            keysWithSameValue.add(key);
+
+            resultMap.put(value, keysWithSameValue);
+        }
+        for (List<String> keys : resultMap.values()) {
+            if (keys.size() > 1) {
+                for (int i = 0; i < keys.size() - 1; i++) {
+                    for (int j = i + 1; j < keys.size(); j++) {
+                        System.out.println("Значение '" + keys.get(i) + "' совпадает со значением '" + keys.get(j) + "'");
+                    }
+                }
+            }
+        }
     }
 }
 

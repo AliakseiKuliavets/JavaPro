@@ -58,8 +58,11 @@ public class OrderManagementSystem {
         isRunning = true;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public synchronized void receptionOrderSheet(List<Order> orderList){
+        if (orderList.isEmpty()){
+            System.out.println("Лист заказов пуст");
+        }
+        this.orderList.addAll(orderList);
     }
 
     public boolean isRunning() {
