@@ -23,12 +23,9 @@ public class DAta {
 }
 
 class Data1 {
-    public double calculatorAvg(List<Double> numbers) {
-        return numbers.stream().mapToDouble(Double::doubleValue).average().orElse(0);
-    }
-
-    public double calculatorAvgSQRT(List<Double> numbers) {
-        return Math.sqrt(numbers.stream().mapToDouble(Double::doubleValue).average().orElse(0));
+    public double calculatorAvg(List<Double> numbers, boolean sqrt) {
+        double avg = numbers.stream().mapToDouble(Double::doubleValue).average().orElse(0);
+        return sqrt ? Math.sqrt(avg) : avg;
     }
 }
 
