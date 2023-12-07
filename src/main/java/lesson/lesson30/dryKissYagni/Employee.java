@@ -16,3 +16,21 @@ public class Employee {
         return firstName.toLowerCase() + "." + lastName.toLowerCase() + "@company.com";
     }
 }
+
+class Employee2 {
+    private String firstName;
+    private String lastName;
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public String getInitials() {
+        return firstName.charAt(0) + "." + lastName.charAt(0) + ".";
+    }
+
+    // Дублирование кода формирования email
+    public String getEmail() {
+        return getFullName().toLowerCase() + "@company.com";
+    }
+}

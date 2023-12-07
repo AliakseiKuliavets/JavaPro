@@ -30,8 +30,8 @@ import java.util.List;
 //        System.out.println("Average Age: " + averageAge);
 //    }
 //}
-//class DA2 {
-//    public int returnSumDataListInteger(List<?> data) {
+//class Data {
+//    public void processData(List<?> data) {
 //        int sum = 0;
 //        for (Object object : data) {
 //            if (object.getClass().equals(Integer.class)) {
