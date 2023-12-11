@@ -15,6 +15,9 @@ public class D1 {
 
 class D2 {
     public double calculateAvgList(List<Double> listOfNumbers) {
+        if (listOfNumbers == null || listOfNumbers.isEmpty()) {
+            throw new IllegalArgumentException("Лист не может быть пус или быть равен NULL");
+        }
         return listOfNumbers.stream().mapToDouble(Double::doubleValue).average().orElse(0);
     }
 }
