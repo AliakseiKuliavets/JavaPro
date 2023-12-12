@@ -6,12 +6,15 @@ public class Some {
     public static void main(String[] args) {
 //        System.out.println(rearrangeCharacters("codecodecodecode", "codecode"));
 //        System.out.println(Arrays.toString(smallerNumbersThanCurrent(array)));
-        int[] array = {1, 3, 5, 2, 4};
+        int[] array = {9, 9, 9, 9, 9, 9, 9, 9, 9, 9};
+        int k = 1;
         int[] array2 = {6, 5, 4, 3, 2, 1, 7};
-        System.out.println(searchInsert(array, 2));
-        System.out.println(reverseVowels("aA"));
-        System.out.println(Arrays.toString(nextGreaterElement(array, array2)));
-        System.out.println(minLength("ABFCACDB"));
+//        System.out.println(searchInsert(array, 2));
+//        System.out.println(reverseVowels("aA"));
+//        System.out.println(Arrays.toString(nextGreaterElement(array, array2)));
+//        System.out.println(minLength("ABFCACDB"));
+//        System.out.println(Arrays.toString(plusOne(array)));
+        System.out.println(addToArrayForm(array, k));
     }
 
     public static int rearrangeCharacters(String s, String target) {
@@ -182,21 +185,30 @@ public class Some {
         return d.length();
     }
 
-    public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
-        Set<Integer> integerSet = new HashSet<>();
-        for (int j : nums1) {
-            integerSet.add(j);
-        }
-        for (int j : nums2) {
-            if (!(integerSet.contains(j))) {
-                integerSet.add(j);
+    public static int[] plusOne(int[] digits) {
+        int n = digits.length;
+        for (int i = n - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
             }
+            digits[i] = 0;
         }
-        for (int j : nums3) {
-            if (!(integerSet.contains(j))) {
-                integerSet.add(j);
+        int[] newDigits = new int[n + 1];
+        newDigits[0] = 1;
+        return newDigits;
+    }
+
+    public static List<Integer> addToArrayForm(int[] num, int k) {
+        int n = num.length;
+        List<Integer> l = new LinkedList<>();
+        for (int i = 0; i < n || k != 0; i++) {
+            if (i < n) {
+                k += num[n - i - 1];
             }
+            l.add(0, k % 10);
+            k = k / 10;
         }
-        return new ArrayList<>(integerSet);
+        return l;
     }
 }
