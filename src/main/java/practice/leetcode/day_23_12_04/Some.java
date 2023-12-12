@@ -136,7 +136,6 @@ public class Some {
 
     public static void checkArray3(String[] strings) {
         Map<String, List<String>> resultMap = new HashMap<>();
-        Map<String, String> stringMap = new HashMap<>();
         for (String string : strings) {
             char[] chars = string.toCharArray();
             Arrays.sort(chars);
@@ -149,28 +148,10 @@ public class Some {
                 }
             }
             String s = String.valueOf(stringBuilder);
-            stringMap.put(string, s);
-
+            resultMap.put(s, resultMap.getOrDefault(s, new ArrayList<>()));
+            resultMap.get(s).add(string);
         }
-        System.out.println(stringMap);
-        for (Map.Entry<String, String> entry : stringMap.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-
-            List<String> keysWithSameValue = resultMap.getOrDefault(value, new ArrayList<>());
-            keysWithSameValue.add(key);
-
-            resultMap.put(value, keysWithSameValue);
-        }
-        for (List<String> keys : resultMap.values()) {
-            if (keys.size() > 1) {
-                for (int i = 0; i < keys.size() - 1; i++) {
-                    for (int j = i + 1; j < keys.size(); j++) {
-                        System.out.println("Значение '" + keys.get(i) + "' совпадает со значением '" + keys.get(j) + "'");
-                    }
-                }
-            }
-        }
+        System.out.println(resultMap);
     }
 }
 
