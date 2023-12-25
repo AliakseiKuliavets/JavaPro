@@ -15,6 +15,10 @@ public class Some {
 //        System.out.println(minLength("ABFCACDB"));
 //        System.out.println(Arrays.toString(plusOne(array)));
         System.out.println(addToArrayForm(array, k));
+
+        for (int i = 0; i < 100; i++) {
+            System.out.println(UUID.randomUUID());
+        }
     }
 
     public static int rearrangeCharacters(String s, String target) {
