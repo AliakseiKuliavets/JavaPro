@@ -5,6 +5,7 @@ import java.util.*;
 import static java.lang.Math.random;
 
 public class Some {
+
     public static void main(String[] args) {
         int[] stones = {2, 7, 4, 1, 8, 1};
         System.out.println(lastStoneWeight(stones));
@@ -13,7 +14,9 @@ public class Some {
         for (int i = 0; i < 20; i++) {
             System.out.println(UUID.randomUUID());
         }
+
     }
+
 
     public static int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
@@ -54,4 +57,5 @@ public class Some {
         }
         return true;
     }
+
 }
